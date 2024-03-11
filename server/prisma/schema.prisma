@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Définition de l'entité User
+model User {
+  id_user  Int            @id @default(autoincrement())
+  name_user String
+  email           String         @unique
+  password    String
+  name             String?
+  photo           String?
+  Post          Post[]
+  Contribution    Contribution[]
+}
+
+// Définition de l'entité Post
+model Post {
+  id_post        Int            @id @default(autoincrement())
+  title            String
+  description      String?
+  categorie        String
+  desired_amount Float
+  start_date       DateTime
+  end_date         DateTime
+  id_creator      Int            @map("id_creator")
+  creator         User    @relation(fields: [id_creator], references: [id_user])
+  Contribution     Contribution[]
+}
+
+// Définition de l'entité Contribution
+model Contribution {
+  id_contribution   Int         @id @default(autoincrement())
+  amount           Float
+  date_contribution DateTime
+  id_post         Int         @map("id_post")
+  Post            Post      @relation(fields: [id_post], references: [id_post])
+  id_contributeur   Int         @map("id_contributeur")
+  contributeur      User @relation(fields: [id_contributeur], references: [id_user])
+  Payment          Payment?
+}
+
+// Définition de l'entité Payment
+model Payment {
+  id_Payment      Int          @id @default(autoincrement())
+  amount_paye     Float
+  id_contribution  Int          @unique
+  contribution     Contribution @relation(fields: [id_contribution], references: [id_contribution])
+}
