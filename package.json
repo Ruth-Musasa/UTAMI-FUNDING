@@ -1,7 +1,7 @@
 {
   "name": "chef_doeuvre",
-  "private":"true",
-  "workspaces":[
+  "private": "true",
+  "workspaces": [
     "server",
     "client"
   ],
