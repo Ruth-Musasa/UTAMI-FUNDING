@@ -8,7 +8,7 @@ import Profil from "./Menu/Profil"
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import Explore from "./Menu/Explore";
 import Communauté from "./Menu/Communauté";
-import GetSarted from "./Menu/GetStarted";
+import AuthUser from "./compoment/AuthUser";
 
 function App() {
   const [menu, setMenu] = useState(false)
@@ -36,7 +36,7 @@ function App() {
           <Route path='/Formation' element={<Formation />} />
           <Route path='/Communauté' element={<Communauté />} />
           <Route path='/Profile/*' element={<Profil />} />
-          <Route path='/Connexion' element={<GetSarted />} />
+          <Route path='/Connexion' element={<AuthUser />} />
         </Routes>
         {/* Footer */}
         <div className="md:border py-4 ">
