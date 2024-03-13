@@ -7,7 +7,7 @@ export default function Header(props) {
             <div className="fixed bg-white w-full md:hidden">
                 <div className="h-14 flex justify-around items-stretch ">
                     <div className="text-3xl self-center"><img src="src/assets/Capture_d_écran_du_2024-02-28_15-21-51-removebg-preview.png" alt="" /></div>
-                    <button className="self-center bg-[#3563FF] rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5">Commencer</button>
+                    <Link to='/Connexion'><button className="self-center bg-[#3563FF] rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5">Commencer</button></Link>
                     {props.children}
                 </div>
             </div>
