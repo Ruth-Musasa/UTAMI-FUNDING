@@ -17,20 +17,21 @@ function App() {
   }
   if (menu) {
     return (
-      <NavBar>
-        <Header>
-          <button onClick={handleClick} > - </button>
-        </Header>
-      </NavBar>
+      <div className="justify-around w-full ">
+        <div className="h-14 flex justify-between items-center w-11/12 m-auto">
+          <button onClick={handleClick} className="text-black text-4xl"> x </button>
+          <button className="self-center bg-[#3563FF] rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5">Commencer</button>
+        </div>
+      </div>
     )
   }
   return (
     <>
       <Router>
         <Header>
-          <button onClick={handleClick} > + </button>
+          <button onClick={handleClick} className="text-black text-5xl"> + </button>
         </Header>
-        <Routes>
+        <Routes> 
           <Route path='/' element={<Home />} />
           <Route path='/Explore' element={<Explore />} />
           <Route path='/Formation' element={<Formation />} />

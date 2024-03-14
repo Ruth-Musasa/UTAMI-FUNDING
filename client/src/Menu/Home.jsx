@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ProjetTypes from "../compoment/ProjetType";
 
 export default function Home() {
     return (
@@ -7,7 +8,6 @@ export default function Home() {
                 <div className="m-auto">
                     <h1 className="mt-32 mb-5 text-6xl leading-snug 2xl:text-9xl lg:text-8xl font-[title] font-black ">UTAMI <br />FUNDING </h1>
                     <p className="text-lg md:text-xl pb-10"> Bienvenue dans notre communauté de créateurs et d'ambitieux, où chaque projet est une histoire en devenir. À travers ce crowdfunding, nous vous invitons à plonger dans un univers d'innovation, de passion et de possibilités infinies.</p>
-                    <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-56 h-12 left-5 ">Commencer</button>
                 </div>
                 <img className="col-span-2 w-10/12 pt-10 m-auto" src="../src/assets/9689394.jpg" alt="" />
             </div>
@@ -30,7 +30,7 @@ export default function Home() {
                             <p>Découvrez des jeunes entreprises innovantes et investissez dans leur croissance et leur développement.</p>
                         </div>
                     </div>
-                    <Link to='/Connexion'> <button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-12 left-5 ">Commencer</button></Link>
+                    <Link to='/Connexion'> <button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-12 left-5 hover:bg-[#3563FF]">Commencer</button></Link>
                 </div>
             </div>
             <div className="flex flex-wrap lg:flex-nowrap py-6 w-11/12 xl:w-11/12 2xl:w-9/12  m-auto md:pt-20 md:pb-36">
@@ -49,29 +49,19 @@ export default function Home() {
                 </div>
             </div>
             <div className="bg-black">
-                <div className="text-white px-8 py-6 lg:flex md:py-32 xl:w-11/12 2xl:w-9/12  md:m-auto">
+                <div className="text-white px-8 py-6 lg:flex md:py-32 xl:w-11/12 2xl:w-10/12  md:m-auto">
                     <div className="md:border-r md:mr-10 xl:w-1/2">
                         <h2 className=" text-4xl mt-12  md:text-6xl md:pr-4">Découvrez une multitude de projets, prêts à être financés.</h2>
-                        <div className="flex items-stretch underline underline-offset-8 my-12">
+                        <div className="flex items-stretch underline underline-offset-8 my-12 hover:text-[#3563FF] ">
                             <Link to='/Explore' >Voir des projets</Link>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-white"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
                         </div>
                     </div>
                     <div className="grid gap-10 md:grid-cols-2">
-                        <div className="w-auto h-auto ">
-                            <div className="md:w-96 h-64  bg-cover bg-[url('client/src/assets/8be8502369c21819b8bb0ad6a8b0afad.jpg')] border-8  border-white rounded-t-lg"></div>
-                            <div className="bg-white md:w-96 h-12 rounded-b-lg text-center text-black text-xl font-black">Projet Architectural</div>
-                        </div>
-                        <div className="w-auto h-auto ">
-                            <div className="md:w-96 h-64 bg-cover bg-[url('client/src/assets/bd5c4f3b2249a310be4dcf50644cbefe.jpg')] border-8  border-white rounded-t-lg"></div>
-                            <div className="bg-white md:w-96 h-12 rounded-b-lg text-center text-black text-xl font-black">Projet agricole</div>
-                        </div><div className="w-auto h-auto ">
-                            <div className="md:w-96 h-64 bg-cover bg-[url('client/src/assets/c53b881e891566634ff68349842b5d7c.jpg')] border-8  border-white rounded-t-lg"></div>
-                            <div className="bg-white md:w-96 h-12 rounded-b-lg text-center text-black text-xl font-black">Projet gastronomique</div>
-                        </div><div className="w-auto h-auto ">
-                            <div className="md:w-96 h-64 bg-cover bg-[url('client/src/assets/a80f7343138d26af55ddc65c8ed70383.jpg')] border-8  border-white rounded-t-lg"></div>
-                            <div className="bg-white md:w-96 h-12 rounded-b-lg text-center text-black text-xl font-black">Projet modelisme</div>
-                        </div>
+                        <ProjetTypes type="Projet architectural" classe="bg-cover bg-[url('client/src/assets/8be8502369c21819b8bb0ad6a8b0afad.jpg')]" />
+                        <ProjetTypes type="Projet agricole" classe="bg-[url('client/src/assets/bd5c4f3b2249a310be4dcf50644cbefe.jpg')]" />
+                        <ProjetTypes type="Projet gastronomique" classe="bg-[url('client/src/assets/c53b881e891566634ff68349842b5d7c.jpg')]" />
+                        <ProjetTypes type="Projet modelisme" classe="bg-[url('client/src/assets/a80f7343138d26af55ddc65c8ed70383.jpg')]" />             
                     </div>
                 </div>
             </div>
@@ -102,7 +92,7 @@ export default function Home() {
                         <p>Create a website with a complete suite of advanced functionalities and bring your vision to life.</p>
                     </div>
                     <div></div>
-                    <Link to='/Connexion'>  <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12 left-5 ">Commencer</button> </Link>
+                    <Link to='/Connexion'>  <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12 left-5 hover:bg-[#3563FF]">Commencer</button> </Link>
                 </div>
             </div>
 
@@ -119,7 +109,7 @@ export default function Home() {
                         <li><strong>Drive traffic to your site.</strong> Use advanced SEO tools and integrated marketing solutions.</li>
                     </ol>
                 </div>
-                <Link to='/Connexion'>  <div className=" md:w-9/12 md:m-auto"><button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12  left-5 mb-12">Commencer</button></div></Link>
+                <Link to='/Connexion'>  <div className=" md:w-9/12 md:m-auto"><button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12  left-5 mb-12 hover:bg-[#3563FF]">Commencer</button></div></Link>
             </div>
             <div className=" text-black px-8 py-6 lg:flex  xl:w-11/12 2xl:w-9/12  md:m-auto md:py-32">
                 <h2 className=" text-4xl mt-12  md:text-6xl ">Pourquoi notre plateforme de Crowdfunding est le meilleur choix pour vous?</h2>
@@ -129,12 +119,12 @@ export default function Home() {
                     <p><strong>Transparence et confiance : </strong>Nous mettons un point d'honneur à maintenir une transparence totale tout au long du processus de crowdfunding. Vous avez accès à des informations détaillées sur chaque projet, y compris sur les créateurs, les objectifs financiers et les plans de mise en œuvre.</p>
                     <p>En choisissant notre plateforme de crowdfunding, vous faites le choix d'une expérience enrichissante.</p>
                 </div>
-                    <Link to='/Connexion'>  <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12  left-5 mb-12">Commencer</button> </Link >
+                    <Link to='/Connexion'>  <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12  left-5 mb-12 hover:bg-[#3563FF]">Commencer</button> </Link >
                 </div>
             </div>
             <div className="bg-[#FFD135] text-black px-8 px-16 text-center md:py-32">
                 <h2 className=" text-4xl mt-12 xl:w-11/12 2xl:w-9/12  md:m-auto md:text-6xl pb-6 md:text-7xl text-black"> Le succès de demain commence aujourd’hui.</h2>
-                <Link to='/Connexion'> <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12  left-5 mb-12">Commencer</button></Link>
+                <Link to='/Connexion'> <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12  left-5 mb-12 hover:bg-[#3563FF] ">Commencer</button></Link>
             </div>
             <div className="px-8 py-16 text-base md:w-9/12 md:m-auto lg:grid md:grid-cols-2 md:gap-20 h-auto">
                 <h2 className=" text-4xl mt-11 mb-7 text-black md:text-6xl md:text-center md:col-span-2">Enrichissez vos connaissance grace aux ouvrage que nous mettons en votre disposition</h2>
@@ -142,8 +132,8 @@ export default function Home() {
                     <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
                     <p className="py-4">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
-                    <div className="flex items-stretch underline underline-offset-8 mb-12">
-                        <Link to='/Explore'>Apprendre plus</Link>
+                    <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
+                        <Link to='/Formation'>Apprendre plus</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
                     </div>
                 </div>
@@ -151,8 +141,8 @@ export default function Home() {
                     <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/0aa9e029e7cd70cefef0a16bcc977008.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
                     <p className="py-4">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
-                    <div className="flex items-stretch underline underline-offset-8 mb-12">
-                        <Link to='/Explore'>Apprendre plus</Link>
+                    <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
+                        <Link to='/Formation'>Apprendre plus</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
                     </div>
                 </div>
@@ -160,8 +150,8 @@ export default function Home() {
                     <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/gros-plan-main-blanche-noire.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
                     <p className="py-4">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
-                    <div className="flex items-stretch underline underline-offset-8 mb-12">
-                        <Link to='/Explore'>Apprendre plus</Link>
+                    <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
+                        <Link to='/Formation'>Apprendre plus</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
                     </div>
                 </div>
@@ -169,13 +159,12 @@ export default function Home() {
                     <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/a33c4aca8b39b84ec3ffe438ec299657.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
                     <p className="py-4">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
-                    <div className="flex items-stretch underline underline-offset-8 mb-12">
-                        <Link to='/Explore'>Apprendre plus</Link>
+                    <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12 ">
+                        <Link to='/Formation'>Apprendre plus</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
                     </div>
                 </div>
             </div>
         </div>
-
     )
 }

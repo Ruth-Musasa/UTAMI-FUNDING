@@ -1,5 +1,24 @@
-export default function Formation() {
+import Option from "../compoment/Option";
+
+export default function () {
     return (
-        <h2>Formation</h2>
+        <div className="md:w-9/12 m-auto h-auto py-20 ">
+            <h2 className=" text-2xl my-10 text-center md:text-7xl">Dans quel domaine souhaitez-vous <br /> vous former ?</h2>
+            <Option title="Avoir l'audace d'entreprendre" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" />
+            <Option title="Avoir l'audace d'entreprendre" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" />
+            <Option title="Avoir l'audace d'entreprendre" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" />
+            <Option title="Avoir l'audace d'entreprendre" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" />
+            <Option title="Avoir l'audace d'entreprendre" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" />
+            <Option title="Avoir l'audace d'entreprendre" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" />
+            <Option title="Avoir l'audace d'entreprendre" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" />
+            <Option title="Avoir l'audace d'entreprendre" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" />
+            <Option title="Avoir l'audace d'entreprendre" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" />
+            <Option title="Avoir l'audace d'entreprendre" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" />
+            <Option title="Avoir l'audace d'entreprendre" description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" />
+            <button className="flex text-[#3563FF] hover:text-[#FFC801]">
+                <h3 className="border-b-2 border-[#3563FF] hover:border-[#FFC801] text-2xl ">Decouvrir plus de formation sur Open Classroom</h3>
+                {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-20 h-10 self-center fill-black pt-2"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg> */}
+            </button>
+        </div>
     )
 }
