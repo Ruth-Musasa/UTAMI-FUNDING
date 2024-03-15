@@ -16,10 +16,10 @@ export default function Header(props) {
                 <div className="h-14 flex  items-center ">
                     <div className=" self-center"><img className='h-28' src="../src/assets/coconut_._1_-removebg-preview.png" alt="" /></div>
                     <div className=" md:pl-8 self-center md:flex md:gap-12">
-                        <Link to='/'>Home </Link >
-                        <Link to='Explore' >Explore</Link >
-                        <Link to='Formation' className="md:border-r border-black md:pr-12" >Formation</Link >
-                        <Link to='Profile'>Profile</Link >
+                        <Link to='/' className='focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]'>Home </Link >
+                        <Link to='Explore'  className='focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]'>Explore</Link >
+                        <Link to='Formation' className="md:border-r border-black md:pr-12 focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]" >Formation</Link >
+                        <Link to='Profile' className='focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]'>Profile</Link >
                     </div>
                 </div>
                 <div className="self-center md:flex md:gap-6">
