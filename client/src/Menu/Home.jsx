@@ -61,7 +61,7 @@ export default function Home() {
                         <ProjetTypes type="Projet architectural" classe="bg-cover bg-[url('client/src/assets/8be8502369c21819b8bb0ad6a8b0afad.jpg')]" />
                         <ProjetTypes type="Projet agricole" classe="bg-[url('client/src/assets/bd5c4f3b2249a310be4dcf50644cbefe.jpg')]" />
                         <ProjetTypes type="Projet gastronomique" classe="bg-[url('client/src/assets/c53b881e891566634ff68349842b5d7c.jpg')]" />
-                        <ProjetTypes type="Projet modelisme" classe="bg-[url('client/src/assets/a80f7343138d26af55ddc65c8ed70383.jpg')]" />             
+                        <ProjetTypes type="Projet modelisme" classe="bg-[url('client/src/assets/a80f7343138d26af55ddc65c8ed70383.jpg')]" />
                     </div>
                 </div>
             </div>
@@ -123,15 +123,15 @@ export default function Home() {
                 </div>
             </div>
             <div className="bg-[#FFD135] text-black px-8 px-16 text-center md:py-32">
-                <h2 className=" text-4xl mt-12 xl:w-11/12 2xl:w-9/12  md:m-auto md:text-6xl pb-6 md:text-7xl text-black"> Le succès de demain commence aujourd’hui.</h2>
+                <h2 className=" text-4xl mt-12 xl:w-11/12 2xl:w-9/12  md:m-auto md:text-6xl pb-6 md:text-7xl font-black"> Le succès de demain commence aujourd’hui.</h2>
                 <Link to='/Connexion'> <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12  left-5 mb-12 hover:bg-[#3563FF] ">Commencer</button></Link>
             </div>
             <div className="px-8 py-16 text-base md:w-9/12 md:m-auto lg:grid md:grid-cols-2 md:gap-20 h-auto">
                 <h2 className=" text-4xl mt-11 mb-7 text-black md:text-6xl md:text-center md:col-span-2">Enrichissez vos connaissance grace aux ouvrage que nous mettons en votre disposition</h2>
                 <div>
-                    <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]"></div>
+                    <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('https://course.oc-static.com/courses/1946116/1946116_teaser_picture_1680855988.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
-                    <p className="py-4">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
+                    <p className="py-4 w-10/12">  Créez des outils d’analyse et facilitez la prise de décision en entreprise </p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
                         <Link to='/Formation'>Apprendre plus</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
@@ -140,7 +140,7 @@ export default function Home() {
                 <div>
                     <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/0aa9e029e7cd70cefef0a16bcc977008.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
-                    <p className="py-4">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
+                    <p className="py-4 w-10/12">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
                         <Link to='/Formation'>Apprendre plus</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
@@ -149,7 +149,7 @@ export default function Home() {
                 <div>
                     <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/gros-plan-main-blanche-noire.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
-                    <p className="py-4">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
+                    <p className="py-4 w-10/12">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
                         <Link to='/Formation'>Apprendre plus</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
@@ -158,7 +158,7 @@ export default function Home() {
                 <div>
                     <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/a33c4aca8b39b84ec3ffe438ec299657.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
-                    <p className="py-4">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
+                    <p className="py-4 w-10/12">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12 ">
                         <Link to='/Formation'>Apprendre plus</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
