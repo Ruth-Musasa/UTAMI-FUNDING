@@ -18,7 +18,7 @@ export default function Header(props) {
                     <div className=" md:pl-8 self-center md:flex md:gap-12">
                         <Link to='/'>Home </Link >
                         <Link to='Explore' >Explore</Link >
-                        <Link to='Formation' className="md:border-r md:pr-12" >Formation</Link >
+                        <Link to='Formation' className="md:border-r border-black md:pr-12" >Formation</Link >
                         <Link to='Profile'>Profile</Link >
                     </div>
                 </div>

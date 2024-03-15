@@ -20,11 +20,11 @@ function App() {
             <Header>
               <button onClick={handleClick} className="text-black text-5xl"> x </button>
             </Header>
-            <div className="grid pt-20 pl-8 self-center gap-12">
-              <Link to='/' onClick={handleClick} className="border-b hover:text-[#3563FF] text-2xl font-black"> Home </Link >
-              <Link to='Explore' onClick={handleClick} className="border-b hover:text-[#3563FF] text-2xl font-black" >Explore</Link >
-              <Link to='Formation' className="border-b hover:text-[#3563FF] text-2xl font-black" onClick={handleClick}  >Formation</Link >
-              <Link to='Profile' onClick={handleClick} className="border-b hover:text-[#3563FF] text-2xl font-black" >Profile</Link >
+            <div className="grid pt-20 px-8 self-center gap-12">
+              <Link to='/' onClick={handleClick} className="border-b border-black hover:text-[#3563FF] text-2xl font-black"> Home </Link >
+              <Link to='Explore' onClick={handleClick} className="border-b border-black hover:text-[#3563FF] text-2xl font-black" >Explore</Link >
+              <Link to='Formation' className="border-b hover:text-[#3563FF] border-black text-2xl font-black" onClick={handleClick}  >Formation</Link >
+              <Link to='Profile' onClick={handleClick} className="border-b border-black hover:text-[#3563FF] text-2xl font-black" >Profile</Link >
             </div>
           </div> : <>
             <Header>

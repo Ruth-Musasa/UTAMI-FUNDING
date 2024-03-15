@@ -1,6 +1,6 @@
 export default function PostEditor(props) {
     return (
-        <div className="flex-auto w-full">
+        <div className="flex-auto w-full ">
             <div className="h-auto">
                 <textarea placeholder="Quel est le titre de votre Projet?" name="title" id='title' cols="30" rows="2" className="w-full h-12 bg-zinc-100 text-xl focus:border-blue-400 outline-none"></textarea>
                 <input type="file" name="image" id="image" className="h-20" />

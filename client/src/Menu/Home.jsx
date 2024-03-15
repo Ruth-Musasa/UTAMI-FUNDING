@@ -53,7 +53,7 @@ export default function Home() {
                     <div className="md:border-r md:mr-10 xl:w-1/2">
                         <h2 className=" text-4xl mt-12  md:text-6xl md:pr-4">Découvrez une multitude de projets, prêts à être financés.</h2>
                         <div className="flex items-stretch underline underline-offset-8 my-12 hover:text-[#3563FF] ">
-                            <Link to='/Explore' >Voir des projets</Link>
+                            <Link to='/Explore'> Voir des projets </Link>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-white"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
                         </div>
                     </div>
