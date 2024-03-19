@@ -57,7 +57,7 @@ export default function Home() {
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-white"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
                         </div>
                     </div>
-                    <div className="grid gap-10 md:grid-cols-2">
+                    <div className="grid gap-10 xl:grid-cols-2">
                         <ProjetTypes type="Projet architectural" classe="bg-cover bg-[url('client/src/assets/8be8502369c21819b8bb0ad6a8b0afad.jpg')]" />
                         <ProjetTypes type="Projet agricole" classe="bg-[url('client/src/assets/bd5c4f3b2249a310be4dcf50644cbefe.jpg')]" />
                         <ProjetTypes type="Projet gastronomique" classe="bg-[url('client/src/assets/c53b881e891566634ff68349842b5d7c.jpg')]" />
@@ -72,24 +72,24 @@ export default function Home() {
                     </div>
                     <div></div>
                     <div className="border-t border-black py-8 leading-7 text-base md:border-none md:text-xl">
-                        <h3><strong>Unlimited creation</strong></h3>
-                        <p >Create a website with a complete suite of advanced functionalities and bring your vision to life.</p>
+                        <h3><strong>Créer une campagne percutante</strong></h3>
+                        <p >Construisez une campagne de financement solide en mettant en avant votre projet de manière convaincante. Utilisez des images attrayantes et un texte accrocheur pour captiver l'attention des contributeurs potentiels.</p>
                     </div>
                     <div className="border-t border-black py-8 leading-7 text-base md:border-none md:text-xl">
-                        <h3><strong>Unlimited creation</strong></h3>
-                        <p >Create a website with a complete suite of advanced functionalities and bring your vision to life.</p>
+                        <h3><strong>Communiquer efficacement </strong></h3>
+                        <p >Utilisez tous les canaux de communication disponibles pour promouvoir votre campagne. Partagez-la sur les réseaux sociaux, et envoyez des e-mails personnalisés à vos contacts pour les inviter à soutenir votre projet.</p>
                     </div>
                     <div className="border-t border-black py-8 leading-7 text-base md:border-none md:text-xl">
-                        <h3><strong>Unlimited creation</strong></h3>
-                        <p>Create a website with a complete suite of advanced functionalities and bring your vision to life.</p>
+                        <h3><strong>Impliquer votre communauté </strong></h3>
+                        <p>Mobilisez vos amis, votre famille et vos connaissances pour soutenir votre campagne dès le début. Leur engagement initial peut encourager d'autres personnes à contribuer et aider à créer un effet boule de neige.</p>
                     </div>
                     <div className="border-t border-black py-8 leading-7 text-base md:border-none md:text-xl">
-                        <h3><strong>Unlimited creation</strong></h3>
-                        <p >Create a website with a complete suite of advanced functionalities and bring your vision to life.</p>
+                        <h3><strong>Offrir des récompenses attractives</strong></h3>
+                        <p >Proposez des récompenses intéressantes et attrayantes pour inciter les contributeurs à soutenir votre projet. Assurez-vous que les récompenses sont en lien avec votre projet et qu'elles offrent une valeur ajoutée à vos supporters.</p>
                     </div>
                     <div className="border-t border-black py-8 leading-7 text-base md:text-xl md:border-none">
-                        <h3><strong>Unlimited creation</strong></h3>
-                        <p>Create a website with a complete suite of advanced functionalities and bring your vision to life.</p>
+                        <h3><strong>Mettre à jour régulièrement </strong></h3>
+                        <p>Tenez vos contributeurs informés de l'avancement de votre projet en publiant des mises à jour régulières sur votre campagne. Partagez vos progrès, vos réussites et les défis que vous rencontrez pour maintenir l'engagement et la confiance.</p>
                     </div>
                     <div></div>
                     <Link to='/Connexion'>  <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12 left-5 hover:bg-[#3563FF]">Commencer</button> </Link>
@@ -129,7 +129,7 @@ export default function Home() {
             <div className="px-8 py-16 text-base md:w-9/12 md:m-auto lg:grid md:grid-cols-2 md:gap-20 h-auto">
                 <h2 className=" text-4xl mt-11 mb-7 text-black md:text-6xl md:text-center md:col-span-2">Enrichissez vos connaissance grace aux ouvrage que nous mettons en votre disposition</h2>
                 <div>
-                    <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('https://course.oc-static.com/courses/1946116/1946116_teaser_picture_1680855988.jpg')]"></div>
+                    <div className="h-96 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://course.oc-static.com/courses/1946116/1946116_teaser_picture_1680855988.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
                     <p className="py-4 w-10/12">  Créez des outils d’analyse et facilitez la prise de décision en entreprise </p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
@@ -138,7 +138,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div>
-                    <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/0aa9e029e7cd70cefef0a16bcc977008.jpg')]"></div>
+                    <div className="h-96 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/0aa9e029e7cd70cefef0a16bcc977008.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
                     <p className="py-4 w-10/12">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
@@ -147,7 +147,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div>
-                    <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/gros-plan-main-blanche-noire.jpg')]"></div>
+                    <div className="h-96 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/gros-plan-main-blanche-noire.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
                     <p className="py-4 w-10/12">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
@@ -156,7 +156,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div>
-                    <div className="h-96 md:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/a33c4aca8b39b84ec3ffe438ec299657.jpg')]"></div>
+                    <div className="h-96 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/a33c4aca8b39b84ec3ffe438ec299657.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
                     <p className="py-4 w-10/12">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12 ">
