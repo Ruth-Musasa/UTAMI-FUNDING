@@ -6,6 +6,7 @@ import Profil from "./Menu/Profil"
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import Explore from "./Menu/Explore";
 import AuthUser from "./compoment/AuthUser";
+import DetailPost from "./compoment/DetailPost";
 
 function App() {
   const [menu, setMenu] = useState(false)
@@ -22,9 +23,9 @@ function App() {
             </Header>
             <div className="grid pt-20 px-8 self-center gap-12">
               <Link to='/' onClick={handleClick} className="border-b border-black hover:text-[#3563FF] text-2xl font-black"> Home </Link >
-              <Link to='Explore' onClick={handleClick} className="border-b border-black hover:text-[#3563FF] text-2xl font-black" >Explore</Link >
-              <Link to='Formation' className="border-b hover:text-[#3563FF] border-black text-2xl font-black" onClick={handleClick}  >Formation</Link >
-              <Link to='Profile' onClick={handleClick} className="border-b border-black hover:text-[#3563FF] text-2xl font-black" >Profile</Link >
+              <Link to='/Explore' onClick={handleClick} className="border-b border-black hover:text-[#3563FF] text-2xl font-black" >Explore</Link >
+              <Link to='/Formation' className="border-b hover:text-[#3563FF] border-black text-2xl font-black" onClick={handleClick}  >Formation</Link >
+              <Link to='/Profile' onClick={handleClick} className="border-b border-black hover:text-[#3563FF] text-2xl font-black" >Profile</Link >
             </div>
           </div> : <>
             <Header>
@@ -36,6 +37,7 @@ function App() {
               <Route path='/Formation' element={<Formation />} />
               <Route path='/Profile/*' element={<Profil />} />
               <Route path='/Connexion' element={<AuthUser />} />
+              <Route path='/detail' element={<DetailPost/>} />
             </Routes>
             <div className="md:border py-4 bg-[#F3F3F3]">
               <div className="w-10/12 m-auto md:flex md:justify-between md:pb-2">

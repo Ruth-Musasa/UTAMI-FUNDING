@@ -1,12 +1,70 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-
+import Option from "../compoment/Option";
+import PostEditor from "./PostEditor";
+import axios from 'axios'
+import Projets from "./Projets";
 export default function MesProjets() {
-    const [projet, setProjet] = useState(false)
+    // const user = useContext(ProphilUser)
+    const [posts, setposts] = useState([]);
+    const [image, setImage] = useState('');
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const form = e.target
+        let data = new FormData(form);
+        let post = Object.fromEntries(data)
+        form.reset()
+        uploadImage(post.image);
+        let userpost =
+        {
+            "id": posts.length + 1,
+            "title": post.title,
+            "description": post.description,
+            "img": image,
+            "time": post.time,
+            "contrib": post.contrib
+
+        }
+        setposts([userpost, ...posts])
+        console.log(posts, 'muss');
+
+    }
+    console.log(posts, "ruth");
+
+    const uploadImage = (file) => {
+        if (file.size > 0) {
+            return showFile(file)
+        }
+        return null;
+    }
+    const showFile = (file) => {
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+            setImage(fileReader.result);
+        }
+    }
+    const [projet, setProjet] = useState(true)
     if (projet) {
         return (
             <div>
                 <h2 className=" text-4xl mt-11 mb-7  md:text-6xl">Voici vos projets</h2>
+                <form onSubmit={handleSubmit} >
+                    <PostEditor />
+                </form>
+                <div>
+                    {
+                        posts.map((data, index) => <Projets
+                            post={data}
+                            key={data.id}
+                            title={data.title}
+                            description={data.description}
+                            time={data.time}
+                            contrib={data.contrib}
+                            image={data.image}
+                        />)
+                    }
+                </div>
             </div>
         )
     }
