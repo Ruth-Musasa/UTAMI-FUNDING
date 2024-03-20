@@ -61,7 +61,7 @@ export default function AuthUser() {
                         <input className='w-full text-black border px-6 py-2' type="text" placeholder="Email" />
                         <input className='w-full text-black border px-6 py-2' type="text" placeholder="Mots de passe" />
                     </div>
-                    <button className='w-full text-black rounded-full shadow-md hover:bg-zinc-700 hover:text-white border-[1px] border-gray-900 py-2 text-center' >Se connecter</button>
+                    <button type="submit" className='w-full text-black rounded-full shadow-md hover:bg-zinc-700 hover:text-white border-[1px] border-gray-900 py-2 text-center' >Se connecter</button>
                 </div>
             </div>
         </div>

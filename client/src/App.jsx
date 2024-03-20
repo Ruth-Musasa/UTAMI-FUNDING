@@ -13,6 +13,48 @@ function App() {
   const handleClick = () => {
     setMenu(!menu);
   }
+  const [user, setUser] = useState(null);
+  const [loginUser, setLoginuser] = useState(null);
+  const [isLogin, SetIsLogin] = useState(false);
+  const handleChange = async (e) => {
+    e.preventDefault()
+    try {
+      const form = e.target
+      let data = new FormData(form);
+      let login = Object.fromEntries(data)
+      form.reset()
+      const credentials =
+      {
+        "email": login.email,
+        "password": login.code
+      }
+      const url = 'http://localhost:3000/users/login'
+      const rep = await axios.post(url, {
+        email: credentials.email,
+        password: credentials.password
+      })
+      if (rep.status == 200) {
+        const { id, token } = rep.data;
+        SetIsLogin(true);
+        setUser(token)
+        const dataJson = `http://localhost:3000/users/${token}`
+        axios.get(dataJson)
+          .then(res => {
+            setLoginuser(res.data.user)
+          })
+        console.log(loginUser, 'ok');
+      }
+      else {
+        console.error('Auth err');
+      }
+    }
+    catch (error) {
+      console.error('Axios err');
+    }
+  }
+  const handleLogin = () => {
+    SetIsLogin(!isLogin);
+  }
   return (
     <>
       <Router>
@@ -36,8 +78,12 @@ function App() {
               <Route path='/Explore' element={<Explore />} />
               <Route path='/Formation' element={<Formation />} />
               <Route path='/Profile/*' element={<Profil />} />
-              <Route path='/Connexion' element={<AuthUser />} />
-              <Route path='/detail' element={<DetailPost/>} />
+              <Route path='/Connexion' element={
+                <form onSubmit={handleChange} className="" action='http://localhost:3000/logins/login' method='post'>
+                  <AuthUser />
+                </form>
+              } />
+              <Route path='/detail' element={<DetailPost />} />
             </Routes>
             <div className="md:border py-4 bg-[#F3F3F3]">
               <div className="w-10/12 m-auto md:flex md:justify-between md:pb-2">
