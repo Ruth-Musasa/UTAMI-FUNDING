@@ -1,8 +1,8 @@
-export default function DetailPost(props) {
+export default function DetailPost(props, {title, id}) {
     return (
         <div className="pt-20 w-10/12 m-auto lg:flex gap-10">
             <div className="lg:w-9/12">
-                <h2 className="text-5xl pb-7  md:text-6xl "> projet x {props.title} </h2>
+                <h2 className="text-5xl pb-7  md:text-6xl "> projet x {title} </h2>
                 <img src={props.image} className="w-full h-96 border" alt="" />
                 <p className="pt-6">{props.description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut magni dignissimos in sit, culpa, vel vero architecto perspiciatis rem eaque placeat aperiam excepturi reprehenderit porro magnam omnis dolorum dolores? </p>
                 <div className="flex justify-between ">

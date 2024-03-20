@@ -1,13 +1,17 @@
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import DetailPost from './DetailPost'
-export default function Projets({ data, img, title, description, contrib, time, image }) {
+export default function Projets({ data, img, title, description, contrib, time, image, index }) {
+    const handleClick = () => {
+        <DetailPost id={index} />
+    };
+
     return (
         <div className='lg:flex lg:gap-10 py-6 w-11/12 m-auto '>
             <div className={`h-56 md:w-[500px] bg-cover bg-no-repeat border  `}>
                 <img src={image} alt="" className='w-full h-auto' />
             </div>
             <div className='w-2/3 grid gap-12'>
-                <strong> <h3 className="text-xl"> {title} </h3></strong>
+                <strong> <h3 className="text-3xl"> {title} </h3></strong>
                 <div className='flex justify-between'>
                     <div className='flex gap-2'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-6 h-auto self-center fill-black"><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" /></svg>
@@ -19,12 +23,10 @@ export default function Projets({ data, img, title, description, contrib, time, 
                     </div>
                 </div>
                 <div className="flex items-stretch underline underline-offset-8 mb-12 hover:text-[#3563FF] ">
-                    <Link to='/detail'> Voir les détails </Link >
+                    <Link to='/detail'> <button onClick={handleClick} >Voir les détails</button></Link >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
                 </div>
             </div>
-            {/* <Routes>
-            </Routes> */}
         </div>
     )
 }

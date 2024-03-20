@@ -26,11 +26,7 @@ export default function MesProjets() {
 
         }
         setposts([userpost, ...posts])
-        console.log(posts, 'muss');
-
     }
-    console.log(posts, "ruth");
-
     const uploadImage = (file) => {
         if (file.size > 0) {
             return showFile(file)
@@ -62,6 +58,7 @@ export default function MesProjets() {
                             time={data.time}
                             contrib={data.contrib}
                             image={data.image}
+                            index={index}
                         />)
                     }
                 </div>
