@@ -22,6 +22,7 @@ model User {
   photo        String?
   Post         Post[]
   Contribution Contribution[]
+  Commentaire  Commentaire[]
 }
 
 model Post {
@@ -33,9 +34,10 @@ model Post {
   desired_amount Float
   start_date     DateTime       @default(now())
   end_date       DateTime
-  id_creator     Int            
+  id_creator     Int
   creator        User?          @relation(fields: [id_creator], references: [id_user])
   Contribution   Contribution[]
+  Commentaire    Commentaire[]
 }
 
 model Contribution {
@@ -54,4 +56,14 @@ model Payment {
   amount_paye     Float
   id_contribution Int           @unique
   contribution    Contribution? @relation(fields: [id_contribution], references: [id_contribution])
+}
+
+model Commentaire {
+  id_commentaire Int      @id @default(autoincrement())
+  id_post        Int
+  id_creator     Int
+  contenu        String
+  date_creation  DateTime @default(now())
+  Post           Post?    @relation(fields: [id_post], references: [id_post])
+  creator        User?    @relation(fields: [id_creator], references: [id_user])
 }
