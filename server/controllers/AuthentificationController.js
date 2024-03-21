@@ -107,7 +107,6 @@ const userController = {
         users.splice(id - 1, 1);
         res.status(201).json(users);
     },
-
 }
 
 module.exports = { userController, storage };

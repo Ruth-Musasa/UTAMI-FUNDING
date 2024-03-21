@@ -40,7 +40,7 @@ export default function MesProjets() {
             setImage(fileReader.result);
         }
     }
-    const [projet, setProjet] = useState(true)
+    const [projet, setProjet] = useState(false)
     if (projet) {
         return (
             <div>
