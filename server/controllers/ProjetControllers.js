@@ -31,7 +31,7 @@ const projetController = {
     try {
       const projet = await prisma.Post.findUnique({
         where: {
-          id_projet: parseInt(id)
+          id_post: parseInt(id)
         }
       });
       if (!projet) {
@@ -83,7 +83,7 @@ const projetController = {
     try {
       await prisma.Post.delete({
         where: {
-          id_projet: parseInt(id)
+          id_post: parseInt(id)
         }
       });
       res.json({ message: 'Projet supprimé avec succès' });
