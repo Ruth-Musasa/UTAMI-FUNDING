@@ -4,7 +4,8 @@ const { PrismaClient } = require('@prisma/client');
 const multer = require('multer')
 const prisma = new PrismaClient();
 const users = prisma.User;
-const path = require('path')
+const path = require('path');
+const { signupUser, loginUser } = require('../../test/validation');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, '/home/user-3-c2/Documents/Chef_Doeuvre/server/controllers/ImageUpload');
@@ -42,7 +43,7 @@ const userController = {
         const all = await prisma.User.findMany({
             include: {
                 Post: true,
-                Contribution:true,
+                Contribution: true,
             },
         })
         console.dir(all, { depth: null })
@@ -54,8 +55,15 @@ const userController = {
                 console.error("Erreur de téléchargement de l'image:", err);
                 return res.status(500).json({ error: "Erreur de téléchargement de l'image" });
             }
-            const { name_user, name, password, email } = req.body;
-            const imgUpload = 'http://localhost:3000/' + path.basename(req.file.path);
+
+            const { error: signupError, value } = signupUser.validate(req.body);
+            if (signupError) {
+                console.error("Erreur de validation des données d'inscription:", signupError);
+                return res.status(400).json({ error: "Erreur de validation des données d'inscription", details: signupError.details });
+            }
+
+            const { name_user, name, password, email } = value;
+            const imgUpload = 'http://localhost:5000/' + path.basename(req.file.path);
             const hashedPassword = await bcrypt.hash(password, 10);
             try {
                 await prisma.User.create({
@@ -67,29 +75,33 @@ const userController = {
                         password: hashedPassword,
                     },
                 });
-                res.status(201).json({ message: 'User enregistré avec succès' });
+                res.status(201).json({ message: 'Utilisateur enregistré avec succès' });
             } catch (error) {
                 console.error("Erreur d'enregistrement:", error);
                 res.status(500).json({ error: "Erreur d'enregistrement" });
             }
         });
     },
+
     postUseLogin: async (req, res) => {
-        const { email, password } = req.body;
-        console.log(req.body);
+        const { error: loginError , value } = loginUser.validate(req.body);
+        if (loginError) {
+            console.error("Erreur de validation des données de connexion:", loginError);
+            return res.status(400).json({ error: "Erreur de validation des données de connexion", details: loginError.details });
+        }
+        const { email, password } = value;
         try {
             const user = await prisma.User.findUnique({
                 where: {
                     email,
                 }
             });
-            console.log(user);
             if (!user) {
-                return res.status(401).json({ error: 'Donnée invalide' });
+                return res.status(401).json({ error: 'Données invalides' });
             }
             const validPassword = await bcrypt.compare(password, user.password);
             if (!validPassword) {
-                return res.status(401).json({ error: 'Donnée invalide' });
+                return res.status(401).json({ error: 'Données invalides' });
             }
             const token = jwt.sign(
                 { id: user.id },
@@ -102,6 +114,7 @@ const userController = {
             res.status(500).json({ error: "Erreur d'authentification" });
         }
     },
+
     deleteUserId: (req, res) => {
         const id = req.params.id;
         users.splice(id - 1, 1);

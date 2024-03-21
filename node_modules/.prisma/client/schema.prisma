@@ -28,13 +28,13 @@ model Post {
   id_post        Int            @id @default(autoincrement())
   title          String
   description    String
-  image          String
+  photo          String
   categorie      String?
   desired_amount Float
   start_date     DateTime       @default(now())
   end_date       DateTime
-  id_creator     Int            @map("id_creator")
-  creator        User           @relation(fields: [id_creator], references: [id_user])
+  id_creator     Int            
+  creator        User?          @relation(fields: [id_creator], references: [id_user])
   Contribution   Contribution[]
 }
 
@@ -43,15 +43,15 @@ model Contribution {
   amount            Float
   date_contribution DateTime
   id_post           Int      @map("id_post")
-  Post              Post     @relation(fields: [id_post], references: [id_post])
+  Post              Post?    @relation(fields: [id_post], references: [id_post])
   id_contributeur   Int      @map("id_contributeur")
-  contributeur      User     @relation(fields: [id_contributeur], references: [id_user])
+  contributeur      User?    @relation(fields: [id_contributeur], references: [id_user])
   Payment           Payment?
 }
 
 model Payment {
-  id_Payment      Int          @id @default(autoincrement())
+  id_Payment      Int           @id @default(autoincrement())
   amount_paye     Float
-  id_contribution Int          @unique
-  contribution    Contribution @relation(fields: [id_contribution], references: [id_contribution])
+  id_contribution Int           @unique
+  contribution    Contribution? @relation(fields: [id_contribution], references: [id_contribution])
 }

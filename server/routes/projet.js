@@ -6,6 +6,7 @@ const { projetController, storage } = require("server/controllers/ProjetControll
 router.get('/', projetController.getProjet);
 router.get('/:id',projetController.getProjetById);
 router.post('/', projetController.postProjet);
+router.delete('/:id', projetController.deleteProjet);
 
 module.exports = router;
 
