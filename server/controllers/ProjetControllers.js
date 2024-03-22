@@ -92,8 +92,6 @@ const projetController = {
       res.status(500).json({ message: 'Erreur lors de la suppression du projet' });
     }
   }
-
-
 }
 
 

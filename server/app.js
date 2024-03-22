@@ -10,7 +10,9 @@ const upload = multer({ dest: './public/data/uploads/' })
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const projetsRouter = require('./routes/projet');
-const commentsRouter = require('./routes/comment.js')
+const commentsRouter = require('./routes/comment.js');
+const searchRouter= require ('server/routes/search.js');
+
 const app = express();
 
 // view engine setup
@@ -27,6 +29,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/projets', projetsRouter);
 app.use('/comment', commentsRouter);
+app.use('/search', searchRouter);
 
 app.use(cors())
 app.use(express.static(path.join(__dirname, "ImageUpload")))
