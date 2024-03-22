@@ -27,4 +27,12 @@ const commentProjet = Joi.object({
   contenu: Joi.string().required().min(1)
 });
 
-module.exports = { validationProjet, signupUser, loginUser, commentProjet }
+const searchPosts = Joi.object({
+  q: Joi.string().min(1).required() 
+});
+
+const searchUsers = Joi.object({
+  q: Joi.string().min(1).required() 
+});
+
+module.exports = { validationProjet, signupUser, loginUser, commentProjet, searchPosts,  searchUsers  }
