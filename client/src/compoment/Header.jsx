@@ -23,7 +23,8 @@ export default function Header(props) {
                     </div>
                 </div>
                 <div className="self-center md:flex md:gap-6">
-                    <Link to='/Connexion' ><button className="self-center bg-[#3563FF] rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5">Commencer</button></Link>
+                    <Link to="/login"> <span className='hover:text-[#3563FF]'>Login</span></Link>
+                    <Link to='/Connexion' ><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 hover:bg-[#3563FF]">Commencer</button></Link>
                 </div>
             </div>
         </div>

@@ -3,20 +3,22 @@ import DetailPost from '../compoment/DetailPost';
 import PostEditor from '../compoment/PostEditor';
 import MesProjets from '../compoment/MesProjet';
 import Mescomments from '../compoment/Commentaire';
-export default function Profil(user) {
-    // const user = useContext(ProphilUser)
+import { ProphilUser } from '../App';
+import { useContext } from 'react';
+export default function Profil() {
+    const user = useContext(ProphilUser);
     return (
         <div className="lg:flex lg:gap-10 lg:w-9/12 m-auto pt-20" >
             <div className='w-full xl:w-1/3 border border-gray-200 '>
                 <div className="grid lg:gap-6 pt-6 xl:pb-16">
                     <div className=' flex justify-around md:block '>
                         <div className='relative '>
-                            <div className="h-24 w-24 lg:h-96 lg:w-96 border bg-gray-200  m-auto bg-[url('client/src/assets/profile-pic(4).jpg')] bg-cover rounded-full"></div>
+                            <div className="h-24 w-24 lg:h-96 lg:w-96 border bg-gray-200  m-auto bg-cover rounded-full"><img src={user.photo} alt="photo de profil" /> </div>
                             <button className="bg-white text-black w-10 h-10 border-[1px] rounded-full shadow-md hover:bg-zinc-800 border-gray-900 text-2xl font-black m-auto absolute  bottom-1 left-16 md:right-14 md:bottom-10 md:left-auto " type="button">+</button>
                         </div>
                         <div className='lg:w-10/12 lg:m-auto'>
-                            <h2 className='text-3xl md:text-4xl font-black '>{user.name} Ruth Musasa </h2>
-                            <span className="text-xl text-zinc-500 lg:text-2xl font-black"> @ {user.user_name} R_Muss</span>
+                            <h2 className='text-3xl md:text-4xl font-black '>{user.name} </h2>
+                            <span className="text-xl text-zinc-500 lg:text-2xl font-black"> @ {user.name_user}</span>
                         </div>
                     </div>
                     <div className="flex text-zinc-500 w-10/12 m-auto">

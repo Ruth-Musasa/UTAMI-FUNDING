@@ -17,7 +17,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [loginUser, setLoginuser] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
-
+ console.log(user, 'user');
   const handleClick = () => {
     setMenu(!menu);
   };
@@ -35,12 +35,11 @@ function App() {
     console.log(passUser, 'passUser');
     try {
       const response = await axios.post('http://localhost:5000/users/login', passUser);
-      console.log(response);
       const { token } = response.data;
       localStorage.setItem('jwtToken', token); 
       setAuthToken(token); 
       setIsLogin(true);
-      setUser(token);
+      setUser(response.data.user);
     } catch (error) {
       console.error('Erreur de connexion:', error);
     }
@@ -75,7 +74,7 @@ function App() {
 
   return (
     <>
-      <ProphilUser.Provider value={loginUser}>
+      <ProphilUser.Provider value={user}>
         <Router>
           {
             (menu) ? <div className="justify-around w-full ">
