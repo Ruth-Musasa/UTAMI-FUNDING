@@ -1,61 +1,78 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Header from "./compoment/Header";
-import Home from './Menu/Home'
+import Home from './Menu/Home';
 import Formation from "./Menu/Formation";
-import Profil from "./Menu/Profil"
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
+import Profil from "./Menu/Profil";
 import Explore from "./Menu/Explore";
 import AuthUser from "./compoment/AuthUser";
 import DetailPost from "./compoment/DetailPost";
-export const ProphilUser = createContext()
+import LoginUser from "./compoment/LoginUser";
+
+export const ProphilUser = createContext();
 
 function App() {
-  const [menu, setMenu] = useState(false)
-  const handleClick = () => {
-    setMenu(!menu);
-  }
+  const [menu, setMenu] = useState(false);
   const [user, setUser] = useState(null);
   const [loginUser, setLoginuser] = useState(null);
-  const [isLogin, SetIsLogin] = useState(false);
-  const handleChange = async (e) => {
-    e.preventDefault()
+  const [isLogin, setIsLogin] = useState(false);
+
+  const handleClick = () => {
+    setMenu(!menu);
+  };
+
+
+  const setAuthToken = (token) => {
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    } else {
+      delete axios.defaults.headers.common['Authorization'];
+    }
+  };
+
+  const handleLogin = async (passUser) => {
+    console.log(passUser, 'passUser');
     try {
-      const form = e.target
-      let data = new FormData(form);
-      let login = Object.fromEntries(data)
-      form.reset()
-      const credentials =
-      {
-        "email": login.email,
-        "password": login.password
-      }
-      console.log(credentials, 'a');
-      const url = 'http://localhost:5000/users/login';
-      const rep = await axios.post(url, {
-        email: credentials.email,
-        password: credentials.password,
-      })
-      console.log(rep, 'b');
-      if (rep.status == 200) {
-        const { id, token } = rep.data;
-        SetIsLogin(!isLogin);
-        setUser(token)
-        const dataJson = `http://localhost:5000/users/${token}`
-        axios.get(dataJson)
-          .then(res => {
-            setLoginuser(res.data.user)
-          })
-        console.log(loginUser, 'ok');
-      }
-      else {
-        console.error('Auth err');
-      }
+      const response = await axios.post('http://localhost:5000/users/login', passUser);
+      console.log(response);
+      const { token } = response.data;
+      localStorage.setItem('jwtToken', token); 
+      setAuthToken(token); 
+      setIsLogin(true);
+      setUser(token);
+    } catch (error) {
+      console.error('Erreur de connexion:', error);
     }
-    catch (error) {
-      console.error('Axios err');
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('jwtToken');
+    setAuthToken(null); 
+    setIsLogin(false);
+    setUser(null);
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem('jwtToken');
+    if (token) {
+      setAuthToken(token);
+      setIsLogin(true);
+      setUser(token);
     }
-  }
+  }, []);
+
+  const handleChange = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const login = Object.fromEntries(data);
+    form.reset();
+    console.log(login);
+    handleLogin(login);
+  };
+
+
   return (
     <>
       <ProphilUser.Provider value={loginUser}>
@@ -80,11 +97,11 @@ function App() {
                 <Route path='/Explore' element={<Explore />} />
                 <Route path='/Formation' element={<Formation />} />
                 <Route path='/Profile/*' element={<Profil />} />
-                <Route path='/Connexion' element={
+                <Route path='/Connexion' element={ <AuthUser />} />
+                <Route path="/login" element={
                   <form onSubmit={handleChange} className="" action='http://localhost:5000/users/login' method='post'>
-                    <AuthUser />
-                  </form>
-                } />
+                    <LoginUser />
+                  </form>} />
                 <Route path='/detail' element={<DetailPost />} />
               </Routes>
               <div className="md:border py-4 bg-[#F3F3F3]">

@@ -24,6 +24,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  methods: ['GET', 'POST', 'DELETE'], 
+  allowedHeaders: ['Content-Type', 'Authorization'], 
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -31,11 +36,7 @@ app.use('/projets', projetsRouter);
 app.use('/comment', commentsRouter);
 app.use('/search', searchRouter);
 
-app.use(cors({
-  origin: 'http://localhost:5000', 
-  methods: ['GET', 'POST', 'DELETE'], 
-  allowedHeaders: ['Content-Type', 'Authorization'], 
-}));
+
 app.use(express.static(path.join(__dirname, "ImageUpload")))
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
