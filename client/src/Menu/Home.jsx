@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import ProjetTypes from "../compoment/ProjetType";
+import ConnexionButton from "../compoment/ConnexionButton";
+import { useContext } from "react";
+import { ProphilUser } from "../App";
 
 export default function Home() {
+    const user = useContext(ProphilUser);
     return (
         <div className="grid place-content-center ">
             <div className="text-center md:text-start md:grid md:grid-cols-3 md:pl-20 pb-6 ">
@@ -30,7 +34,7 @@ export default function Home() {
                             <p>Découvrez des jeunes entreprises innovantes et investissez dans leur croissance et leur développement.</p>
                         </div>
                     </div>
-                    <Link to='/Connexion'> <button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-12 left-5 hover:bg-[#3563FF]">Commencer</button></Link>
+                    <ConnexionButton user={user} />
                 </div>
             </div>
             <div className="flex flex-wrap lg:flex-nowrap py-6 w-11/12 xl:w-11/12 2xl:w-9/12  m-auto md:pt-20 md:pb-36">
@@ -92,7 +96,7 @@ export default function Home() {
                         <p>Tenez vos contributeurs informés de l'avancement de votre projet en publiant des mises à jour régulières sur votre campagne. Partagez vos progrès, vos réussites et les défis que vous rencontrez pour maintenir l'engagement et la confiance.</p>
                     </div>
                     <div></div>
-                    <Link to='/Connexion'>  <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12 left-5 hover:bg-[#3563FF]">Commencer</button> </Link>
+                    <ConnexionButton />
                 </div>
             </div>
 
@@ -109,7 +113,6 @@ export default function Home() {
                         <li><strong>Drive traffic to your site.</strong> Use advanced SEO tools and integrated marketing solutions.</li>
                     </ol>
                 </div>
-                <Link to='/Connexion'>  <div className=" md:w-9/12 md:m-auto"><button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12  left-5 mb-12 hover:bg-[#3563FF]">Commencer</button></div></Link>
             </div>
             <div className=" text-black px-8 py-6 lg:flex  xl:w-11/12 2xl:w-9/12  md:m-auto md:py-32">
                 <h2 className=" text-4xl mt-12  md:text-6xl ">Pourquoi notre plateforme de Crowdfunding est le meilleur choix pour vous?</h2>
@@ -119,12 +122,13 @@ export default function Home() {
                     <p><strong>Transparence et confiance : </strong>Nous mettons un point d'honneur à maintenir une transparence totale tout au long du processus de crowdfunding. Vous avez accès à des informations détaillées sur chaque projet, y compris sur les créateurs, les objectifs financiers et les plans de mise en œuvre.</p>
                     <p>En choisissant notre plateforme de crowdfunding, vous faites le choix d'une expérience enrichissante.</p>
                 </div>
-                    <Link to='/Connexion'>  <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12  left-5 mb-12 hover:bg-[#3563FF]">Commencer</button> </Link >
+                <ConnexionButton user={user} />
                 </div>
             </div>
             <div className="bg-[#FFD135] text-black px-8 px-16 text-center md:py-32">
                 <h2 className=" text-4xl mt-12 xl:w-11/12 2xl:w-9/12  md:m-auto md:text-6xl pb-6 md:text-7xl font-black"> Le succès de demain commence aujourd’hui.</h2>
-                <Link to='/Connexion'> <button className="self-center bg-black rounded-full text-white text-lg font-normal leading-5 py-1.5 px-5 w-36 h-12  left-5 mb-12 hover:bg-[#3563FF] ">Commencer</button></Link>
+                <ConnexionButton user={user} />
+
             </div>
             <div className="px-8 py-16 text-base md:w-9/12 md:m-auto lg:grid md:grid-cols-2 md:gap-20 h-auto">
                 <h2 className=" text-4xl mt-11 mb-7 text-black md:text-6xl md:text-center md:col-span-2">Enrichissez vos connaissance grace aux ouvrage que nous mettons en votre disposition</h2>
