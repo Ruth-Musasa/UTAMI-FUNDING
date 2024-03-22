@@ -1,14 +1,16 @@
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
+import ConnexionButton from './ConnexionButton'
+import { useContext } from 'react';
+import { ProphilUser } from '../App';
 
 export default function Header(props) {
-
+    const user = useContext(ProphilUser);
     return (
         <div>
             <div className="fixed bg-[#F3F3F3] w-full md:hidden">
                 <div className="h-14 flex justify-between items-center w-11/12 m-auto">
                     <div className=" self-center"><img className='h-28' src="../src/assets/coconut_._1_-removebg-preview.png" alt="" /></div>
-                    
-                    <Link to='/Connexion'><button className="self-center bg-[#3563FF] rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 m-auto">Commencer</button></Link>
+                    <ConnexionButton />
                     {props.children}
                 </div>
             </div>
@@ -17,14 +19,15 @@ export default function Header(props) {
                     <div className=" self-center"><img className='h-28' src="../src/assets/coconut_._1_-removebg-preview.png" alt="" /></div>
                     <div className=" md:pl-8 self-center md:flex md:gap-12">
                         <Link to='/' className='focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]'>Home </Link >
-                        <Link to='Explore'  className='focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]'>Explore</Link >
+                        <Link to='Explore' className='focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]'>Explore</Link >
                         <Link to='Formation' className="md:border-r border-black md:pr-12 focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]" >Formation</Link >
                         <Link to='Profile' className='focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]'>Profile</Link >
                     </div>
                 </div>
                 <div className="self-center md:flex md:gap-6">
-                    <Link to="/login"> <span className='hover:text-[#3563FF]'>Login</span></Link>
-                    <Link to='/Connexion' ><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 hover:bg-[#3563FF]">Commencer</button></Link>
+                    {(user !== null) && <Link to="/logout"> <span className='hover:text-[#3563FF] m-auto '>Logout</span></Link>}
+                    {(user === null) && <Link to="/login"> <span className='hover:text-[#3563FF] pt-10 '>Login</span></Link>}
+                    <ConnexionButton />
                 </div>
             </div>
         </div>

@@ -9,19 +9,17 @@ import Explore from "./Menu/Explore";
 import AuthUser from "./compoment/AuthUser";
 import DetailPost from "./compoment/DetailPost";
 import LoginUser from "./compoment/LoginUser";
+import LogOut from "./compoment/Logout";
 
 export const ProphilUser = createContext();
-
 function App() {
   const [menu, setMenu] = useState(false);
   const [user, setUser] = useState(null);
   const [loginUser, setLoginuser] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
- console.log(user, 'user');
   const handleClick = () => {
     setMenu(!menu);
   };
-
 
   const setAuthToken = (token) => {
     if (token) {
@@ -36,10 +34,12 @@ function App() {
     try {
       const response = await axios.post('http://localhost:5000/users/login', passUser);
       const { token } = response.data;
-      localStorage.setItem('jwtToken', token); 
-      setAuthToken(token); 
+      const user = response.data.user;
+      localStorage.setItem('jwtToken', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      setAuthToken(token);
       setIsLogin(true);
-      setUser(response.data.user);
+      setUser(user);
     } catch (error) {
       console.error('Erreur de connexion:', error);
     }
@@ -47,20 +47,21 @@ function App() {
 
   const handleLogout = () => {
     localStorage.removeItem('jwtToken');
-    setAuthToken(null); 
+    localStorage.removeItem('user');
+    setAuthToken(null);
     setIsLogin(false);
     setUser(null);
   };
 
   useEffect(() => {
     const token = localStorage.getItem('jwtToken');
-    if (token) {
+    const storedUser = localStorage.getItem('user');
+    if (token && (storedUser !== 'undefined')) {
       setAuthToken(token);
       setIsLogin(true);
-      setUser(token);
+      setUser(JSON.parse(storedUser));
     }
   }, []);
-
   const handleChange = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -95,12 +96,22 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/Explore' element={<Explore />} />
                 <Route path='/Formation' element={<Formation />} />
-                <Route path='/Profile/*' element={<Profil />} />
-                <Route path='/Connexion' element={ <AuthUser />} />
-                <Route path="/login" element={
-                  <form onSubmit={handleChange} className="" action='http://localhost:5000/users/login' method='post'>
-                    <LoginUser />
-                  </form>} />
+                {isLogin && <Route path='/Profile/*' element={<Profil />} />}
+                {!isLogin && <Route path='/Profile/*' element={<AuthUser />} />}
+                <Route path='/Connexion' element={<AuthUser />} />
+                {isLogin &&
+                  <Route path="/logout" element={
+                    <form onSubmit={handleLogout}>
+                      <LogOut />
+                    </form>
+                  } />}
+                {!isLogin && (
+                  <Route path="/login" element={
+                    <form onSubmit={handleChange} className="" action='http://localhost:5000/users/login' method='post'>
+                      <LoginUser />
+                    </form>
+                  } />
+                )}
                 <Route path='/detail' element={<DetailPost />} />
               </Routes>
               <div className="md:border py-4 bg-[#F3F3F3]">
