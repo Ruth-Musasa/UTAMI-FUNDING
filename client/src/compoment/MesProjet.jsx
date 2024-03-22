@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Option from "../compoment/Option";
 import PostEditor from "./PostEditor";
-import axios from 'axios'
+import axios from 'axios'; 
 import Projets from "./Projets";
 export default function MesProjets() {
     // const user = useContext(ProphilUser)

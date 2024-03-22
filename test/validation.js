@@ -13,12 +13,12 @@ const signupUser = Joi.object({
   name_user: Joi.string().required(),
   name: Joi.string().required(),
   email: Joi.string().email().required(),
-  password: Joi.string().min(6).required(),
+  password: Joi.string().min(4).required(),
 });
 
 const loginUser = Joi.object({
   email: Joi.string().email().required(),
-  password: Joi.string().min(6).required(),
+  password: Joi.string().min(4).required(),
 });
 
 const commentProjet = Joi.object({

@@ -19,15 +19,16 @@ const upload = multer({ storage: storage });
 
 const userController = {
     getUser: async (req, res, next) => {
-        const token = req.params.id;
+        const token = req.params?.id;
         if (!token) {
-            return res.status(401).json({ error: 'Non autorisé' });
+            return res.status(401).json({ error: 'Aucun idenetifiant trouvé' });
         }
         try {
             const decoded = jwt.verify(token, 'code Secret');
+            console.log(decoded);
             const user = await prisma.User.findUnique({
                 where: {
-                    id: decoded.id
+                    id_user: decoded.id
                 }
             });
             if (!user) {
@@ -36,7 +37,8 @@ const userController = {
             req.user = user;
             next();
         } catch (error) {
-            return res.status(401).json({ error: 'Non autorisé' });
+            console.log(error);
+            return res.status(401).json({ error});
         }
     },
     allUsers: async (req, res) => {
@@ -104,11 +106,11 @@ const userController = {
                 return res.status(401).json({ error: 'Données invalides' });
             }
             const token = jwt.sign(
-                { id: user.id },
+                { id: user.id_user },
                 'code Secret',
                 { expiresIn: '24h' }
             );
-            res.status(200).json({ token, id: user.id });
+            res.status(200).json({ token, id: user.id_user });
         } catch (error) {
             console.error("Erreur d'authentification:", error);
             res.status(500).json({ error: "Erreur d'authentification" });

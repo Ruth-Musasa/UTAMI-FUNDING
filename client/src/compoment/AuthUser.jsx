@@ -46,11 +46,11 @@ export default function AuthUser() {
                 <div className='w-11/12 space-y-2 xl:w-2/3 m-auto'>
                     <h2 className='text-4xl w-full text-center'>Inscrivez vous.</h2>
                     <div className="grid grid-cols-2 gap-4 py-6 ">
-                        <input className='w-full text-black border px-6 py-2' type="text" placeholder="Nom" />
-                        <input className='w-full text-black border px-6 py-2' type="text" placeholder="Pseudo" />
-                        <input className='w-full text-black border px-6 py-2 col-span-2' type="text" placeholder="Email" />
-                        <input className='w-full text-black border px-6 py-2 col-span-2' type="text" placeholder="Mots de passe" />
-                        <input className="w-full text-black border px-6 py-10 col-span-2" type="file" placeholder="Profil" />
+                        <input className='w-full text-black border px-6 py-2' type="text" id="name" name="name" placeholder="Nom" />
+                        <input className='w-full text-black border px-6 py-2' type="text" id="user_name" name="user_name" placeholder="Pseudo" />
+                        <input className='w-full text-black border px-6 py-2 col-span-2' type="text" id="email" name="email" placeholder="Email" />
+                        <input className='w-full text-black border px-6 py-2 col-span-2' type="text" id="password" name="password" placeholder="Mots de passe" />
+                        <input className="w-full text-black border px-6 py-10 col-span-2" type="file" id="photo" name="photo" placeholder="Profil" />
                     </div>
                     <button className='w-full text-black hover:text-white rounded-full shadow-md hover:bg-zinc-700 border-[1px] border-gray-900 py-2 text-center'>Crée un compte</button>
                     <p className='text-xs text-zinc-700'>En vous inscrivant, vous acceptez les Conditions d'utilisation et la Politique de confidentialité, notamment l'Utilisation des cookies.</p>
@@ -58,8 +58,8 @@ export default function AuthUser() {
                 <div className='w-11/12 xl:w-2/3 m-auto'>
                     <h3 className='text-xl pb-6 text-center'>Vous avez déjà un compte ?</h3>
                     <div className="grid grid-cols-2 gap-4 py-6">
-                        <input className='w-full text-black border px-6 py-2' type="text" placeholder="Email" />
-                        <input className='w-full text-black border px-6 py-2' type="text" placeholder="Mots de passe" />
+                        <input className='w-full text-black border px-6 py-2' type="text" id="email" name="email" placeholder="Email" />
+                        <input className='w-full text-black border px-6 py-2' type="text" id="password" name="password" placeholder="Mots de passe" />
                     </div>
                     <button type="submit" className='w-full text-black rounded-full shadow-md hover:bg-zinc-700 hover:text-white border-[1px] border-gray-900 py-2 text-center' >Se connecter</button>
                 </div>

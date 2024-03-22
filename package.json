@@ -10,7 +10,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"cd server && yarn start\" \"cd client && yarn start\""
+    "start": "concurrently \"cd server && yarn devstart\" \"cd client && yarn start\""
   },
   "keywords": [],
   "author": "",

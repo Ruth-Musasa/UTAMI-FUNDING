@@ -24,8 +24,5 @@
     "path": "^0.12.7",
     "prisma": "^5.10.2",
     "pug": "^3.0.2"
-  },
-  "devDependencies": {
-    "prisma": "5.10.2"
   }
 }
