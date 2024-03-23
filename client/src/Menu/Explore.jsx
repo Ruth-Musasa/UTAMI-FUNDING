@@ -1,9 +1,30 @@
+import { useContext, useEffect, useState } from "react";
 import DetailPost from "../compoment/DetailPost";
 import ProjetTypes from "../compoment/ProjetType";
 import Projets from "../compoment/Projets";
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
+import { ProphilUser } from "../App";
+import axios from "axios";
 
 export default function Explore() {
+    const user = useContext(ProphilUser)
+    const [post, setPost] = useState([]);
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        const dataJson = 'http://localhost:5000/projets'
+        axios.get(dataJson)
+            .then(res => {
+                setPost(res.data)
+            })
+    }, [])
+    useEffect(() => {
+        const dataJson = 'http://localhost:5000/users'
+        axios.get(dataJson)
+            .then(res => {
+                setUsers(res.data)
+            })
+    }, [])
+
     return (
         <div className="w-11/12 md:w-10/12 m-auto h-auto py-20 ">
             <div className="flex gap-6 pb-10">
@@ -22,24 +43,32 @@ export default function Explore() {
                     <ProjetTypes type="Projet gastronomique" classe="bg-[url('client/src/assets/c53b881e891566634ff68349842b5d7c.jpg')] w-80  lg:h-80 lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
                     <ProjetTypes type="Projet modelisme" classe="bg-[url('client/src/assets/a80f7343138d26af55ddc65c8ed70383.jpg')] w-80  lg:h-80  lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
                 </div>
-                <div className="py-6 lg:py-10">
-                    <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Projets reçents</h3>
-                    <Projets icon='ok' title="Avoir l'audace d'entreprendre" action='En apprendre plus' description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" time='12/02/2025' contrib='1.000$' />
-                    <Projets icon='ok' title="Avoir l'audace d'entreprendre" action='En apprendre plus' description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" time='12/02/2025' contrib='1.000$' />
-                    <Projets icon='ok' title="Avoir l'audace d'entreprendre" action='En apprendre plus' description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" time='12/02/2025' contrib='1.000$' />
-                    <Projets icon='ok' title="Avoir l'audace d'entreprendre" action='En apprendre plus' description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" time='12/02/2025' contrib='1.000$' />
-                    <Projets icon='ok' title="Avoir l'audace d'entreprendre" action='En apprendre plus' description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" time='12/02/2025' contrib='1.000$' />
-                    <Projets icon='ok' title="Avoir l'audace d'entreprendre" action='En apprendre plus' description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" time='12/02/2025' contrib='1.000$' />
-                    <Projets icon='ok' title="Avoir l'audace d'entreprendre" action='En apprendre plus' description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" time='12/02/2025' contrib='1.000$' />
-                    <Projets icon='ok' title="Avoir l'audace d'entreprendre" action='En apprendre plus' description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" time='12/02/2025' contrib='1.000$' />
-                    <Projets icon='ok' title="Avoir l'audace d'entreprendre" action='En apprendre plus' description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" time='12/02/2025' contrib='1.000$' />
-                    <Projets icon='ok' title="Avoir l'audace d'entreprendre" action='En apprendre plus' description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" time='12/02/2025' contrib='1.000$' />
-                    <Projets icon='ok' title="Avoir l'audace d'entreprendre" action='En apprendre plus' description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, a at, illo assumenda adipisci accusamus eligendi iste quo deserunt deleniti aliquid cum dignissimos dolor. Repudiandae assumenda cum maxime atque! Unde?" classe="bg-[url('client/src/assets/pexels-rocketmann-team-9486890.jpg')]" link="" time='12/02/2025' contrib='1.000$' />
-                
-                </div>
-              
+                <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Projets reçents</h3>
+                {
+                    post.map((data, index) => {
+                        // Trouver l'utilisateur créateur du projet
+                        const creatorUser = users.find(user => user.id_user === data.id_creator);
+
+                        // Trouver l'utilisateur associé au projet
+                        const associatedUser = users.find(user => user.id === data.id_user);
+                        console.log(data, 'data');
+                        return (
+                            <Projets
+                                post={data}
+                                key={data.id_post}
+                                // Utiliser des ternaires pour vérifier si les utilisateurs existent
+                                title={creatorUser ? creatorUser.title : ''}
+                                description={associatedUser ? associatedUser.description : ''}
+                                end_date={associatedUser ? associatedUser.end_date : ''}
+                                name={data.name}
+                                name_user={data.name_user}
+                                email={data.email}
+                            />
+                        );
+                    })
+                }
+
             </div>
         </div>
     )
-
 }

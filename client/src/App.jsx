@@ -72,7 +72,6 @@ function App() {
     handleLogin(login);
   };
 
-
   return (
     <>
       <ProphilUser.Provider value={user}>

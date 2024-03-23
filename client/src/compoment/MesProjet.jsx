@@ -1,13 +1,21 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import Option from "../compoment/Option";
 import PostEditor from "./PostEditor";
-import axios from 'axios'; 
+import axios from 'axios';
 import Projets from "./Projets";
+import { ProphilUser } from "../App";
 export default function MesProjets() {
-    // const user = useContext(ProphilUser)
+    const user = useContext(ProphilUser)
+    console.log(user.id);
     const [posts, setposts] = useState([]);
     const [image, setImage] = useState('');
+    useEffect(() => {
+        const dataJson = `http://localhost:5000/projets/${user.id} `
+        axios.get(dataJson)
+            .then(res => {
+                setposts(res.data)
+            })
+    }, [])
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target
@@ -17,12 +25,13 @@ export default function MesProjets() {
         uploadImage(post.image);
         let userpost =
         {
-            "id": posts.length + 1,
+            "id_creator": user.id,
             "title": post.title,
             "description": post.description,
-            "img": image,
-            "time": post.time,
-            "contrib": post.contrib
+            "photo": image,
+            "end_date": post.end_date,
+            "categorie": post.categorie,
+            "desired_amount": post.desired_amount,
 
         }
         setposts([userpost, ...posts])
@@ -40,8 +49,7 @@ export default function MesProjets() {
             setImage(fileReader.result);
         }
     }
-    const [projet, setProjet] = useState(false)
-    if (projet) {
+    if (posts == []) {
         return (
             <div>
                 <h2 className=" text-4xl mt-11 mb-7  md:text-6xl">Voici vos projets</h2>
@@ -52,12 +60,12 @@ export default function MesProjets() {
                     {
                         posts.map((data, index) => <Projets
                             post={data}
-                            key={data.id}
+                            key={data.id_post}
                             title={data.title}
                             description={data.description}
-                            time={data.time}
-                            contrib={data.contrib}
-                            image={data.image}
+                            end_date={data.end_date}
+                            desired_amount={data.desired_amount}
+                            photo={data.photo}
                             index={index}
                         />)
                     }

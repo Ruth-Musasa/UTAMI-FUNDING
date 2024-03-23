@@ -17,7 +17,7 @@ export default function Profil() {
                         <div className=' flex justify-around md:block '>
                             <div className='relative '>
                                 <div className="h-24 w-24 lg:h-96 lg:w-96 border bg-gray-200  m-auto bg-cover rounded-full"><img src={user.photo} alt="photo de profil" /> </div>
-                                <button className="bg-white text-black w-10 h-10 border-[1px] rounded-full shadow-md hover:bg-zinc-800 border-gray-900 text-2xl font-black m-auto absolute  bottom-1 left-16 md:right-14 md:bottom-10 md:left-auto " type="button">+</button>
+                                <button className="bg-white text-black w-10 h-10 border-[1px] rounded-full shadow-md hover:bg-zinc-800 border-gray-900 text-2xl font-black m-auto absolute  bottom-1 left-16 md:right-14 md:bottom-10 md:left-auto hover:text-white" type="button">+</button>
                             </div>
                             <div className='lg:w-10/12 lg:m-auto'>
                                 <h2 className='text-3xl md:text-4xl font-black '>{user.name} </h2>
