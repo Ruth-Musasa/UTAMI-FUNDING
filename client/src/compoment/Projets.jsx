@@ -6,6 +6,7 @@ export default function Projets({ data, title, description, photo, end_date, des
 
     const handleClick = () => {
         // history.push('/detail', { data }); 
+        <DetailPost data={data} />
     };
 
     return (

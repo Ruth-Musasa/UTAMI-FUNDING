@@ -29,13 +29,13 @@ const projetController = {
   getProjetById: async (req, res) => {
     const { id } = req.params;
     try {
-      const projet = await prisma.Post.findUnique({
+      const projet = await prisma.Post.findMany({
         where: {
-          id_post: parseInt(id)
+          id_creator: parseInt(id)
         }
       });
       if (!projet) {
-        return res.status(404).json({ message: 'Projet non trouvé' });
+        return res.status(404).json({ message: 'Aucun Projet correspondant as etait trouvé' });
       }
       res.json(projet);
     } catch (error) {
