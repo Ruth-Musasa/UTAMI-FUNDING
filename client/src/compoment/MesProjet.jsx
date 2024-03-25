@@ -56,20 +56,16 @@ export default function MesProjets() {
                 <form onSubmit={handleSubmit} >
                     <PostEditor />
                 </form>
-                <div>
-                    {
-                        posts.map((data, index) => <Projets
-                            post={data}
-                            key={data.id_post}
-                            title={data.title}
-                            description={data.description}
-                            end_date={data.end_date}
-                            desired_amount={data.desired_amount}
-                            photo={data.photo}
-                            index={index}
-                        />)
-                    }
-                </div>
+                {
+                    posts.map((data, index) => {
+                        return (
+                            <Projets
+                                data={data}
+                                key={data.id_post}
+                            />
+                        );
+                    })
+                }
             </div>
         )
     }

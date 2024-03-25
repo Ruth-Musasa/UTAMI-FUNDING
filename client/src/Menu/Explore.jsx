@@ -50,12 +50,6 @@ export default function Explore() {
                             <Projets
                                 data={data}
                                 key={data.id_post}
-                                // title={creatorUser ? creatorUser.title : ''}
-                                // description={associatedUser ? associatedUser.description : ''}
-                                // end_date={associatedUser ? associatedUser.end_date : ''}
-                                // name={data.name}
-                                // name_user={data.name_user}
-                                // email={data.email}
                             />
                         );
                     })

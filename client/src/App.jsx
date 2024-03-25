@@ -111,7 +111,7 @@ function App() {
                     </form>
                   } />
                 )}
-                <Route path='/detail' element={<DetailPost />} />
+                <Route path='/detail/:id' element={<DetailPost />} />
               </Routes>
               <div className="md:border py-4 bg-[#F3F3F3]">
                 <div className="w-10/12 m-auto md:flex md:justify-between md:pb-2">

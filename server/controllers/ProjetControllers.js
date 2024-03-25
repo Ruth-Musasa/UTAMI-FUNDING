@@ -30,12 +30,30 @@ const projetController = {
     }
   },
 
-  getProjetById: async (req, res) => {
+  getProjetById_creator: async (req, res) => {
     const { id } = req.params;
     try {
       const projet = await prisma.Post.findMany({
         where: {
           id_creator: parseInt(id)
+        }
+      });
+      if (!projet) {
+        return res.status(404).json({ message: 'Aucun Projet correspondant as etait trouvé' });
+      }
+      res.json(projet);
+    } catch (error) {
+      console.error('Erreur lors de la récupération du projet :', error);
+      res.status(500).json({ message: 'Erreur lors de la récupération du projet' });
+    }
+  },
+
+  getProjetById: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const projet = await prisma.Post.findUnique({
+        where: {
+          id_post : parseInt(id)
         }
       });
       if (!projet) {
