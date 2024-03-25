@@ -4,7 +4,6 @@ import { ProphilUser } from "../App";
 
 export default function ConnexionButton() {
     const user = useContext(ProphilUser);
-    console.log(user, 'user connex');
     if (user === null) {
         return (
             <Link to='/Connexion'>

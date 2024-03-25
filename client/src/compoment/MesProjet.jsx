@@ -6,7 +6,6 @@ import Projets from "./Projets";
 import { ProphilUser } from "../App";
 export default function MesProjets() {
     const user = useContext(ProphilUser)
-    console.log(user.id);
     const [posts, setposts] = useState([]);
     const [image, setImage] = useState('');
     useEffect(() => {

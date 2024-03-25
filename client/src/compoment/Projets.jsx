@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
-import DetailPost from './DetailPost';
 
 export default function Projets({ data }) {
     return (
         <div className='lg:flex lg:gap-10 py-6 w-11/12 m-auto '>
-            <div className={`h-56 md:w-[500px] bg-cover bg-no-repeat border  `}>
-                <img src={data.photo} alt="photo du projet" className='w-full h-auto' />
+            <div className={`h-56 md:w-[500px] bg-cover bg-no-repeat border   `}>
+                <img src={`${import.meta.env.VITE_SERVER_URL}${data.photo}`} alt="photo du projet" className='size-full' />
             </div>
             <div className='w-2/3 grid gap-12'>
                 <strong> <h3 className="text-3xl"> {data.title} </h3></strong>
@@ -21,9 +20,9 @@ export default function Projets({ data }) {
                 </div>
                 <div className="flex items-stretch underline underline-offset-8 mb-12 hover:text-[#3563FF] ">
                     <Link to={`/detail/${data.id_post}`}> <button >Voir les détails</button></Link >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
+                </div>
             </div>
-        </div>
         </div >
     )
 }

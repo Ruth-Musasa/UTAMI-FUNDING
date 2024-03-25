@@ -8,7 +8,6 @@ import { useContext } from 'react';
 import AuthUser from '../compoment/AuthUser';
 export default function Profil() {
     const user = useContext(ProphilUser);
-    console.log(user , 'pp');
     if (user !== null && user !== undefined ) {
         return (
             <div className="lg:flex lg:gap-10 lg:w-9/12 m-auto pt-20" >

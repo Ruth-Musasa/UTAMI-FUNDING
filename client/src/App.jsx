@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { Route, Link, Routes, useNavigate } from 'react-router-dom';
 import Header from "./compoment/Header";
 import Home from './Menu/Home';
 import Formation from "./Menu/Formation";
@@ -17,6 +17,9 @@ function App() {
   const [user, setUser] = useState(null);
   const [loginUser, setLoginuser] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate();
+
+
   const handleClick = () => {
     setMenu(!menu);
   };
@@ -30,7 +33,6 @@ function App() {
   };
 
   const handleLogin = async (passUser) => {
-    console.log(passUser, 'passUser');
     try {
       const response = await axios.post('http://localhost:5000/users/login', passUser);
       const { token } = response.data;
@@ -40,6 +42,8 @@ function App() {
       setAuthToken(token);
       setIsLogin(true);
       setUser(user);
+      return navigate('/')
+      
     } catch (error) {
       console.error('Erreur de connexion:', error);
     }
@@ -51,6 +55,7 @@ function App() {
     setAuthToken(null);
     setIsLogin(false);
     setUser(null);
+    return navigate('/')
   };
 
   useEffect(() => {
@@ -68,14 +73,13 @@ function App() {
     const data = new FormData(form);
     const login = Object.fromEntries(data);
     form.reset();
-    console.log(login);
     handleLogin(login);
   };
 
   return (
     <>
       <ProphilUser.Provider value={user}>
-        <Router>
+        {/* <Router> */}
           {
             (menu) ? <div className="justify-around w-full ">
               <Header>
@@ -103,7 +107,8 @@ function App() {
                     <form onSubmit={handleLogout}>
                       <LogOut />
                     </form>
-                  } />}
+                  } />
+                }
                 {!isLogin && (
                   <Route path="/login" element={
                     <form onSubmit={handleChange} className="" action='http://localhost:5000/users/login' method='post'>
@@ -130,7 +135,7 @@ function App() {
               </div>
             </>
           }
-        </Router>
+        {/* </Router> */}
       </ProphilUser.Provider>
     </>
   )

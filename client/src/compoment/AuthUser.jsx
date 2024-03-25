@@ -1,46 +1,6 @@
 import { Link } from "react-router-dom";
 
 export default function AuthUser() {
-    // const [user, setUser] = useState(null);
-    // const [loginUser, setLoginuser] = useState(null);
-    // const [isLogin, SetIsLogin] = useState(false);
-    // const handleChange = async (e) => {
-    //     e.preventDefault()
-    //     try {
-    //         const form = e.target
-    //         let data = new FormData(form);
-    //         let login = Object.fromEntries(data)
-    //         form.reset()
-    //         const credentials =
-    //         {
-    //             "email": login.email,
-    //             "password": login.code
-    //         }
-    //         const url = 'http://localhost:3000/users/login'
-    //         const rep = await axios.post(url, {
-    //             email: credentials.email,
-    //             password: credentials.password
-    //         })
-    //         if (rep.status == 200) {
-    //             const { id, token } = rep.data;
-    //             SetIsLogin(true);
-    //             setUser(token)
-    //             const dataJson = `http://localhost:3000/users/${token}`
-    //             axios.get(dataJson)
-    //                 .then(res => {
-    //                     setLoginuser(res.data.user)
-    //                 })
-    //             console.log(loginUser, 'ok');
-    //         }
-    //         else {
-    //             console.error('Auth err');
-    //         }
-    //     }
-    //     catch (error) {
-    //         console.error('Axios err');
-    //     }
-    // }
-
     return (
         <div className="w-full xl:w-1/3 m-auto h-auto pt-20 pb-10">
             <div className='space-y-16 py-10 md:border m-auto'>

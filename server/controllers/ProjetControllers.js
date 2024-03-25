@@ -5,7 +5,7 @@ const path = require('path');
 const { validationProjet } = require('../../test/validation');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/home/user-3-c2/Documents/Chef_Doeuvre/server/controllers/ImageUpload');
+    cb(null,  __dirname + '/../public/ImageUpload');
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -72,7 +72,7 @@ const projetController = {
         console.error("Erreur de téléchargement de l'image:", err);
         return res.status(500).json({ error: "Erreur de téléchargement de l'image" });
       }
-      const imgUpload = 'http://localhost:5000/' + path.basename(req.file.path);
+      const imgUpload = '/ImageUpload/' +  path.basename(req.file.path);
       const { error, value } = validationProjet.validate(req.body);
       if (error) {
         console.error('Erreur de validation des données:', error);
