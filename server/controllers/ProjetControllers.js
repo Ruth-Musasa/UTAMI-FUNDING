@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 const multer = require('multer')
 const prisma = new PrismaClient();
 const path = require('path');
-const {validationProjet} = require('../../test/validation');
+const { validationProjet } = require('../../test/validation');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, '/home/user-3-c2/Documents/Chef_Doeuvre/server/controllers/ImageUpload');
@@ -18,7 +18,11 @@ const projetController = {
 
   getProjet: async (req, res) => {
     try {
-      const projets = await prisma.Post.findMany();
+      const projets = await prisma.Post.findMany({
+        include: {
+          creator: true,
+        },
+      });
       res.json(projets);
     } catch (error) {
       console.error('Erreur lors de la récupération des projets :', error);

@@ -26,7 +26,7 @@ export default function Explore() {
     }, [])
 
     return (
-        <div className="w-11/12 md:w-10/12 m-auto h-auto py-20 ">
+        <div className="w-11/12  m-auto h-auto py-20 ">
             <div className="flex gap-6 pb-10">
                 <div className="bg-zinc-100 h-11 rounded-full p-2 flex gap-6 justify-center pl-6 w-11/12">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
@@ -34,9 +34,9 @@ export default function Explore() {
                     </svg>
                     <input type="search" name="search" id="search" className='bg-zinc-100 outline-none w-full' placeholder='Serach Twitter' />
                 </div>
-                <div className="text-xl w-1/12 text-center ">z</div>
+                <div className="text-xl w-1/12 "><svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40"><path d="M400-240v-80h160v80H400ZM240-440v-80h480v80H240ZM120-640v-80h720v80H120Z"/></svg></div>
             </div>
-            <div className=" w-full m-auto">
+            <div className="md:w-11/12 w-full m-auto">
                 <div className="flex h-auto overflow-x-scroll gap-4 md:gap-12">
                     <ProjetTypes type="Projet architectural" classe="bg-cover bg-[url('client/src/assets/8be8502369c21819b8bb0ad6a8b0afad.jpg')] w-80  lg:h-80 lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
                     <ProjetTypes type="Projet agricole" classe="bg-[url('client/src/assets/bd5c4f3b2249a310be4dcf50644cbefe.jpg')] w-80  lg:h-80  lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
@@ -46,23 +46,16 @@ export default function Explore() {
                 <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Projets reçents</h3>
                 {
                     post.map((data, index) => {
-                        // Trouver l'utilisateur créateur du projet
-                        const creatorUser = users.find(user => user.id_user === data.id_creator);
-
-                        // Trouver l'utilisateur associé au projet
-                        const associatedUser = users.find(user => user.id === data.id_user);
-                        console.log(data, 'data');
                         return (
                             <Projets
-                                post={data}
+                                data={data}
                                 key={data.id_post}
-                                // Utiliser des ternaires pour vérifier si les utilisateurs existent
-                                title={creatorUser ? creatorUser.title : ''}
-                                description={associatedUser ? associatedUser.description : ''}
-                                end_date={associatedUser ? associatedUser.end_date : ''}
-                                name={data.name}
-                                name_user={data.name_user}
-                                email={data.email}
+                                // title={creatorUser ? creatorUser.title : ''}
+                                // description={associatedUser ? associatedUser.description : ''}
+                                // end_date={associatedUser ? associatedUser.end_date : ''}
+                                // name={data.name}
+                                // name_user={data.name_user}
+                                // email={data.email}
                             />
                         );
                     })
