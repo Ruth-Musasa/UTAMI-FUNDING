@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
-import DetailPost from '../compoment/DetailPost';
 import PostEditor from '../compoment/PostEditor';
 import MesProjets from '../compoment/MesProjet';
 import Mescomments from '../compoment/Commentaire';
@@ -15,7 +14,7 @@ export default function Profil() {
                     <div className="grid lg:gap-6 xl:pb-16">
                         <div className=' flex justify-around md:block '>
                             <div className='relative '>
-                                <div className="h-24 w-24 lg:h-96 lg:w-96 border bg-gray-200  m-auto bg-cover rounded-full"><img src={`${import.meta.env.VITE_SERVER_URL}${user.photo}`} alt="photo de profil" /> </div>
+                                <div className="h-24 w-24 lg:h-96 lg:w-96 m-auto "><img src={`${import.meta.env.VITE_SERVER_URL}${user.photo}`} alt="photo de profil" className='border bg-gray-200 bg-cover rounded-full'/> </div>
                                 <button className="bg-white text-black w-10 h-10 border-[1px] rounded-full shadow-md hover:bg-zinc-800 border-gray-900 text-2xl font-black m-auto absolute  bottom-1 left-16 md:right-14 md:bottom-10 md:left-auto hover:text-white" type="button">+</button>
                             </div>
                             <div className='lg:w-10/12 lg:m-auto'>

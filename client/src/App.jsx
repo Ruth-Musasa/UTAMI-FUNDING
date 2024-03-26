@@ -19,8 +19,7 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isSignin, setIsSignin] = useState(false);
   const navigate = useNavigate();
-
-
+  console.log(user, 'user');
   const handleClick = () => {
     setMenu(!menu);
   };
@@ -50,23 +49,23 @@ function App() {
       console.error('Erreur de connexion:', error);
     }
   };
-  const handeleSignin = async (signinUser) => {
-    console.log(signinUser , 'signinUser');
-
+  const handeleSignin = async (data, singin) => {
     try {
-      const response = await axios.post("http://localhost:5000/users/signin", signinUser);
-      if (response.status == 200) {
-        localStorage.setItem('jwtToken', token);
-        localStorage.setItem('user', JSON.stringify(user));
-        setAuthToken(token);
+      const response = await axios.post("http://localhost:5000/users/signin", data);
+      if (response.status == 201) {
+        // localStorage.setItem('jwtToken', token);
+        const user = response.data.user;
+        console.log(user, singin, 'donnée');
+        localStorage.setItem('user', JSON.stringify(singin));
+        // setAuthToken(token);
         setIsLogin(true);
-        setIsSignin(true)
+        setIsSignin(true);
         setUser(user);
         return navigate('/')
       }
-     else {
-      return <h2>Donnée invalide</h2>
-     }
+      else {
+        return <h2>Donnée invalide</h2>
+      }
 
     } catch (error) {
       console.error('Erreur de connexion:', error);
@@ -99,22 +98,22 @@ function App() {
     const login = Object.fromEntries(data);
     form.reset();
     handleLogin(login);
-    console.log(login , 'login');
+    console.log(login, 'login');
   };
   const handelConnect = async (e) => {
     e.preventDefault();
     const form = e.target;
     const data = new FormData(form);
-    const login = Object.fromEntries(data);
+    const singin = Object.fromEntries(data);
     form.reset();
-    handeleSignin(login)
-    console.log(login , 'login');
+    handeleSignin(data, singin)
+    console.log(singin, 'singin');
+    console.log(data, 'data')
   };
 
   return (
     <>
       <ProphilUser.Provider value={user}>
-        {/* <Router> */}
         {
           (menu) ? <div className="justify-around w-full ">
             <Header>
@@ -173,7 +172,6 @@ function App() {
             </div>
           </>
         }
-        {/* </Router> */}
       </ProphilUser.Provider>
     </>
   )
