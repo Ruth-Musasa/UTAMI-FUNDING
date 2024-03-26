@@ -8,13 +8,13 @@ const path = require('path');
 const { signupUser, loginUser } = require('../../test/validation');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '/home/user-3-c2/Documents/Chef_Doeuvre/server/controllers/ImageUpload');
+      cb(null,  __dirname + '/../public/ImageUpload');
     },
     filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, file.fieldname + '-' + uniqueSuffix + '.jpg');
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+      cb(null, file.fieldname + '-' + uniqueSuffix + '.jpg');
     }
-});
+  });
 const upload = multer({ storage: storage });
 
 const jwtSecret = "Secret123!Key456?";
@@ -67,7 +67,7 @@ const userController = {
             }
 
             const { name_user, name, password, email } = value;
-            const imgUpload = 'http://localhost:5000/' + path.basename(req.file.path);
+            const imgUpload = '/ImageUpload/' +  path.basename(req.file.path);
             const hashedPassword = await bcrypt.hash(password, 10);
             try {
                 await prisma.User.create({

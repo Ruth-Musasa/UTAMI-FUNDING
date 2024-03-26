@@ -8,7 +8,7 @@ export default function AuthUser() {
                     <h2 className='text-4xl w-full text-center'>Inscrivez vous.</h2>
                     <div className="grid grid-cols-2 gap-4 py-6 ">
                         <input className='w-full text-black border px-6 py-2' type="text" id="name" name="name" placeholder="Nom" />
-                        <input className='w-full text-black border px-6 py-2' type="text" id="user_name" name="user_name" placeholder="Pseudo" />
+                        <input className='w-full text-black border px-6 py-2' type="text" id="name_user" name="name_user" placeholder="Pseudo" />
                         <input className='w-full text-black border px-6 py-2 col-span-2' type="text" id="email" name="email" placeholder="Email" />
                         <input className='w-full text-black border px-6 py-2 col-span-2' type="text" id="password" name="password" placeholder="Mots de passe" />
                         <input className="w-full text-black border px-6 py-10 col-span-2" type="file" id="photo" name="photo" placeholder="Profil" />
@@ -23,5 +23,4 @@ export default function AuthUser() {
             </div>
         </div>
     )
-
 }

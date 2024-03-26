@@ -69,8 +69,8 @@ export default function MesProjets() {
         )
     }
     return (
-        <div className="w-10/12 m-auto">
-            <h2 className=" text-4xl mt-11 mb-7  md:text-6xl">Aucun projet publié pour l'instant</h2>
+        <div className="w-10/12 m-auto py-12">
+            <h2 className=" text-4xl md:text-6xl pb-4">Aucun projet publié pour l'instant</h2>
             <Link to='Editor' ><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-12 left-5 hover:bg-[#3563FF]">Publier</button></Link>
         </div>
     )

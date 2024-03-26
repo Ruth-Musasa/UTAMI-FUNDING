@@ -101,16 +101,16 @@ export default function Home() {
             </div>
 
             <div className="bg-[#f3efe5] text-black px-8 py-6 leading-relaxed md:py-32">
-                <h2 className=" text-4xl py-12 xl:w-11/12 2xl:w-9/12  md:m-auto md:text-6xl md:text-center ">How to create a website for free</h2>
+                <h2 className=" text-4xl py-12 xl:w-11/12 2xl:w-9/12  md:m-auto md:text-6xl md:text-center ">Comment crée un projet </h2>
                 <div className=" py-8 leading-7 text-base space-y-6 md:text-xl  md:w-9/12 md:m-auto">
-                    <p><strong>Follow these 6 simple steps to create a website today :</strong></p>
+                    <p><strong>Pour créer un projet de crowdfunding, voici les étapes générales que vous pouvez suivre :</strong></p>
                     <ol className="list-decimal space-y-6 pl-6">
-                        <li><strong>​Sign up for a free website builder.</strong> Choose what kind of website you want to create.</li>
-                        <li><strong>Drag and drop 1000s of design features.</strong> Add text, galleries, videos, vector art and more.</li>
-                        <li><strong>Drag and drop 1000s of design features. </strong>Add text, galleries, videos, vector art and more.</li>
-                        <li><strong>​Get ready for business.</strong> Add an online store, booking system, members area and blog.</li>
-                        <li><strong>Publish your website and go live. </strong>Start building your professional online presence.</li>
-                        <li><strong>Drive traffic to your site.</strong> Use advanced SEO tools and integrated marketing solutions.</li>
+                        <li><strong>Définissez clairement votre projet </strong> et ses objectifs.</li>
+                        <li><strong>Étudiez le marché </strong> pour comprendre la demande et évaluer la concurrence.</li>
+                        <li><strong>Fixez des objectifs de financement </strong>réalistes et suffisamment élevés pour couvrir les coûts.</li>
+                        <li><strong>Promouvez activement votre campagne </strong> sur les réseaux sociaux, par e-mail et d'autres canaux.</li>
+                        <li><strong>Gérez les fonds collectés </strong>de manière responsable et transparente.</li>
+                        <li><strong>Remerciez vos contributeurs </strong> une fois la campagne terminée et maintenez une communication continue avec eux.</li>
                     </ol>
                 </div>
             </div>
@@ -133,7 +133,7 @@ export default function Home() {
             <div className="px-8 py-16 text-base md:w-9/12 md:m-auto lg:grid md:grid-cols-2 md:gap-20 h-auto">
                 <h2 className=" text-4xl mt-11 mb-7 text-black md:text-6xl md:text-center md:col-span-2">Enrichissez vos connaissance grace aux ouvrage que nous mettons en votre disposition</h2>
                 <div>
-                    <div className="h-96 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://course.oc-static.com/courses/1946116/1946116_teaser_picture_1680855988.jpg')]"></div>
+                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://course.oc-static.com/courses/1946116/1946116_teaser_picture_1680855988.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
                     <p className="py-4 w-10/12">  Créez des outils d’analyse et facilitez la prise de décision en entreprise </p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
@@ -142,8 +142,8 @@ export default function Home() {
                     </div>
                 </div>
                 <div>
-                    <div className="h-96 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/0aa9e029e7cd70cefef0a16bcc977008.jpg')]"></div>
-                    <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
+                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/formation0001.png')]"></div>
+                    <strong> <h3 className="text-xl pt-10">Business Intelligence Analyst</h3></strong>
                     <p className="py-4 w-10/12">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
                         <Link to='/Formation'>Apprendre plus</Link>
@@ -151,18 +151,18 @@ export default function Home() {
                     </div>
                 </div>
                 <div>
-                    <div className="h-96 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/gros-plan-main-blanche-noire.jpg')]"></div>
-                    <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
-                    <p className="py-4 w-10/12">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
+                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://greenloop.eu/wp-content/uploads/2021/10/Greenloop-formations-petit.svg')]"></div>
+                    <strong> <h3 className="text-xl pt-10">Chef de projet marketing</h3></strong>
+                    <p className="py-4 w-10/12"> Garantissez la cohérence de marque et l'application de la stratégie marketing de votre entreprise.</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
                         <Link to='/Formation'>Apprendre plus</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
                     </div>
                 </div>
                 <div>
-                    <div className="h-96 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/a33c4aca8b39b84ec3ffe438ec299657.jpg')]"></div>
-                    <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
-                    <p className="py-4 w-10/12">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
+                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://techtyped.com/wp-content/uploads/2023/07/ilgmyzin-agFmImWyPso-unsplash.jpg')]"></div>
+                    <strong> <h3 className="text-xl pt-10">Utilisez ChatGPT pour améliorer votre productivité</h3></strong>
+                    <p className="py-4 w-10/12">En l'espace de quelques mois, l'intelligence artificielle a fait un bond important. Un produit en particulier est sur toutes les lèvres : ChatGPT.</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12 ">
                         <Link to='/Formation'>Apprendre plus</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-3 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>

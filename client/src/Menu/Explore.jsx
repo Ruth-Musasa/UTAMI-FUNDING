@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import DetailPost from "../compoment/DetailPost";
 import ProjetTypes from "../compoment/ProjetType";
 import Projets from "../compoment/Projets";
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import { ProphilUser } from "../App";
 import axios from "axios";
 

@@ -16,7 +16,7 @@ export default function DetailPost() {
         <div className="pt-20 w-10/12 m-auto lg:flex gap-10">
             <div className="lg:w-9/12">
                 <h2 className="text-5xl pb-7  md:text-6xl ">  {post.title} </h2>
-                <img src={post.photo} className="w-full h-96 border" alt="" />
+                <img src={`${import.meta.env.VITE_SERVER_URL}${post.photo}`} className="w-full h-96 border" alt="" />
                 <p className="pt-6">{post.description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut magni dignissimos in sit, culpa, vel vero architecto perspiciatis rem eaque placeat aperiam excepturi reprehenderit porro magnam omnis dolorum dolores? </p>
                 <div className="flex justify-between ">
                     <div className='pt-10 pb-4 flex gap-2'>
