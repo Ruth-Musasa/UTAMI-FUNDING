@@ -10,6 +10,7 @@ export default function Explore() {
     const [users, setUsers] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [search, setSearch] = useState([]);
+    const [issearching, setIssearching] = useState(false);
     useEffect(() => {
         const dataJson = 'http://localhost:5000/projets'
         axios.get(dataJson)
@@ -29,6 +30,7 @@ export default function Explore() {
             const response = await axios.get(`http://localhost:5000/search/projets?q=${searchTerm}`);
             if (response.status) {
                 setSearch(response.data);
+                setIssearching(true)
             }
         } catch (error) {
             console.error("Error searching:", error);
@@ -75,9 +77,9 @@ export default function Explore() {
                         </ul>
                     </div>
                 )}
-                {/* {search.length == 0 && (
+                {issearching ? (
                     <h3 className=" text-2xl my-11 lg:mb-7 text-center md:text-4xl  text-red-500 font-black ">Aucun projet ne correspond a cette recherche . . .</h3>
-                )} */}
+                ) : null}
                 <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Projets reçents</h3>
                 {
                     post.map((data, index) => {

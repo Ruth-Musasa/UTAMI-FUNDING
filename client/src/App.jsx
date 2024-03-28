@@ -130,19 +130,19 @@ function App() {
               {isLogin && <Route path='/Profile/*' element={<Profil />} />}
               {!isLogin && <Route path='/Profile/*' element={<AuthUser handleSignUp={handleSignUp} />} />}
               <Route path='/signin' element={<AuthUser handleSignUp={handleSignUp} />} />
-              
-                <Route path="/logout" element={
-                  <form onSubmit={handleLogout}>
-                    <LogOut />
-                  </form>
-                } />
-              
-                <Route path="/login" element={
-                  <form onSubmit={handleChange} className="" action='http://localhost:5000/users/login' method='post'>
-                    <LoginUser />
-                  </form>
-                } />
-              
+
+              <Route path="/logout" element={
+                <form onSubmit={handleLogout}>
+                  <LogOut />
+                </form>
+              } />
+
+              <Route path="/login" element={
+                <form onSubmit={handleChange} className="" action='http://localhost:5000/users/login' method='post'>
+                  <LoginUser />
+                </form>
+              } />
+
               <Route path='/detail/:id' element={<DetailPost />} />
             </Routes>
             <div className="md:border py-4 bg-[#F3F3F3] ">

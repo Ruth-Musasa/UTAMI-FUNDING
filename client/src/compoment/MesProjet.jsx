@@ -7,54 +7,20 @@ import { ProphilUser } from "../App";
 export default function MesProjets() {
     const user = useContext(ProphilUser)
     const [posts, setposts] = useState([]);
-    const [image, setImage] = useState('');
     useEffect(() => {
-        const dataJson = `http://localhost:5000/projets/${user.id} `
+        const dataJson = `http://localhost:5000/projets/${user.id_user} `
         axios.get(dataJson)
             .then(res => {
                 setposts(res.data)
             })
     }, [])
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const form = e.target
-        let data = new FormData(form);
-        let post = Object.fromEntries(data)
-        form.reset()
-        uploadImage(post.image);
-        let userpost =
-        {
-            "id_creator": user.id,
-            "title": post.title,
-            "description": post.description,
-            "photo": image,
-            "end_date": post.end_date,
-            "categorie": post.categorie,
-            "desired_amount": post.desired_amount,
-
-        }
-        setposts([userpost, ...posts])
-    }
-    const uploadImage = (file) => {
-        if (file.size > 0) {
-            return showFile(file)
-        }
-        return null;
-    }
-    const showFile = (file) => {
-        let fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
-        fileReader.onload = () => {
-            setImage(fileReader.result);
-        }
-    }
+    console.log(posts, 'post');
     if (posts == []) {
         return (
             <div>
                 <h2 className=" text-4xl mt-11 mb-7  md:text-6xl">Voici vos projets</h2>
-                <form onSubmit={handleSubmit} >
-                    <PostEditor />
-                </form>
+
+                <PostEditor />
                 {
                     posts.map((data, index) => {
                         return (

@@ -52,6 +52,9 @@ const projetController = {
     const { id } = req.params;
     try {
       const projet = await prisma.Post.findUnique({
+        include: {
+          creator: true,
+        },
         where: {
           id_post : parseInt(id)
         }
