@@ -6,10 +6,10 @@ export default function Projets({ data }) {
             <div className={`h-56 md:w-[500px] bg-cover bg-no-repeat border   `}>
                 <img src={`${import.meta.env.VITE_SERVER_URL}${data.photo}`} alt="photo du projet" className='size-full' />
             </div>
-            <div className='w-2/3 grid gap-12'>
+            <div className='md:w-2/3 grid md:gap-10'>
                 <div>
-                    <strong> <h3 className="text-3xl"> {data.title} </h3></strong>
-                    <strong> <h3 className="text-2xl text-gray-800"> {data.categorie} </h3></strong>
+                    <strong> <h3 className="text-2xl md:text-3xl "> {data.title} </h3></strong>
+                    <strong> <h3 className="text-xl md:text-2xl text-gray-800"> {data.categorie} </h3></strong>
                 </div>
                 <div className='flex justify-between'>
                     <div className='flex gap-2'>

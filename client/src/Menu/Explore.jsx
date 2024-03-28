@@ -39,7 +39,7 @@ export default function Explore() {
     return (
         <div className="w-11/12  m-auto h-auto py-20 ">
             <div className="flex gap-6 pb-10">
-                <div className=" w-11/12 m-auto">
+                <div className=" md:w-11/12 m-auto">
                     <div className="h-11 rounded-full border-2 flex gap-6 justify-between ">
                         <div className=" w-full flex gap-4">
                             <input
@@ -79,7 +79,7 @@ export default function Explore() {
                 {issearching ? (
                     <h3 className=" text-2xl my-11 lg:mb-7 text-center md:text-4xl  text-red-500 font-black ">Aucun projet ne correspond a cette recherche . . .</h3>
                 ) : null}
-                <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Projets recommandée</h3>
+                <h3 className=" m-auto w-11/12 text-4xl mt-4 lg:mb-7  md:text-6xl  font-black ">Projets recommandée</h3>
                 {
                     post.map((data, index) => {
                         return (

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function AuthUser({ handleSignUp }) {
 
     return (
-        <div className="lg:flex w-8/12 m-auto">
+        <div className="lg:flex 2xl:w-8/12 m-auto">
             <div className="bg-center lg:w-1/2 bg-no-repeat bg-[url('https://i0.wp.com/blog.mbadmb.com/wp-content/uploads/2018/01/Emo-IH.jpg?fit=600%2C440&ssl=1')] h-svh"></div>
             <div className="w-full lg:w-1/2 m-auto  pt-32 pb-16">
                 <div className='space-y-16 py-10 md:border m-auto '>

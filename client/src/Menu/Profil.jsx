@@ -8,31 +8,31 @@ import AuthUser from '../compoment/AuthUser';
 import axios from 'axios';
 export default function Profil() {
     const user = useContext(ProphilUser);
-    const handelePost = async (data) => {
-        try {
-            const response = await axios.post("http://localhost:5000/projets", data, user.id_user);
-            console.log(response.status, 'response.status');
-        } catch (error) {
-            console.error('Erreur de connexion:', error);
-        }
-    };
+    // const handelePost = async (data) => {
+    //     try {
+    //         const response = await axios.post("http://localhost:5000/projets", data, user.id_user);
+    //         console.log(response.status, 'response.status');
+    //     } catch (error) {
+    //         console.error('Erreur de connexion:', error);
+    //     }
+    // };
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const form = e.target
-        let data = new FormData(form);
-        let post = Object.fromEntries(data)
-        form.reset()
-        handelePost(data)
-        console.log(post, 'post 2');
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     const form = e.target
+    //     let data = new FormData(form);
+    //     let post = Object.fromEntries(data)
+    //     form.reset()
+    //     handelePost(data)
+    //     console.log(post, 'post 2');
+    // }
     if (user !== null && user !== undefined) {
         return (
             <div className="lg:flex lg:gap-10 lg:w-9/12 m-auto pt-20" >
                 <div className='w-full xl:w-1/3 border border-gray-200 '>
                     <div className="grid lg:gap-6 xl:pb-16">
                         <div className=' flex justify-around md:block '>
-                            <div className='relative '>
+                            <div className='relative z-0'>
                                 <div className="h-24 w-24 lg:h-96 lg:w-96 m-auto "><img src={`${import.meta.env.VITE_SERVER_URL}${user.photo}`} alt="photo de profil" className='border bg-gray-200 bg-cover rounded-full' /> </div>
                                 <button className="bg-white text-black w-10 h-10 border-[1px] rounded-full shadow-md hover:bg-zinc-800 border-gray-900 text-2xl font-black m-auto absolute  bottom-1 left-16 md:right-14 md:bottom-10 md:left-auto hover:text-white" type="button">+</button>
                             </div>
@@ -60,9 +60,9 @@ export default function Profil() {
                         <Route path='' element={<MesProjets />} />
                         <Route path='Commentaires' element={<Mescomments />} />
                         <Route path='Editor' element={
-                            <form onSubmit={handleSubmit} >
-                                <PostEditor />
-                            </form>
+                            // <form onSubmit={handleSubmit} >
+                                <PostEditor  />
+                            // </form>
                         } />
                     </Routes>
                 </div>

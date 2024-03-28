@@ -1,6 +1,6 @@
 export default function LogOut() {
     return (
-        <div className="lg:flex w-8/12 m-auto ">
+        <div className="lg:flex 2xl:w-8/12 m-auto ">
             <div className="bg-center w-1/2  bg-no-repeat bg-[url('https://cdn-icons-png.flaticon.com/512/8073/8073615.png')] h-svh"></div>
             <div className="w-full xl:w-1/2 m-auto h-auto pt-20 pb-10">
                 <div className='space-y-16 py-10 md:border m-auto'>
