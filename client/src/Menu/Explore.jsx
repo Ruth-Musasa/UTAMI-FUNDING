@@ -39,7 +39,7 @@ export default function Explore() {
     return (
         <div className="w-11/12  m-auto h-auto py-20 ">
             <div className="flex gap-6 pb-10">
-                <div className="pl-6 w-10/12 m-auto">
+                <div className=" w-11/12 m-auto">
                     <div className="h-11 rounded-full border-2 flex gap-6 justify-between ">
                         <div className=" w-full flex gap-4">
                             <input
@@ -55,15 +55,14 @@ export default function Explore() {
                         </svg></button>
                     </div>
                 </div>
-                <div className="text-xl w-1/12 "><svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40"><path d="M400-240v-80h160v80H400ZM240-440v-80h480v80H240ZM120-640v-80h720v80H120Z" /></svg></div>
             </div>
             <div className="md:w-11/12 w-full m-auto">
-                <div className="flex h-auto overflow-x-scroll gap-4 md:gap-12">
+                {/* <div className="flex h-auto overflow-x-scroll gap-4 md:gap-12">
                     <ProjetTypes type="Projet architectural" classe="bg-cover bg-[url('client/src/assets/8be8502369c21819b8bb0ad6a8b0afad.jpg')] w-80  lg:h-80 lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
                     <ProjetTypes type="Projet agricole" classe="bg-[url('client/src/assets/bd5c4f3b2249a310be4dcf50644cbefe.jpg')] w-80  lg:h-80  lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
                     <ProjetTypes type="Projet gastronomique" classe="bg-[url('client/src/assets/c53b881e891566634ff68349842b5d7c.jpg')] w-80  lg:h-80 lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
                     <ProjetTypes type="Projet modelisme" classe="bg-[url('client/src/assets/a80f7343138d26af55ddc65c8ed70383.jpg')] w-80  lg:h-80  lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
-                </div>
+                </div> */}
                 {search.length > 0 && (
                     <div>
                         <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Voici le reultat de votre recherche:</h3>
@@ -80,7 +79,7 @@ export default function Explore() {
                 {issearching ? (
                     <h3 className=" text-2xl my-11 lg:mb-7 text-center md:text-4xl  text-red-500 font-black ">Aucun projet ne correspond a cette recherche . . .</h3>
                 ) : null}
-                <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Projets reçents</h3>
+                <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Projets recommandée</h3>
                 {
                     post.map((data, index) => {
                         return (

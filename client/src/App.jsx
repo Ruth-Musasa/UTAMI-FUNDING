@@ -10,6 +10,7 @@ import AuthUser from "./compoment/AuthUser";
 import DetailPost from "./compoment/DetailPost";
 import LoginUser from "./compoment/LoginUser";
 import LogOut from "./compoment/Logout";
+import ContributionForm from "./compoment/Contribution";
 
 export const ProphilUser = createContext();
 function App() {
@@ -19,7 +20,6 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isSignin, setIsSignin] = useState(false);
   const navigate = useNavigate();
-  console.log(user, 'user');
   const handleClick = () => {
     setMenu(!menu);
   };
@@ -49,6 +49,7 @@ function App() {
       console.error('Erreur de connexion:', error);
     }
   };
+
   const handeleSignin = async (data) => {
     try {
       const response = await axios.post("http://localhost:5000/users/signin", data);
@@ -62,7 +63,6 @@ function App() {
       else {
         return <h2>Donnée invalide</h2>
       }
-
     } catch (error) {
       console.error('Erreur de connexion:', error);
     }
@@ -130,20 +130,18 @@ function App() {
               {isLogin && <Route path='/Profile/*' element={<Profil />} />}
               {!isLogin && <Route path='/Profile/*' element={<AuthUser handleSignUp={handleSignUp} />} />}
               <Route path='/signin' element={<AuthUser handleSignUp={handleSignUp} />} />
-
               <Route path="/logout" element={
                 <form onSubmit={handleLogout}>
                   <LogOut />
                 </form>
               } />
-
               <Route path="/login" element={
                 <form onSubmit={handleChange} className="" action='http://localhost:5000/users/login' method='post'>
                   <LoginUser />
                 </form>
               } />
-
               <Route path='/detail/:id' element={<DetailPost />} />
+              <Route path='/contribution' element={<ContributionForm />} />
             </Routes>
             <div className="md:border py-4 bg-[#F3F3F3] ">
               <div className="w-10/12 m-auto md:flex md:justify-between md:pb-2">

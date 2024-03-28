@@ -1,4 +1,7 @@
+import { useState } from "react"
+
 export default function PostEditor(props) {
+    const  [erreur , setError]=useState('')
     return (
         <div className="w-11/12 m-auto grid gap-4">
             <h2 className="text-4xl mt-12 md:text-4xl ">Publiez un nouveau projet en remplissant tous les champs ci-dessous : </h2>

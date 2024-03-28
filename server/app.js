@@ -11,7 +11,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const projetsRouter = require('./routes/projet');
 const commentsRouter = require('./routes/comment.js');
-const searchRouter= require ('server/routes/search.js');
+const searchRouter = require('./routes/search.js');
+const contributionRouter = require('./routes/contribution.js');
 
 const app = express();
 
@@ -25,9 +26,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
-  origin: 'http://localhost:5173', 
-  methods: ['GET', 'POST', 'DELETE'], 
-  allowedHeaders: ['Content-Type', 'Authorization'], 
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.use('/', indexRouter);
@@ -35,6 +36,7 @@ app.use('/users', usersRouter);
 app.use('/projets', projetsRouter);
 app.use('/comment', commentsRouter);
 app.use('/search', searchRouter);
+app.use('/contribution', contributionRouter);
 
 
 app.use(express.static(path.join(__dirname, "ImageUpload")))

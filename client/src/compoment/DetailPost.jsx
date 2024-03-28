@@ -1,14 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function DetailPost() {
     const { id } = useParams();
     const [post, setPost] = useState([]);
     const [comment, setComment] = useState([]);
     const [user, setUser] = useState({});
-    // const user = post.creator
-    // console.log(user.name_user);
     useEffect(() => {
         const dataJson = `http://localhost:5000/projets/detail/${id}`
         axios.get(dataJson)
@@ -40,7 +38,7 @@ export default function DetailPost() {
                         <p>{post.desired_amount} </p>
                     </div>
                 </div>
-                <button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-12 left-5 hover:bg-[#3563FF]">Contribuer</button>
+               <Link to='/contribution'><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-12 left-5 hover:bg-[#3563FF]">Contribuer</button></Link> 
                 <div className="py-10 grid gap-2">
                     <label htmlFor="contenu" className="text-2xl font-black"> Commenter maintenant</label>
                     <input type="text" id='contenu' name="contenu" placeholder="Ecrivez ici" className="w-full h-14 rounded-full px-10 border" />
