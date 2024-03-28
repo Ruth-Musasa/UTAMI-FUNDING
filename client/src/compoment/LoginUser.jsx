@@ -1,7 +1,7 @@
 export default function LoginUser(params) {
     return (
-        <div className="w-full xl:w-1/3 m-auto h-auto pt-20 pb-10">
-            <div className='space-y-16 py-10 md:border m-auto'>
+        <div className="w-full xl:w-1/3 m-auto py-20 xl:h-auto xl:pt-60 xl:pb-48 items-center">
+            <div className='space-y-16 py-10 md:border m-auto '>
                 <div className='w-11/12 space-y-2 xl:w-2/3 m-auto'>
                     <h2 className='text-4xl w-full text-center'>Connectez vous.</h2>
                     <div className=" grid  gap-4 py-6 w-10/12 m-auto">

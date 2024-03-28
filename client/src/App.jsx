@@ -49,19 +49,15 @@ function App() {
       console.error('Erreur de connexion:', error);
     }
   };
-  const handeleSignin = async (data, singin) => {
+  const handeleSignin = async (data) => {
     try {
       const response = await axios.post("http://localhost:5000/users/signin", data);
+      console.log(response.status);
       if (response.status == 201) {
-        // localStorage.setItem('jwtToken', token);
-        const user = response.data.user;
-        console.log(user, singin, 'donnée');
-        localStorage.setItem('user', JSON.stringify(singin));
-        // setAuthToken(token);
         setIsLogin(true);
         setIsSignin(true);
         setUser(user);
-        return navigate('/')
+        return navigate('/login')
       }
       else {
         return <h2>Donnée invalide</h2>
@@ -91,7 +87,7 @@ function App() {
       setUser(JSON.parse(storedUser));
     }
   }, []);
-  
+
   const handleChange = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -99,18 +95,14 @@ function App() {
     const login = Object.fromEntries(data);
     form.reset();
     handleLogin(login);
-    console.log(login, 'login');
   };
 
-  const handelConnect = async (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
     const data = new FormData(form);
-    const singin = Object.fromEntries(data);
     form.reset();
-    handeleSignin(data, singin)
-    console.log(singin, 'singin');
-    console.log(data, 'data')
+    handeleSignin(data)
   };
 
   return (
@@ -136,28 +128,24 @@ function App() {
               <Route path='/Explore' element={<Explore />} />
               <Route path='/Formation' element={<Formation />} />
               {isLogin && <Route path='/Profile/*' element={<Profil />} />}
-              {!isLogin && <Route path='/Profile/*' element={<AuthUser />} />}
-              <Route path='/Connexion' element={
-                <form onSubmit={handelConnect} className="" action='http://localhost:5000/users/signin' method='post'>
-                  <AuthUser />
-                </form>} />
-              {isLogin &&
+              {!isLogin && <Route path='/Profile/*' element={<AuthUser handleSignUp={handleSignUp} />} />}
+              <Route path='/signin' element={<AuthUser handleSignUp={handleSignUp} />} />
+              
                 <Route path="/logout" element={
                   <form onSubmit={handleLogout}>
                     <LogOut />
                   </form>
                 } />
-              }
-              {!isLogin && (
+              
                 <Route path="/login" element={
                   <form onSubmit={handleChange} className="" action='http://localhost:5000/users/login' method='post'>
                     <LoginUser />
                   </form>
                 } />
-              )}
+              
               <Route path='/detail/:id' element={<DetailPost />} />
             </Routes>
-            <div className="md:border py-4 bg-[#F3F3F3]">
+            <div className="md:border py-4 bg-[#F3F3F3] ">
               <div className="w-10/12 m-auto md:flex md:justify-between md:pb-2">
                 <div className="flex h-8 w-auto m-auto justify-between md:gap-10">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z" /></svg>

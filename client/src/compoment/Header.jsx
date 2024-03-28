@@ -24,9 +24,9 @@ export default function Header(props) {
                         <Link to='Profile' className='focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]'>Profile</Link >
                     </div>
                 </div>
-                <div className="self-center md:flex md:gap-6">
+                <div className="self-center md:flex md:gap-6 items-center">
                     {(user !== null) && <Link to="/logout"> <span className='hover:text-[#3563FF] m-auto '>Logout</span></Link>}
-                    {(user === null) && <Link to="/login"> <span className='hover:text-[#3563FF] pt-10 '>Login</span></Link>}
+                    {(user === null) && <Link to="/login"> <span className='hover:text-[#3563FF] m-auto'>Login</span></Link>}
                     <ConnexionButton />
                 </div>
             </div>

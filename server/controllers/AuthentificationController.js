@@ -53,6 +53,7 @@ const userController = {
         console.dir(all, { depth: null })
         res.json(all);
     },
+    
     postUseSignin: async (req, res) => {
         upload.single('photo')(req, res, async function (err) {
             if (err) {
@@ -79,7 +80,7 @@ const userController = {
                         password: hashedPassword,
                     },
                 });
-                res.status(201).json({ message: 'Utilisateur enregistré avec succès' });
+                res.status(201).json({ message: 'Utilisateur enregistré avec succès' }, );
             } catch (error) {
                 console.error("Erreur d'enregistrement:", error);
                 res.status(500).json({ error: "Erreur d'enregistrement" });

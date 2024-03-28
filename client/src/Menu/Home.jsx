@@ -160,7 +160,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div>
-                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://techtyped.com/wp-content/uploads/2023/07/ilgmyzin-agFmImWyPso-unsplash.jpg')]"></div>
+                    <div className="h-80 bg-cover  2xl:w-[500px] bg-no-repeat bg-[url('https://techtyped.com/wp-content/uploads/2023/07/ilgmyzin-agFmImWyPso-unsplash.jpg')]"></div>
                     <strong> <h3 className="text-xl pt-10">Utilisez ChatGPT pour améliorer votre productivité</h3></strong>
                     <p className="py-4 w-10/12">En l'espace de quelques mois, l'intelligence artificielle a fait un bond important. Un produit en particulier est sur toutes les lèvres : ChatGPT.</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12 ">

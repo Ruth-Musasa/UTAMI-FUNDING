@@ -24,13 +24,11 @@ export default function Explore() {
                 setUsers(res.data)
             })
     }, [])
-
     const handleSearch = async () => {
         try {
             const response = await axios.get(`http://localhost:5000/search/projets?q=${searchTerm}`);
             if (response.status) {
                 setSearch(response.data);
-                // setSearch(!search)
             }
         } catch (error) {
             console.error("Error searching:", error);
