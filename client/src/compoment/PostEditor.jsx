@@ -13,7 +13,7 @@ export default function PostEditor() {
 
     const handleSubmit = async (data) => {
         try {
-            const response = await axios.post("http://localhost:5000/projets", data);
+            const response = await axios.post(`http://localhost:5000/projets`, data);
             console.log(response.status, 'response.status');
         } catch (error) {
             console.error('Erreur de connexion:', error);
@@ -54,15 +54,18 @@ export default function PostEditor() {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         const isValid = validateForm();
+        const form = e.target;
+        const data = new FormData(form)
         if (isValid) {
-            handleSubmit({
-                title,
-                photo,
-                description,
-                desired_amount,
-                end_date,
-                "id_creator": user.id_user
-            });
+            handleSubmit(data
+                // , {
+                // // title,
+                // // photo,
+                // // description,
+                // // desired_amount,
+                // // end_date,
+                // "id_creator": user.id_user}
+                );
         }
     };
 
@@ -85,6 +88,20 @@ export default function PostEditor() {
                         ></textarea>
                         {errors.title && <p className="text-red-500">{errors.title}</p>}
                     </div>
+                    {/* <div>
+                        <label className='lg:text-xl ' htmlFor="categorie">Quel est la categorie de votre Projet? <span className="text-red-500"> *</span></label>
+                        <textarea
+                            placeholder="Ecrivez ici"
+                            name="categorie"
+                            id='categorie'
+                            cols="30"
+                            rows="2"
+                            className={`mt-1 w-full  h-12 bg-zinc-100 focus:border-black outline-none ${errors.categorie ? 'border-red-500' : ''}`}
+                            value={categorie}
+                            onChange={(e) => setTitle(e.target.value)}
+                        ></textarea>
+                        {errors.categorie && <p className="text-red-500">{errors.categorie}</p>}
+                    </div> */}
                     <div>
                         <label htmlFor="photo" className='lg:text-xl '>Ajouter une photo <span className="text-red-500"> *</span></label>
                         <input

@@ -111,7 +111,7 @@ function App() {
                 </form>
               } />
               <Route path="/login" element={
-                <form onSubmit={handleChange} className="" action='http://localhost:5000/users/login' method='post'>
+                <form onSubmit={handleChange} className="" method='post'>
                   <LoginUser />
                 </form>
               } />

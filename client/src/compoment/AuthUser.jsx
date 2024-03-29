@@ -16,9 +16,6 @@ export default function AuthUser() {
             const response = await axios.post("http://localhost:5000/users/signin", data);
             console.log(response.status);
             if (response.status == 201) {
-                // setIsLogin(true);
-                // setIsSignin(true);
-                // setUser(user);
                 return navigate('/login')
             }
             else {

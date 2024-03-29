@@ -5,7 +5,7 @@ const path = require('path');
 const { validationProjet } = require('../../test/validation');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null,  __dirname + '/../public/ImageUpload');
+    cb(null, __dirname + '/../public/ImageUpload');
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -56,7 +56,7 @@ const projetController = {
           creator: true,
         },
         where: {
-          id_post : parseInt(id)
+          id_post: parseInt(id)
         }
       });
       if (!projet) {
@@ -71,17 +71,19 @@ const projetController = {
 
   postProjet: async (req, res) => {
     upload.single('photo')(req, res, async function (err) {
+      console.log('req.id_user', req.id_user);
+
       if (err) {
         console.error("Erreur de téléchargement de l'image:", err);
         return res.status(500).json({ error: "Erreur de téléchargement de l'image" });
       }
-      const imgUpload = '/ImageUpload/' +  path.basename(req.file.path);
-      const { error, value } = validationProjet.validate(req.body);
+      const imgUpload = '/ImageUpload/' + path.basename(req.file.path);
+      const { error, value } = validationProjet.validate({...req.body, id_creator: req.id_user});
+
       if (error) {
         console.error('Erreur de validation des données:', error);
         return res.status(400).json({ message: 'Données de projet invalides', error: error.details });
       }
-
       const { title, description, categorie, desired_amount, end_date, id_creator } = value;
       try {
         const projet = await prisma.Post.create({
