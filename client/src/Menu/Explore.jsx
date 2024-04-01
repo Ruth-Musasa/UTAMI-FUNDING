@@ -11,6 +11,8 @@ export default function Explore() {
     const [searchTerm, setSearchTerm] = useState('');
     const [search, setSearch] = useState([]);
     const [issearching, setIssearching] = useState(false);
+    const [mode, setMode] = useState('list');
+
     useEffect(() => {
         const dataJson = 'http://localhost:5000/projets'
         axios.get(dataJson)
@@ -26,13 +28,16 @@ export default function Explore() {
             })
     }, [])
     const handleSearch = async () => {
+        setMode('search')
+        setIssearching(true)
         try {
             const response = await axios.get(`http://localhost:5000/search/projets?q=${searchTerm}`);
             if (response.status) {
                 setSearch(response.data);
-                setIssearching(true)
+                setIssearching(false)
             }
         } catch (error) {
+            setIssearching(false)
             console.error("Error searching:", error);
         }
     };
@@ -57,13 +62,9 @@ export default function Explore() {
                 </div>
             </div>
             <div className="md:w-11/12 w-full m-auto">
-                {/* <div className="flex h-auto overflow-x-scroll gap-4 md:gap-12">
-                    <ProjetTypes type="Projet architectural" classe="bg-cover bg-[url('client/src/assets/8be8502369c21819b8bb0ad6a8b0afad.jpg')] w-80  lg:h-80 lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
-                    <ProjetTypes type="Projet agricole" classe="bg-[url('client/src/assets/bd5c4f3b2249a310be4dcf50644cbefe.jpg')] w-80  lg:h-80  lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
-                    <ProjetTypes type="Projet gastronomique" classe="bg-[url('client/src/assets/c53b881e891566634ff68349842b5d7c.jpg')] w-80  lg:h-80 lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
-                    <ProjetTypes type="Projet modelisme" classe="bg-[url('client/src/assets/a80f7343138d26af55ddc65c8ed70383.jpg')] w-80  lg:h-80  lg:w-[500px] border-[#F3F3F3] " classe1="lg:w-[500px] bg-[#F3F3F3]" />
-                </div> */}
-                {search.length > 0 && (
+                {issearching ? (
+                    <span>loading</span>
+                ) : search.length > 0 ? (
                     <div>
                         <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Voici le reultat de votre recherche:</h3>
                         <ul>
@@ -74,11 +75,9 @@ export default function Explore() {
                                 />
                             ))}
                         </ul>
-                    </div>
-                )}
-                {issearching ? (
-                    <h3 className=" text-2xl my-11 lg:mb-7 text-center md:text-4xl  text-red-500 font-black ">Aucun projet ne correspond a cette recherche . . .</h3>
-                ) : null}
+                    </div>) :
+                    (mode == 'search' && <h3 className=" text-2xl my-11 lg:mb-7 text-center md:text-4xl  text-red-500 font-black ">Aucun projet ne correspond a cette recherche . . .</h3>)
+                }
                 <h3 className=" m-auto w-11/12 text-4xl mt-4 lg:mb-7  md:text-6xl  font-black ">Projets recommandée</h3>
                 {
                     post.map((data, index) => {

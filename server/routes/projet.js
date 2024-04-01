@@ -29,9 +29,9 @@ const authentication = async (req, res, next) => {
     }
 };
 
-router.get('/', authentication, projetController.getProjet);
-router.get('/:id', authentication, projetController.getProjetById_creator);
-router.get('/detail/:id', authentication, projetController.getProjetById);
+router.get('/', projetController.getProjet);
+router.get('/:id', projetController.getProjetById_creator);
+router.get('/detail/:id',  projetController.getProjetById);
 router.post('/', authentication, projetController.postProjet);
 router.delete('/:id', authentication, projetController.deleteProjet);
 

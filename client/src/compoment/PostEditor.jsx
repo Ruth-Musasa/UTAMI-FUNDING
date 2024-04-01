@@ -4,6 +4,7 @@ import { ProphilUser } from "../App";
 
 export default function PostEditor() {
     const [title, setTitle] = useState("");
+    const [categorie, setCategorie] = useState("");
     const [photo, setPhoto] = useState(null);
     const [description, setDescription] = useState("");
     const [desired_amount, setDesired_amount] = useState("");
@@ -57,15 +58,8 @@ export default function PostEditor() {
         const form = e.target;
         const data = new FormData(form)
         if (isValid) {
-            handleSubmit(data
-                // , {
-                // // title,
-                // // photo,
-                // // description,
-                // // desired_amount,
-                // // end_date,
-                // "id_creator": user.id_user}
-                );
+            handleSubmit(data);
+            form.reset();
         }
     };
 
@@ -88,20 +82,20 @@ export default function PostEditor() {
                         ></textarea>
                         {errors.title && <p className="text-red-500">{errors.title}</p>}
                     </div>
-                    {/* <div>
+                    <div>
                         <label className='lg:text-xl ' htmlFor="categorie">Quel est la categorie de votre Projet? <span className="text-red-500"> *</span></label>
                         <textarea
-                            placeholder="Ecrivez ici"
+                            placeholder="Ex: Projet d'agriculture "
                             name="categorie"
                             id='categorie'
                             cols="30"
                             rows="2"
                             className={`mt-1 w-full  h-12 bg-zinc-100 focus:border-black outline-none ${errors.categorie ? 'border-red-500' : ''}`}
                             value={categorie}
-                            onChange={(e) => setTitle(e.target.value)}
+                            onChange={(e) => setCategorie(e.target.value)}
                         ></textarea>
                         {errors.categorie && <p className="text-red-500">{errors.categorie}</p>}
-                    </div> */}
+                    </div>
                     <div>
                         <label htmlFor="photo" className='lg:text-xl '>Ajouter une photo <span className="text-red-500"> *</span></label>
                         <input
