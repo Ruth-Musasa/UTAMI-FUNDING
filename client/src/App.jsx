@@ -12,6 +12,7 @@ import LoginUser from "./compoment/LoginUser";
 import LogOut from "./compoment/Logout";
 import ContributionForm from "./compoment/Contribution";
 import Footer from "./compoment/Footer";
+import ModePayement from "./compoment/ModePayement";
 
 export const ProphilUser = createContext();
 function App() {
@@ -116,7 +117,8 @@ function App() {
                 </form>
               } />
               <Route path='/detail/:id' element={<DetailPost />} />
-              <Route path='/contribution' element={<ContributionForm />} />
+              <Route path='/contribution' element={<ModePayement />} />
+              <Route path="/Visa" element={<ContributionForm/>} />
             </Routes>
             <Footer />
           </>

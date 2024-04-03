@@ -8,9 +8,10 @@ export default function DetailPost() {
     const { id } = useParams();
     const [post, setPost] = useState([]);
     const [comment, setComment] = useState([]);
-    const [userComment, setUserComment] = useState([]);
+    const [userComment, setUserComment] = useState('');
     const [user, setUser] = useState({});
     const [errors, setErrors] = useState({});
+
     const validateForm = () => {
         const errors = {};
         if (!userComment.trim()) {
@@ -24,7 +25,8 @@ export default function DetailPost() {
         try {
             const response = await axios.post(`http://localhost:5000/comment`, data);
             if (response.status == 201) {
-                setComment(response.data)
+               setUserComment('')
+               fetchComments();
             }
         } catch (error) {
             console.error('Erreur de connexion:', error);
@@ -37,27 +39,26 @@ export default function DetailPost() {
                 setPost(res.data)
                 setUser(res.data.creator)
             })
+        fetchComments()
     }, [])
-    useEffect(() => {
+
+    const fetchComments = () => {
         const dataJson = `http://localhost:5000/comment/projet/${id}`
         axios.get(dataJson)
             .then(res => {
                 setComment(res.data)
             })
-    }, [])
+    }
 
-    const handleComment = (e) => {
-        e.preventDefault();
+
+    const handleComment = () => {
         const isValid = validateForm();
-        const form = e.target;
         if (isValid) {
             const value = {
                 "contenu": userComment,
                 "id_post": id,
-                "id_creator": User.id_user
             }
             handleSubmit(value);
-            form.reset();
         }
 
     }
@@ -88,8 +89,8 @@ export default function DetailPost() {
                         <p className="font-black">{post.desired_amount} </p>
                     </div>
                 </div>
-                {!User ? <Link to='/signin'><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-16 left-5 hover:bg-[#3563FF]">Contribuer</button></Link>:null}
-                {User ? <Link to='/contribution'><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-16 left-5 hover:bg-[#3563FF]">Contribuer</button></Link>:null}
+                {!User ? <Link to='/signin'><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-16 left-5 hover:bg-[#3563FF]">Contribuer</button></Link> : null}
+                {User ? <Link to='/contribution'><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-16 left-5 hover:bg-[#3563FF]">Contribuer</button></Link> : null}
                 <div className="py-10 grid gap-2">
                     <label className='lg:text-xl ' htmlFor="">Quel commentaire voulez-vous ecrire ? </label>
                     <div className="lg:flex gap-10">
@@ -118,7 +119,7 @@ export default function DetailPost() {
                                                 src={`${import.meta.env.VITE_SERVER_URL}${data.creator.photo}`}
                                                 alt={data.creator.name}
                                             />
-                                            <div className="bg-gray-100 lg:flex gap-10 px-4  ">
+                                            <div className="bg-gray-100 lg:flex gap-10 px-4 ">
                                                 <div className="">
                                                     <h4 className="font-black">{data.creator.name} </h4>
                                                     <p className="text-wrap">{data.contenu}</p>
