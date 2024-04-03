@@ -7,6 +7,9 @@ const CommentController = {
         const { idProjet} = req.params;
         try {
             const commentaires = await prisma.commentaire.findMany({
+                include: {
+                    creator: true,
+                  },
                 where: {
                     id_post: parseInt(idProjet)
                 },

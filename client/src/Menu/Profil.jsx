@@ -8,44 +8,21 @@ import AuthUser from '../compoment/AuthUser';
 import axios from 'axios';
 export default function Profil() {
     const user = useContext(ProphilUser);
-    // const handelePost = async (data) => {
-    //     try {
-    //         const response = await axios.post("http://localhost:5000/projets", data, user.id_user);
-    //         console.log(response.status, 'response.status');
-    //     } catch (error) {
-    //         console.error('Erreur de connexion:', error);
-    //     }
-    // };
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     const form = e.target
-    //     let data = new FormData(form);
-    //     let post = Object.fromEntries(data)
-    //     form.reset()
-    //     handelePost(data)
-    //     console.log(post, 'post 2');
-    // }
     if (user !== null && user !== undefined) {
         return (
-            <div className="lg:flex lg:gap-10 lg:w-9/12 m-auto pt-20" >
-                <div className='w-full xl:w-1/3 border border-gray-200 '>
+            <div className="lg:flex lg:gap-10 lg:w-10/12 m-auto pt-20" >
+                <div className='w-full lg:w-1/3 border border-gray-200 '>
                     <div className="grid lg:gap-6 xl:pb-16">
-                        <div className=' flex justify-around md:block '>
+                        <div className='flex justify-around lg:block '>
                             <div className='relative z-0'>
-                                <div className="h-24 w-24 lg:h-96 lg:w-96 m-auto border bg-gray-200 bg-cover rounded-full" style={{ backgroundImage: `url(${import.meta.env.VITE_SERVER_URL}${user.photo})` }}>
-                                    <img src={`${import.meta.env.VITE_SERVER_URL}${user.photo}`} alt="photo de profil"  /> 
-                                </div>
-                                <button className="bg-white text-black w-10 h-10 border-[1px] rounded-full shadow-md hover:bg-zinc-800 border-gray-900 text-2xl font-black m-auto absolute  bottom-1 left-16 md:right-14 md:bottom-10 md:left-auto hover:text-white" type="button">+</button>
+                                <div className="h-24 w-24 lg:h-72 lg:w-72 2xl:h-96 2xl:w-96 m-auto border bg-gray-200 bg-cover rounded-full" style={{ backgroundImage: `url(${import.meta.env.VITE_SERVER_URL}${user.photo})` }}>                                </div>
+                                <button className="bg-white text-black w-10 h-10 border-[1px] rounded-full shadow-md hover:bg-zinc-800 border-gray-900 text-2xl font-black m-auto absolute  bottom-1 left-16 md:right-20 md:bottom-10 md:left-auto hover:text-white" type="button">+</button>
                             </div>
                             <div className='lg:w-10/12 lg:m-auto'>
                                 <h2 className='text-3xl md:text-4xl font-black '>{user.name} </h2>
                                 <span className="text-xl text-zinc-500 lg:text-2xl font-black"> @ {user.name_user}</span>
                                 <h5 className="text-lg text-zinc-900 lg:text-xl font-black "> {user.email}</h5>
                             </div>
-                        </div>
-                        <div className="flex text-zinc-500 w-10/12 m-auto">
-                            <span className="pl-2 "> {user.Joined} </span>
                         </div>
                         <div className="w-10/12 m-auto grid gap-4 border-t border-gray-300 text-xl ">
                             <Link className='flex gap-6 hover:border-b-4 hover:border-b-sky-700 hover:text-[#3563FF] hover:h-10 mt-4 focus:font-black focus:text-[#3563FF] ' to=''>
@@ -57,15 +34,11 @@ export default function Profil() {
                         </div>
                     </div>
                 </div>
-                <div className='xl:w-2/3 border border-gray-200'>
+                <div className='xl:w-2/3 border border-gray-200 '>
                     <Routes>
                         <Route path='' element={<MesProjets />} />
                         <Route path='Commentaires' element={<Mescomments />} />
-                        <Route path='Editor' element={
-                            // <form onSubmit={handleSubmit} >
-                                <PostEditor  />
-                            // </form>
-                        } />
+                        <Route path='Editor' element={<PostEditor />} />
                     </Routes>
                 </div>
             </div>

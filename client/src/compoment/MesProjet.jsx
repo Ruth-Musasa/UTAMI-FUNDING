@@ -14,23 +14,20 @@ export default function MesProjets() {
                 setposts(res.data)
             })
     }, [])
-    console.log(posts, 'post');
-    if (posts == []) {
+    if (posts != []) {
         return (
             <div>
-                <h2 className=" text-4xl mt-11 mb-7  md:text-6xl">Voici vos projets</h2>
-
-                <PostEditor />
-                {
-                    posts.map((data, index) => {
-                        return (
+                <h2 className="w-11/12 m-auto text-4xl mt-11 mb-7 lg:text-6xl ">Voici vos projets</h2>
+                <div className="overflow-y-scroll  h-[500px] ">
+                    {
+                        posts.map((data) =>
                             <Projets
                                 data={data}
                                 key={data.id_post}
                             />
-                        );
-                    })
-                }
+                        )
+                    }
+                </div>
             </div>
         )
     }

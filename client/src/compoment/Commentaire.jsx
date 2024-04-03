@@ -1,18 +1,51 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { Link, useParams } from "react-router-dom"
 
 export default function Mescomments() {
-    const [comment, setComment] = useState(false)
-    if (comment) {
-        return (
-            <div>
-                <h2 className=" text-4xl mt-11 mb-7  md:text-6xl">Voici vos commentaires</h2>
-            </div>
-        )
-    }
+    const { id } = useParams();
+    const [comment, setComment] = useState([])
+    useEffect(() => {
+        const dataJson = `http://localhost:5000/comment/projet/${id}`
+        axios.get(dataJson)
+            .then(res => {
+                setComment(res.data)
+                console.log(res.data, 'res.data');
+            })
+    }, [])
+    const formatDate = dateString => {
+        const creationDate = new Date(dateString);
+        const year = creationDate.getFullYear();
+        const month = String(creationDate.getMonth() + 1).padStart(2, '0');
+        const day = String(creationDate.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
     return (
-        <div className="w-10/12 m-auto">
-            <h2 className=" text-4xl mt-11 mb-7  md:text-6xl">Vous n'avez aucun commentaire</h2>
+        <div>
+            {
+                comment.map((data) => {
+                    console.log(data.creator.photo);
+                    return (
+                        <div className="flex m-4 p-4 rounded-lg justify-between ">
+                            <div className="flex gap-4 ">
+                                <img
+                                    className="w-14 h-14 border rounded-full"
+                                    src={`${import.meta.env.VITE_SERVER_URL}${data.creator.photo}`}
+                                    alt={data.creator.name}
+                                />
+                                <div className="bg-gray-100 flex gap-10 px-4  ">
+                                    <div className="">
+                                        <h4 className="font-black">{data.creator.name} </h4>
+                                        <p className="text-wrap">{data.contenu}</p>
+                                    </div>
+                                    <p >{formatDate(data.date_creation)} </p>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })
+            }
+            {comment.length == 0 ? <p className="text-black w-10/12 text-3xl md:text-6xl m-auto py-10">Aucun commentaire n'a etait ecrit sur ce poste </p> : null}
         </div>
     )
 }

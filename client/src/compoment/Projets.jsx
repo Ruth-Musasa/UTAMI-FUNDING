@@ -13,28 +13,32 @@ export default function Projets({ data }) {
             })
     }, [])
 
-    const formatDateString = dateString => {
+    const formatDate = dateString => {
         const creationDate = new Date(dateString);
         const year = creationDate.getFullYear();
         const month = String(creationDate.getMonth() + 1).padStart(2, '0');
         const day = String(creationDate.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
+        return `${day}-${month}-${year}`;
     };
 
-    const dateEnd = formatDateString(data.end_date);
-    const dateStart = formatDateString(data.start_date);
+    const dateEnd = formatDate(data.end_date);
+    const dateStart = formatDate(data.start_date);
 
     return (
         <div className='lg:flex lg:gap-10 py-6 w-11/12 m-auto '>
-            <div className='bg-black h-72 w-1/2 ' style={{ backgroundImage: `url(${import.meta.env.VITE_SERVER_URL}${data.photo})` }}>
-                <div className={`h-72 w-full bg-no-repeat border bg-center `} style={{ backgroundImage: `url(${import.meta.env.VITE_SERVER_URL}${data.photo})` }}></div>
+            <div className='bg-black h-72 lg:w-1/2 ' style={{ backgroundImage: `url(${import.meta.env.VITE_SERVER_URL}${data.photo})` }}>
+                <div className={`h-72 w-full bg-no-repeat border bg-center `} style={{
+                    backgroundImage: `url(${import.meta.env.VITE_SERVER_URL}${data.photo})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }}></div>
             </div>
             <div className='md:w-2/3 grid md:gap-10'>
                 <div className='grid'>
                     <strong> <h3 className="text-2xl md:text-4xl "> {data.categorie}: {data.title} </h3></strong>
-                    <strong className="text-xl md:text-2xl text-gray-800"> <h3 > </h3> Créateur(trice): {data.creator.name} </strong>
+                    {data.creator ? <strong className="text-xl md:text-2xl text-gray-800"> Créateur(trice): {data.creator?.name} </strong> : null}
                 </div>
-                <div className='flex justify-between w-2/3'>
+                <div className='flex justify-between flex-wrap'>
                     <div className='flex gap-x-2 items-center' >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-6 h-auto self-center fill-black"><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" /></svg>
                         <p> {dateStart} /{dateEnd} </p>
@@ -49,7 +53,7 @@ export default function Projets({ data }) {
                     </div>
                 </div>
                 <div className="flex items-stretch underline underline-offset-8 mb-12 hover:text-[#3563FF]  ">
-                    <div className='items-center gap-2 flex border-b-2 '>
+                    <div className='items-center gap-2 flex '>
                         <Link to={`/detail/${data.id_post}`}> <button className='text-xl'>Voir les détails</button></Link >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-5 self-center fill-black"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
                     </div>

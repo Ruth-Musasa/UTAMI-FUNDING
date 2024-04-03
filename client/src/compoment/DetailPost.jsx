@@ -1,12 +1,35 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ProphilUser } from "../App";
 
 export default function DetailPost() {
+    const User = useContext(ProphilUser);
     const { id } = useParams();
     const [post, setPost] = useState([]);
     const [comment, setComment] = useState([]);
+    const [userComment, setUserComment] = useState([]);
     const [user, setUser] = useState({});
+    const [errors, setErrors] = useState({});
+    const validateForm = () => {
+        const errors = {};
+        if (!userComment.trim()) {
+            errors.contenu = "Veuillez entrer un commentaire.";
+        }
+        setErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+
+    const handleSubmit = async (data) => {
+        try {
+            const response = await axios.post(`http://localhost:5000/comment`, data);
+            if (response.status == 201) {
+                setComment(response.data)
+            }
+        } catch (error) {
+            console.error('Erreur de connexion:', error);
+        }
+    };
     useEffect(() => {
         const dataJson = `http://localhost:5000/projets/detail/${id}`
         axios.get(dataJson)
@@ -22,8 +45,23 @@ export default function DetailPost() {
                 setComment(res.data)
             })
     }, [])
-    
-    const formatDateString = dateString => {
+
+    const handleComment = (e) => {
+        e.preventDefault();
+        const isValid = validateForm();
+        const form = e.target;
+        if (isValid) {
+            const value = {
+                "contenu": userComment,
+                "id_post": id,
+                "id_creator": User.id_user
+            }
+            handleSubmit(value);
+            form.reset();
+        }
+
+    }
+    const formatDate = dateString => {
         const creationDate = new Date(dateString);
         const year = creationDate.getFullYear();
         const month = String(creationDate.getMonth() + 1).padStart(2, '0');
@@ -31,9 +69,8 @@ export default function DetailPost() {
         return `${year}-${month}-${day}`;
     };
 
-    const dateEnd = formatDateString(post.end_date);
-    const dateStart = formatDateString(post.start_date);
-
+    const dateEnd = formatDate(post.end_date);
+    const dateStart = formatDate(post.start_date);
     return (
         <div className="pt-20 w-10/12 m-auto lg:flex gap-10">
             <div className="lg:w-9/12">
@@ -51,18 +88,44 @@ export default function DetailPost() {
                         <p className="font-black">{post.desired_amount} </p>
                     </div>
                 </div>
-                <Link to='/contribution'><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-12 left-5 hover:bg-[#3563FF]">Contribuer</button></Link>
+                {!User ? <Link to='/signin'><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-16 left-5 hover:bg-[#3563FF]">Contribuer</button></Link>:null}
+                {User ? <Link to='/contribution'><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-16 left-5 hover:bg-[#3563FF]">Contribuer</button></Link>:null}
                 <div className="py-10 grid gap-2">
-                    <label htmlFor="contenu" className="text-2xl font-black"> Commenter maintenant</label>
-                    <input type="text" id='contenu' name="contenu" placeholder="Ecrivez ici" className="w-full h-14 rounded-full px-10 border" />
+                    <label className='lg:text-xl ' htmlFor="">Quel commentaire voulez-vous ecrire ? </label>
+                    <div className="lg:flex gap-10">
+                        <textarea
+                            placeholder="Ecrivez ici"
+                            name="contenu"
+                            id='contenu'
+                            cols="30"
+                            rows="2"
+                            className={` className=" w-full h-32 rounded-lg px-10 border p-4${errors.contenu ? 'border-red-500' : ''}`}
+                            value={userComment}
+                            onChange={(e) => setUserComment(e.target.value)}
+                        ></textarea>
+                        <button onClick={handleComment} className="p-4 text-white grid bg-zinc-700 lg:h-1/2 lg:w-2/12 rounded-full content-around justify-center hover:bg-[#3563FF]"> Commenter</button>
+                        {errors.contenu ? <p className="text-red-500">{errors.contenu}</p> : null}
+                    </div>
                     <label htmlFor="contenu" className="text-2xl font-black"> Commentaires </label>
                     <div>
                         {
                             comment.map((data) => {
                                 return (
-                                    <div className="border flex m-4 p-4 rounded-full bg-gray-100">
-                                        <p>{data.contenu}</p>
-                                        <h4></h4>
+                                    <div className="lg:flex m-4 p-4 rounded-lg justify-between ">
+                                        <div className="flex gap-4 ">
+                                            <img
+                                                className="w-14 h-14 border rounded-full"
+                                                src={`${import.meta.env.VITE_SERVER_URL}${data.creator.photo}`}
+                                                alt={data.creator.name}
+                                            />
+                                            <div className="bg-gray-100 lg:flex gap-10 px-4  ">
+                                                <div className="">
+                                                    <h4 className="font-black">{data.creator.name} </h4>
+                                                    <p className="text-wrap">{data.contenu}</p>
+                                                </div>
+                                                <p >{formatDate(data.date_creation)} </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 );
                             })
@@ -74,7 +137,6 @@ export default function DetailPost() {
             <div className="lg:w-3/12 border">
                 <h4 className="text-center text-3xl py-6 ">Profil du Créateur(trice)</h4>
                 <div className={`w-10/12 h-80 rounded-full border m-auto bg-cover `} style={{ backgroundImage: `url(${import.meta.env.VITE_SERVER_URL}${user.photo})` }}>
-                    {/* <img className='' src={`${import.meta.env.VITE_SERVER_URL}${user.photo}`} alt="photo de profil" /> */}
                 </div>
                 <div className='lg:w-10/12 m-auto'>
                     <h5 className='text-xl md:text-2xl font-black pt-4'>{user.name} </h5>
