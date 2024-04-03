@@ -21,6 +21,7 @@ const projetController = {
       const projets = await prisma.Post.findMany({
         include: {
           creator: true,
+          Contribution: true,
         },
       });
       res.json(projets);
@@ -71,14 +72,12 @@ const projetController = {
 
   postProjet: async (req, res) => {
     upload.single('photo')(req, res, async function (err) {
-      console.log('req.id_user', req.id_user);
-
       if (err) {
         console.error("Erreur de téléchargement de l'image:", err);
         return res.status(500).json({ error: "Erreur de téléchargement de l'image" });
       }
       const imgUpload = '/ImageUpload/' + path.basename(req.file.path);
-      const { error, value } = validationProjet.validate({...req.body, id_creator: req.id_user});
+      const { error, value } = validationProjet.validate({ ...req.body, id_creator: req.id_user });
 
       if (error) {
         console.error('Erreur de validation des données:', error);

@@ -4,12 +4,12 @@ const prisma = new PrismaClient();
 
 const CommentController = {
     getComment: async (req, res) => {
-        const { idProjet} = req.params;
+        const { idProjet } = req.params;
         try {
             const commentaires = await prisma.commentaire.findMany({
                 include: {
                     creator: true,
-                  },
+                },
                 where: {
                     id_post: parseInt(idProjet)
                 },
@@ -24,7 +24,8 @@ const CommentController = {
         }
     },
     postComment: async (req, res) => {
-        const { error, value } = commentProjet.validate(req.body);
+        const { error, value } = commentProjet.validate({ ...req.body, id_creator: req.id_user });
+
         if (error) {
             console.error("Erreur de validation des données :", error);
             return res.status(400).json({ error: "Erreur de validation des données ", details: error.details });
@@ -34,7 +35,7 @@ const CommentController = {
             const commentaire = await prisma.commentaire.create({
                 data: {
                     id_post: parseInt(id_post),
-                    id_creator: parseInt(id_creator),
+                    id_creator,
                     contenu
                 }
             });

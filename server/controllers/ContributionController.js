@@ -1,25 +1,38 @@
 
 const { PrismaClient } = require('@prisma/client');
 const axios = require('axios');
+const { contributionProjet } = require('../../test/validation');
 const prisma = new PrismaClient();
 
 const ContributionController = {
+    getContribution: async (req, res) => {
+        const { idProjet } = req.params;
+        console.log(idProjet);
+        try {
+            const commentaires = await prisma.Contribution.findMany({
+                include: {
+                    contributeur: true,
+                },
+                where: {
+                    id_post: parseInt(idProjet)
+                },
+            });
+            res.json(commentaires);
+        } catch (error) {
+            console.error('Erreur lors de la récupération des commentaires :', error);
+            res.status(500).json({ message: 'Erreur lors de la récupération des commentaires' });
+        }
+    },
     postContribution: async (req, res) => {
         try {
-            const { cardNumber, expiryDate, cvv } = req.body;
-            const paymentResponse = await axios.post('https://api.visa.com/payment', {
-                cardNumber,
-                expiryDate,
-                cvv
-            });
-
-            console.log('Réponse de l\'API de paiement Visa :', paymentResponse.data);
-
-            const payment = await prisma.payment.create({
+            // const { error, value } = contributionProjet.validate({ ...req.body,  id_contributeur: req.id_user });
+            const { id_post,  id_contributeur, amount } = req.body;
+            const payment = await prisma.Contribution.create({
+               
                 data: {
-                    cardNumber,
-                    expiryDate,
-                    cvv
+                    amount,
+                    id_contributeur,
+                    id_post,
                 }
             });
 
@@ -31,5 +44,5 @@ const ContributionController = {
     }
 }
 
-module.exports=ContributionController
+module.exports = ContributionController
 
