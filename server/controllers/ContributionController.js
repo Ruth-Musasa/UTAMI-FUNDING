@@ -25,8 +25,8 @@ const ContributionController = {
     },
     postContribution: async (req, res) => {
         try {
-            // const { error, value } = contributionProjet.validate({ ...req.body,  id_contributeur: req.id_user });
-            const { id_post,  id_contributeur, amount } = req.body;
+            const { error, value } = contributionProjet.validate({ ...req.body,  id_contributeur: req.id_user });
+            const { id_post,  id_contributeur, amount } = value;
             const payment = await prisma.Contribution.create({
                
                 data: {

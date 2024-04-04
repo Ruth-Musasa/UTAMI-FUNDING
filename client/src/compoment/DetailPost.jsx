@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Route, Routes, useParams } from "react-router-dom";
 import { ProphilUser } from "../App";
+import ModePayement from "./ModePayement";
 
 export default function DetailPost() {
     const User = useContext(ProphilUser);
     const { id } = useParams();
+    console.log(id , 'idddr');
     const [post, setPost] = useState([]);
     const [comment, setComment] = useState([]);
     const [userComment, setUserComment] = useState('');
@@ -109,7 +111,7 @@ export default function DetailPost() {
                     </div>
                 </div>
                 {!User ? <Link to='/signin'><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-14 left-5 hover:bg-[#3563FF]">Contribuer</button></Link> : null}
-                {User ? <Link to='/contribution'><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-14 left-5 hover:bg-[#3563FF]">Contribuer</button></Link> : null}
+                {User ? <Link to={`/contribution`}><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-14 left-5 hover:bg-[#3563FF]">Contribuer</button></Link> : null}
                 <div className="py-10 grid gap-2">
                     <label className='lg:text-xl ' htmlFor="">Quel commentaire voulez-vous ecrire ? </label>
                     <div className="lg:flex gap-10">
@@ -165,6 +167,9 @@ export default function DetailPost() {
                     <div className="border-b pt-10 "></div>
                 </div>
             </div>
+            {/* <Routes>
+                <Route path='/contribution' element={<ModePayement idPost={id} />} />
+            </Routes> */}
         </div>
 
     )

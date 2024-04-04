@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom"
 
 export default function Mescomments() {
     const { id } = useParams();
+    console.log(id, 'idddddddd');
     const [comment, setComment] = useState([])
     useEffect(() => {
         const dataJson = `http://localhost:5000/comment/projet/${id}`

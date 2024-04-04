@@ -1,17 +1,18 @@
 import { useState } from "react";
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import { Link, Route, Routes, useNavigate, useParams } from "react-router-dom";
 import ContributionForm from "./Contribution";
 import axios from "axios";
 
-export default function ModePayement() {
+export default function ModePayement(props) {
     const [montant, setmontant] = useState('');
-    const [montantPay, setMontantPay] = useState(0);  
-
+    const [montantPay, setMontantPay] = useState(0);
+    const { id } = useParams();
+console.log(id,);
     const handleMobile = () => {
         var data = JSON.stringify({
             "apikey": import.meta.env.VITE_CINET_API_KEY,
             "site_id": import.meta.env.VITE_CINET_SITE_ID,
-            "transaction_id": Math.floor(Math.random() * 100000000).toString(), 
+            "transaction_id": Math.floor(Math.random() * 100000000).toString(),
             "amount": parseInt(montantPay),
             "currency": "CDF",
             "alternative_currency": "",
@@ -56,8 +57,16 @@ export default function ModePayement() {
             .catch(function (error) {
                 console.log(error);
             });
-
+        handleSubmit(montantPay)
     }
+    const handleSubmit = async (data) => {
+        try {
+            const response = await axios.post(`http://localhost:5000/contribution/payment${props.id} `, {amount : data} );
+            console.log(response.status, 'response.status');
+        } catch (error) {
+            console.error('Erreur de connexion:', error);
+        }
+    };
 
     return (
         <div className=''>
@@ -71,9 +80,9 @@ export default function ModePayement() {
                     </div>
                     <div className="grid grid-cols-2 gap-6 pb-6">
                         <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl hover:bg-[#C5EAE2]" onClick={() => setMontantPay(50)}>50$</button>
-                        <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl hover:bg-[#C5EAE2]" onClick={()=>setMontantPay(100)}>100$</button>
-                        <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl hover:bg-[#C5EAE2]" onClick={()=>setMontantPay(200)}>200$</button>
-                        <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl hover:bg-[#C5EAE2]" onClick={()=>setMontantPay(500)}>500$</button>
+                        <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl hover:bg-[#C5EAE2]" onClick={() => setMontantPay(100)}>100$</button>
+                        <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl hover:bg-[#C5EAE2]" onClick={() => setMontantPay(200)}>200$</button>
+                        <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl hover:bg-[#C5EAE2]" onClick={() => setMontantPay(500)}>500$</button>
                     </div>
                     <div className="grid gap-2">
                         <button type="button" onClick={handleMobile} className='text-2xl font black bg-black w-full m-auto text-white rounded-full shadow-md hover:bg-blue-400 border-[1px] border-gray-900 py-2 text-center'>Payer avec mobile money</button>
