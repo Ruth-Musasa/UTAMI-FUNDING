@@ -1,25 +1,18 @@
 import { useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import ContributionForm from "./Contribution";
+import axios from "axios";
 
 export default function ModePayement() {
     const [montant, setmontant] = useState('');
-    console.log(montant, 'eer');
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const data = new FormData(form);
+    const [montantPay, setMontantPay] = useState(0);  
 
-    };
-
-
-    const MobileMoney = () => {
-        var axios = require('axios');
+    const handleMobile = () => {
         var data = JSON.stringify({
             "apikey": import.meta.env.VITE_CINET_API_KEY,
-            "site_id":  import.meta.env.VITE_CINET_SITE_ID,
-            "transaction_id": Math.floor(Math.random() * 100000000).toString(), //
-            "amount": 100,
+            "site_id": import.meta.env.VITE_CINET_SITE_ID,
+            "transaction_id": Math.floor(Math.random() * 100000000).toString(), 
+            "amount": parseInt(montantPay),
             "currency": "CDF",
             "alternative_currency": "",
             "description": " TEST INTEGRATION ",
@@ -33,8 +26,8 @@ export default function ModePayement() {
             "customer_country": "CM",
             "customer_state": "CM",
             "customer_zip_code": "065100",
-            "notify_url": "https://webhook.site/d1dbbb89-52c7-49af-a689-b3c412df820d",
-            "return_url": "https://webhook.site/d1dbbb89-52c7-49af-a689-b3c412df820d",
+            "notify_url": "http://localhost:5173/Explore",
+            "return_url": "http://localhost:5173/Explore",
             "channels": "ALL",
             "metadata": "user1",
             "lang": "FR",
@@ -57,6 +50,8 @@ export default function ModePayement() {
         axios(config)
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
+                console.log(JSON.stringify(response.data.data.payment_url), 'resp data');
+                window.open(response.data.data.payment_url, '_blank')
             })
             .catch(function (error) {
                 console.log(error);
@@ -64,29 +59,26 @@ export default function ModePayement() {
 
     }
 
-
     return (
         <div className=''>
             <div className='lg:flex w-10/12 m-auto h-svh'>
                 <div className="bg-center w-1/2 bg-no-repeat bg-[url('client/src/assets/360_F_533133531_vLjr8NTAqZm6nQZ6VX27WIUvPhhrT847.jpg')] "></div>
                 <div className='py-40 m-auto w-1/2  lg:w-1/3 grid gap-6'>
                     <h2 className='text-5xl w-full text-center font-black'>Quel montent souhaitez vous payer ?</h2>
-                    <form className='grid gap-4'>
-                        <div>
-                            <label className='text-xl '>Montant a payer </label>
-                            <input className='w-full text-black border px-6 py-2  border-2 rounded-xl' type="number" value={montant} onChange={(e) => setmontant(e.target.value)} required />
-                        </div>
-                        <div className="grid grid-cols-2 gap-6 pb-6">
-                            <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl">50$</button>
-                            <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl">100$</button>
-                            <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl">200$</button>
-                            <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl">500$</button>
-                        </div>
-                        <div className="grid gap-2">
-                            <button onSubmit={handleSubmit} className='text-2xl font black bg-black w-full m-auto text-white rounded-full shadow-md hover:bg-blue-700 border-[1px] border-gray-900 py-2 text-center' type="submit">Payer avec mobile money</button>
-                            <Link to='/Visa'><button className='text-2xl font black bg-black w-full m-auto text-white rounded-full shadow-md hover:bg-blue-700 border-[1px] border-gray-900 py-2 text-center' type="submit">Payer avec Visa</button></Link>
-                        </div>
-                    </form>
+                    <div>
+                        <label className='md:text-2xl font-black'>Montant a payer </label>
+                        <input className='w-full text-black border px-6 py-2  border-2 rounded-xl' type="number" value={montantPay} onChange={(e) => setmontant(e.target.value)} />
+                    </div>
+                    <div className="grid grid-cols-2 gap-6 pb-6">
+                        <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl hover:bg-[#C5EAE2]" onClick={() => setMontantPay(50)}>50$</button>
+                        <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl hover:bg-[#C5EAE2]" onClick={()=>setMontantPay(100)}>100$</button>
+                        <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl hover:bg-[#C5EAE2]" onClick={()=>setMontantPay(200)}>200$</button>
+                        <button className="border-2 border-black text-black p-2 rounded-xl text-center text-xl hover:bg-[#C5EAE2]" onClick={()=>setMontantPay(500)}>500$</button>
+                    </div>
+                    <div className="grid gap-2">
+                        <button type="button" onClick={handleMobile} className='text-2xl font black bg-black w-full m-auto text-white rounded-full shadow-md hover:bg-blue-400 border-[1px] border-gray-900 py-2 text-center'>Payer avec mobile money</button>
+                        <Link to='/Visa'><button className='text-2xl font black bg-black w-full m-auto text-white rounded-full shadow-md hover:bg-blue-400 border-[1px] border-gray-900 py-2 text-center' type="submit">Payer avec Visa</button></Link>
+                    </div>
                 </div>
             </div>
         </div>

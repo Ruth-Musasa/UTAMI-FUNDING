@@ -27,6 +27,11 @@ const commentProjet = Joi.object({
   contenu: Joi.string().required().min(1)
 });
 
+const contributionProjet = Joi.object({
+  id_post: Joi.number().integer().required(),
+  id_contributeur: Joi.number().integer().required(),
+  amount: Joi.string().required().min(1)
+}); 
 const searchPosts = Joi.object({
   q: Joi.string().min(1).required() 
 });
@@ -35,4 +40,4 @@ const searchUsers = Joi.object({
   q: Joi.string().min(1).required() 
 });
 
-module.exports = { validationProjet, signupUser, loginUser, commentProjet, searchPosts,  searchUsers  }
+module.exports = { validationProjet, signupUser, loginUser, commentProjet, searchPosts,  searchUsers, contributionProjet  }

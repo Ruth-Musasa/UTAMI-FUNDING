@@ -43,19 +43,11 @@ model Post {
 model Contribution {
   id_contribution   Int      @id @default(autoincrement())
   amount            Float
-  date_contribution DateTime
+  date_contribution DateTime @default(now())
   id_post           Int      @map("id_post")
   Post              Post?    @relation(fields: [id_post], references: [id_post])
   id_contributeur   Int      @map("id_contributeur")
   contributeur      User?    @relation(fields: [id_contributeur], references: [id_user])
-  Payment           Payment?
-}
-
-model Payment {
-  id_Payment      Int           @id @default(autoincrement())
-  amount_paye     Float
-  id_contribution Int           @unique
-  contribution    Contribution? @relation(fields: [id_contribution], references: [id_contribution])
 }
 
 model Commentaire {

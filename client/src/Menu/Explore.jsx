@@ -18,6 +18,7 @@ export default function Explore() {
         axios.get(dataJson)
             .then(res => {
                 setPost(res.data)
+
             })
     }, [])
     useEffect(() => {
@@ -82,7 +83,7 @@ export default function Explore() {
                 {
                     post.map((data, index) => {
                         return (
-                            <Projets
+                            <Projets 
                                 data={data}
                                 key={data.id_post}
                             />
