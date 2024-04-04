@@ -10,15 +10,14 @@ Features
 
 Création de projet: Les utilisateurs peuvent créer de nouveaux projets en fournissant des informations telles que le titre, la description, le montant cible et la durée du financement.
 Exploration de projets: Les utilisateurs peuvent parcourir une liste de projets existants pour découvrir des initiatives intéressantes à soutenir.
-Contribution financière: Les utilisateurs peuvent soutenir les projets en effectuant des contributions financières via différents modes de paiement.
-Suivi des contributions: Les créateurs de projet peuvent suivre les contributions en temps réel et surveiller la progression vers l'objectif de financement.
-Commentaires et interaction sociale: Les utilisateurs peuvent laisser des commentaires sur les projets, interagir avec d'autres contributeurs et partager des projets sur les réseaux sociaux.
+Contribution financière: Les utilisateurs peuvent soutenir les projets en effectuant des contributions financières via différents modes de paiement(Mobile money et visa).
+Commentaires et interaction sociale: Les utilisateurs peuvent laisser des commentaires sur les projets, interagir avec d'autres contributeurs et partager des projets.
 
 Technologies utilisées
 
     Frontend: React.js, React Router, Tailwind CSS
     Backend: Node.js, Express.js
-    Base de données: MongoDB
+    Base de données: Postgresql
     Authentification: JSON Web Tokens (JWT)
     Intégration de paiement: CinetPay API, Visa API
 
@@ -26,19 +25,12 @@ Installation
 
     Cloner le dépôt GitHub :
 
-bash
 
 git clone https://github.com/votre_utilisateur/crowdfunding-web-app.git
 
-    Accéder au répertoire du projet :
-
-bash
-
-cd crowdfunding-web-app
-
+   
     Installer les dépendances du frontend et du backend :
 
-bash
 
 cd client
 npm install
@@ -52,8 +44,6 @@ npm install
         Créer un fichier .env dans le répertoire server et définir les variables d'environnement nécessaires pour le backend.
 
     Démarrer le frontend et le backend :
-
-bash
 
 cd client
 npm start
