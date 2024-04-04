@@ -26,7 +26,7 @@ Installation
     Cloner le dépôt GitHub :
 
 
-git clone https://github.com/votre_utilisateur/crowdfunding-web-app.git
+git clone https://github.com/kadea-academy-learners/votre_nom_d'utilisatteur.git
 
    
     Installer les dépendances du frontend et du backend :
