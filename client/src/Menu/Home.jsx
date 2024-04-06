@@ -39,9 +39,9 @@ export default function Home() {
             </div>
             <div className="flex flex-wrap lg:flex-nowrap py-6 w-11/12 xl:w-11/12 2xl:w-9/12  m-auto md:pt-20 md:pb-36">
                 <div className="flex gap-4 h-auto m-auto ">
-                    <div className="h-56 w-24 md:h-[500px] xl:w-36 2xl:w-44 bg-[url('https://i.pinimg.com/736x/a4/cd/f8/a4cdf8d0a8212bd89b00d69dcb2b01f4.jpg')]  rounded-lg bg-cover"></div>
-                    <div className="h-56 w-28 md:h-[500px] xl:w-36 2xl:w-44 bg-[url('https://i.pinimg.com/736x/d4/71/01/d4710100274f9f9fd965cb5aab435dee.jpg')] md:mt-20 rounded-lg bg-cover"></div>
-                    <div className="h-56 w-24 md:h-[500px] xl:w-36 2xl:w-44 bg-[url('https://i.pinimg.com/564x/1e/62/b7/1e62b7b3c374c6b15793d3863d165001.jpg')] rounded-lg bg-cover"></div>
+                    <div className="h-56 w-24 md:h-[500px] xl:w-36 2xl:w-44 bg-[url('https://media.istockphoto.com/id/881542122/fr/photo/les-gens-daffaires-%C3%A0-laide-du-stylet-tablette-ordinateur-portable-pr%C3%A9voyez-un-plan-de.jpg?s=612x612&w=0&k=20&c=NDZ21LfjpfN_9zZ9AA_B8yW-SdOxD28Q8VwhrFBO70M=')]  rounded-lg bg-center bg-cover"></div>
+                    <div className="h-56 w-28 md:h-[500px] xl:w-36 2xl:w-44 bg-[url('https://i.pinimg.com/736x/d4/71/01/d4710100274f9f9fd965cb5aab435dee.jpg')] md:mt-20 rounded-lg bg-cover bg-center"></div>
+                    <div className="h-56 w-24 md:h-[500px] xl:w-36 2xl:w-44 bg-[url('https://www.shutterstock.com/image-photo/business-team-offer-give-hand-600nw-2390334543.jpg')] rounded-lg bg-center bg-cover"></div>
                 </div>
                 <div className="px-2 md:px-20  m-auto ">
                     <h2 className=" text-5xl pb-7  md:text-6xl border-b border-black">Qui somme nous?</h2>
