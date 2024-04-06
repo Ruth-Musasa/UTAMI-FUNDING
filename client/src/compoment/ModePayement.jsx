@@ -7,7 +7,6 @@ export default function ModePayement(props) {
     const [montant, setmontant] = useState('');
     const [montantPay, setMontantPay] = useState(0);
     const { id } = useParams();
-console.log(id,);
     const handleMobile = () => {
         var data = JSON.stringify({
             "apikey": import.meta.env.VITE_CINET_API_KEY,
@@ -61,7 +60,7 @@ console.log(id,);
     }
     const handleSubmit = async (data) => {
         try {
-            const response = await axios.post(`http://localhost:5000/contribution/payment${props.id} `, {amount : data} );
+            const response = await axios.post(`http://localhost:5000/contribution/payment${10} `, {amount : data} );
             console.log(response.status, 'response.status');
         } catch (error) {
             console.error('Erreur de connexion:', error);

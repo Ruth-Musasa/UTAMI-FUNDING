@@ -14,7 +14,7 @@ export default function DetailPost() {
     const [user, setUser] = useState({});
     const [errors, setErrors] = useState({});
     const [contrib, setContrib] = useState([]);
-    let count = 0
+    let count = 500
 
     const validateForm = () => {
         const errors = {};
