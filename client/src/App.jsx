@@ -117,7 +117,7 @@ function App() {
                 </form>
               } />
               <Route path='/detail/:id' element={<DetailPost />} />
-              <Route path='/contribution' element={<ModePayement />} />
+              <Route path='/contribution/:id' element={<ModePayement />} />
               <Route path="/Visa" element={<ContributionForm/>} />
             </Routes>
             <Footer />

@@ -7,14 +7,15 @@ import ModePayement from "./ModePayement";
 export default function DetailPost() {
     const User = useContext(ProphilUser);
     const { id } = useParams();
-    console.log(id , 'idddr');
     const [post, setPost] = useState([]);
     const [comment, setComment] = useState([]);
     const [userComment, setUserComment] = useState('');
     const [user, setUser] = useState({});
     const [errors, setErrors] = useState({});
     const [contrib, setContrib] = useState([]);
-    let count = 500
+    const [amount, setAmount] = useState(0);
+
+    let count = 0
 
     const validateForm = () => {
         const errors = {};
@@ -71,7 +72,6 @@ export default function DetailPost() {
         axios.get(dataJson)
             .then(res => {
                 setContrib(res.data)
-                console.log(res.data, 'ruuuuuuuuuuuuui');
             })
     }, [])
 
@@ -111,7 +111,7 @@ export default function DetailPost() {
                     </div>
                 </div>
                 {!User ? <Link to='/signin'><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-14 left-5 hover:bg-[#3563FF]">Contribuer</button></Link> : null}
-                {User ? <Link to={`/contribution`}><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-14 left-5 hover:bg-[#3563FF]">Contribuer</button></Link> : null}
+                {User ? <Link to={`/contribution/${id}`}><button className="self-center bg-black rounded-full text-white text-sm font-normal leading-5 py-1.5 px-5 w-36 h-14 left-5 hover:bg-[#3563FF]">Contribuer</button></Link> : null}
                 <div className="py-10 grid gap-2">
                     <label className='lg:text-xl ' htmlFor="">Quel commentaire voulez-vous ecrire ? </label>
                     <div className="lg:flex gap-10">

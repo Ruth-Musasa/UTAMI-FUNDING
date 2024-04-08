@@ -19,7 +19,6 @@ export default function Projets({ data }) {
         axios.get(dataJson)
             .then(res => {
                 setContrib(res.data)
-                console.log(res.data, 'rtyy');
             })
     }, [])
 

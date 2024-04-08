@@ -7,7 +7,6 @@ const prisma = new PrismaClient();
 const ContributionController = {
     getContribution: async (req, res) => {
         const { idProjet } = req.params;
-        console.log(idProjet);
         try {
             const commentaires = await prisma.Contribution.findMany({
                 include: {

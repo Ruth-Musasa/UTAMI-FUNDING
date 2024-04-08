@@ -14,7 +14,6 @@ export default function AuthUser() {
     const handleSignUp = async (data) => {
         try {
             const response = await axios.post("http://localhost:5000/users/signin", data);
-            console.log(response.status);
             if (response.status == 201) {
                 return navigate('/login')
             }

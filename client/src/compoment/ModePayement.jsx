@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, Route, Routes, useNavigate, useParams } from "react-router-dom";
 import ContributionForm from "./Contribution";
 import axios from "axios";
+import { ProphilUser } from "../App";
 
-export default function ModePayement(props) {
+export default function ModePayement() {
     const [montant, setmontant] = useState('');
     const [montantPay, setMontantPay] = useState(0);
+    const User = useContext(ProphilUser);
     const { id } = useParams();
     const handleMobile = () => {
         var data = JSON.stringify({
@@ -56,14 +58,18 @@ export default function ModePayement(props) {
             .catch(function (error) {
                 console.log(error);
             });
-        handleSubmit(montantPay)
+        handleSubmit(parseInt(montantPay))
     }
     const handleSubmit = async (data) => {
         try {
-            const response = await axios.post(`http://localhost:5000/contribution/payment${10} `, {amount : data} );
+            const response = await axios.post(`http://localhost:5000/contribution/payment `, {
+                amount: data,
+                id_post: id
+            });
             console.log(response.status, 'response.status');
         } catch (error) {
             console.error('Erreur de connexion:', error);
+
         }
     };
 

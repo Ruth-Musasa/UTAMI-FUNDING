@@ -4,14 +4,12 @@ import { Link, useParams } from "react-router-dom"
 
 export default function Mescomments() {
     const { id } = useParams();
-    console.log(id, 'idddddddd');
     const [comment, setComment] = useState([])
     useEffect(() => {
         const dataJson = `http://localhost:5000/comment/projet/${id}`
         axios.get(dataJson)
             .then(res => {
                 setComment(res.data)
-                console.log(res.data, 'res.data');
             })
     }, [])
     const formatDate = dateString => {
@@ -25,7 +23,6 @@ export default function Mescomments() {
         <div>
             {
                 comment.map((data) => {
-                    console.log(data.creator.photo);
                     return (
                         <div className="flex m-4 p-4 rounded-lg justify-between ">
                             <div className="flex gap-4 ">
