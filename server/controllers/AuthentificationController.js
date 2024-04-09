@@ -51,7 +51,7 @@ const userController = {
         })
         console.dir(all, { depth: null })
         res.json(all);
-        res.render(all)
+        // res.render(all)
     },
     
     postUseSignin: async (req, res) => {
