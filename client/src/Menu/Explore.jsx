@@ -14,7 +14,7 @@ export default function Explore() {
     const [mode, setMode] = useState('list');
 
     useEffect(() => {
-        const dataJson = 'http://localhost:5000/projets'
+        const dataJson = 'https://utami-funding-1.onrender.com/projets'
         axios.get(dataJson)
             .then(res => {
                 setPost(res.data)
@@ -22,7 +22,7 @@ export default function Explore() {
             })
     }, [])
     useEffect(() => {
-        const dataJson = 'http://localhost:5000/users'
+        const dataJson = 'https://utami-funding-1.onrender.com/users'
         axios.get(dataJson)
             .then(res => {
                 setUsers(res.data)
@@ -32,7 +32,7 @@ export default function Explore() {
         setMode('search')
         setIssearching(true)
         try {
-            const response = await axios.get(`http://localhost:5000/search/projets?q=${searchTerm}`);
+            const response = await axios.get(`https://utami-funding-1.onrender.com/projets?q=${searchTerm}`);
             if (response.status) {
                 setSearch(response.data);
                 setIssearching(false)
@@ -64,7 +64,9 @@ export default function Explore() {
             </div>
             <div className="md:w-11/12 w-full m-auto">
                 {issearching ? (
-                    <span>loading</span>
+                    <div className="flex justify-center items-center h-screen">
+                        <div className="border-8 border-gray-500 border-t-8 border-b-8 rounded-full w-24 h-24 animate-spin"></div>
+                    </div>
                 ) : search.length > 0 ? (
                     <div>
                         <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Voici le reultat de votre recherche:</h3>
@@ -79,18 +81,24 @@ export default function Explore() {
                     </div>) :
                     (mode == 'search' && <h3 className=" text-2xl my-11 lg:mb-7 text-center md:text-4xl  text-red-500 font-black ">Aucun projet ne correspond a cette recherche . . .</h3>)
                 }
-                <h3 className=" m-auto w-11/12 text-4xl mt-4 lg:mb-7  md:text-6xl  font-black ">Projets recommandée</h3>
-                {
-                    post.map((data, index) => {
-                        return (
-                            <Projets 
-                                data={data}
-                                key={data.id_post}
-                            />
-                        );
-                    })
+                {post.length == 0 ? (
+                    <h3 className=" m-auto w-11/12 text-4xl mt-4 lg:mb-7  md:text-6xl  font-black text-center h-svh ">Aucun projet n'as encore etait posté . . .</h3>
+                ) : post.length > 0 ? (
+                    <div>
+                        <h3 className=" m-auto w-11/12 text-4xl mt-4 lg:mb-7  md:text-6xl  font-black ">Projets recommandée</h3>
+                        {
+                            post.map((data, index) => {
+                                return (
+                                    <Projets
+                                        data={data}
+                                        key={data.id_post}
+                                    />
+                                );
+                            })
+                        }
+                    </div>)
+                    : null
                 }
-
             </div>
         </div>
     )

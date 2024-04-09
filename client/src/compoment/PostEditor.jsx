@@ -14,7 +14,7 @@ export default function PostEditor() {
 
     const handleSubmit = async (data) => {
         try {
-            const response = await axios.post(`http://localhost:5000/projets`, data);
+            const response = await axios.post(`https://utami-funding-1.onrender.com/projets`, data);
             console.log(response.status, 'response.status');
         } catch (error) {
             console.error('Erreur de connexion:', error);
