@@ -13,7 +13,7 @@ export default function AuthUser() {
 
     const handleSignUp = async (data) => {
         try {
-            const response = await axios.post("http://localhost:5000/users/signin", data);
+            const response = await axios.post("https://utami-funding-1.onrender.com/users/signin", data);
             if (response.status == 201) {
                 return navigate('/login')
             }
