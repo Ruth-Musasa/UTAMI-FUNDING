@@ -8,14 +8,14 @@ export default function Projets({ data }) {
     let count = 0
 
     useEffect(() => {
-        const dataJson = `http://localhost:5000/comment/projet/${data.id_post}`
+        const dataJson = `https://utami-funding-1.onrender.com/comment/projet/${data.id_post}`
         axios.get(dataJson)
             .then(res => {
                 setComment(res.data)
             })
     }, [])
     useEffect(() => {
-        const dataJson = `http://localhost:5000/contribution/payment/${data.id_post}`
+        const dataJson = `https://utami-funding-1.onrender.com/contribution/payment/${data.id_post}`
         axios.get(dataJson)
             .then(res => {
                 setContrib(res.data)

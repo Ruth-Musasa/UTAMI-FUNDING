@@ -62,7 +62,7 @@ export default function ModePayement() {
     }
     const handleSubmit = async (data) => {
         try {
-            const response = await axios.post(`http://localhost:5000/contribution/payment `, {
+            const response = await axios.post(`https://utami-funding-1.onrender.com/contribution/payment `, {
                 amount: data,
                 id_post: id
             });

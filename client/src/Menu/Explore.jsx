@@ -12,14 +12,17 @@ export default function Explore() {
     const [searchTerm, setSearchTerm] = useState('');
     const [search, setSearch] = useState([]);
     const [issearching, setIssearching] = useState(false);
+    const [issearchingPost, setIssearchingPost] = useState(true);
     const [mode, setMode] = useState('list');
+    const [modePost, setModePost] = useState('list');
 
     useEffect(() => {
         const dataJson = 'https://utami-funding-1.onrender.com/projets'
         axios.get(dataJson)
             .then(res => {
                 setPost(res.data)
-
+                setModePost('search')
+                setIssearchingPost(false)
             })
     }, [])
     useEffect(() => {
@@ -65,7 +68,7 @@ export default function Explore() {
             </div>
             <div className="md:w-11/12 w-full m-auto">
                 {issearching ? (
-                    <Loading/>
+                    <Loading />
                 ) : search.length > 0 ? (
                     <div>
                         <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Voici le reultat de votre recherche:</h3>
@@ -80,8 +83,8 @@ export default function Explore() {
                     </div>) :
                     (mode == 'search' && <h3 className=" text-2xl my-11 lg:mb-7 text-center md:text-4xl  text-red-500 font-black ">Aucun projet ne correspond a cette recherche . . .</h3>)
                 }
-                {post.length == 0 ? (
-                    <h3 className=" m-auto w-11/12 text-4xl mt-4 lg:mb-7  md:text-6xl  font-black text-center h-svh ">Aucun projet n'as encore etait posté . . .</h3>
+                {issearchingPost ? (
+                    <Loading />
                 ) : post.length > 0 ? (
                     <div>
                         <h3 className=" m-auto w-11/12 text-4xl mt-4 lg:mb-7  md:text-6xl  font-black ">Projets recommandée</h3>
@@ -96,7 +99,8 @@ export default function Explore() {
                             })
                         }
                     </div>)
-                    : null
+                    : (modePost == 'search' && <h3 className=" m-auto w-11/12 text-4xl mt-4 lg:mb-7  md:text-6xl  font-black text-center h-svh ">Aucun projet n'as encore etait posté . . .</h3>
+                    )
                 }
             </div>
         </div>

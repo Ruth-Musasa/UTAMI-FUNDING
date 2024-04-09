@@ -28,7 +28,7 @@ export default function DetailPost() {
 
     const handleSubmit = async (data) => {
         try {
-            const response = await axios.post(`http://localhost:5000/comment`, data);
+            const response = await axios.post(`https://utami-funding-1.onrender.com/comment`, data);
             if (response.status == 201) {
                 setUserComment('')
                 fetchComments();
@@ -38,7 +38,7 @@ export default function DetailPost() {
         }
     };
     useEffect(() => {
-        const dataJson = `http://localhost:5000/projets/detail/${id}`
+        const dataJson = `https://utami-funding-1.onrender.com/projets/detail/${id}`
         axios.get(dataJson)
             .then(res => {
                 setPost(res.data)
@@ -48,7 +48,7 @@ export default function DetailPost() {
     }, [])
 
     const fetchComments = () => {
-        const dataJson = `http://localhost:5000/comment/projet/${id}`
+        const dataJson = `https://utami-funding-1.onrender.com/comment/projet/${id}`
         axios.get(dataJson)
             .then(res => {
                 setComment(res.data)
@@ -68,7 +68,7 @@ export default function DetailPost() {
 
     }
     useEffect(() => {
-        const dataJson = `http://localhost:5000/contribution/payment/${id}`
+        const dataJson = `https://utami-funding-1.onrender.com/contribution/payment/${id}`
         axios.get(dataJson)
             .then(res => {
                 setContrib(res.data)
