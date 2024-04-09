@@ -6,7 +6,7 @@ export default function Mescomments() {
     const { id } = useParams();
     const [comment, setComment] = useState([])
     useEffect(() => {
-        const dataJson = `http://localhost:5000/comment/projet/${id}`
+        const dataJson = `https://utami-funding-1.onrender.com/comment/projet/${id}`
         axios.get(dataJson)
             .then(res => {
                 setComment(res.data)

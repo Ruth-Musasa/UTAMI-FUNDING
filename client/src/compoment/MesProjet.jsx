@@ -8,7 +8,7 @@ export default function MesProjets() {
     const user = useContext(ProphilUser)
     const [posts, setposts] = useState([]);
     useEffect(() => {
-        const dataJson = `http://localhost:5000/projets/${user.id_user} `
+        const dataJson = `https://utami-funding-1.onrender.com/projets/${user.id_user} `
         axios.get(dataJson)
             .then(res => {
                 setposts(res.data)
