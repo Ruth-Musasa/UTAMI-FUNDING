@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/users', function (req, res, next) {
-    res.render('index', { title: "Page users de API UTAMI" });
-  });
-  
 const { userController, storage } = require('server/controllers/AuthentificationController.js');
 router.post('/signin', userController.postUseSignin);
 router.post('/login', userController.postUseLogin);
