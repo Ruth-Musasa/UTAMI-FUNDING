@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, Route, Routes, useParams } from "react-router-dom";
 import { ProphilUser } from "../App";
 import ModePayement from "./ModePayement";
+import Loading from "./Loading";
 
 export default function DetailPost() {
     const User = useContext(ProphilUser);
@@ -14,7 +15,8 @@ export default function DetailPost() {
     const [errors, setErrors] = useState({});
     const [contrib, setContrib] = useState([]);
     const [amount, setAmount] = useState(0);
-
+    const [issearching, setIssearching] = useState(false);
+    const [mode, setMode] = useState('list');
     let count = 0
 
     const validateForm = () => {
@@ -27,11 +29,14 @@ export default function DetailPost() {
     };
 
     const handleSubmit = async (data) => {
+        setIssearching(true)
         try {
             const response = await axios.post(`https://utami-funding-1.onrender.com/comment`, data);
             if (response.status == 201) {
+                setIssearching(false)
                 setUserComment('')
                 fetchComments();
+                setMode('search')
             }
         } catch (error) {
             console.error('Erreur de connexion:', error);
@@ -130,29 +135,35 @@ export default function DetailPost() {
                     </div>
                     <label htmlFor="contenu" className="text-2xl font-black"> Commentaires </label>
                     <div>
-                        {
-                            comment.map((data) => {
-                                return (
-                                    <div className="lg:flex m-4 p-4 rounded-lg justify-between ">
-                                        <div className="flex gap-4 ">
-                                            <img
-                                                className="w-14 h-14 border rounded-full"
-                                                src={`${import.meta.env.VITE_SERVER_URL}${data.creator.photo}`}
-                                                alt={data.creator.name}
-                                            />
-                                            <div className="bg-gray-100 lg:flex gap-10 px-4 ">
-                                                <div className="">
-                                                    <h4 className="font-black">{data.creator.name} </h4>
-                                                    <p className="text-wrap">{data.contenu}</p>
+                        {issearching ? (
+                            <Loading />
+                        ) : comment.length > 0 ? (
+                            <div>
+                                <ul>
+                                    {comment.map((data) => {
+                                        return (
+                                            <div className="lg:flex m-4 p-4 rounded-lg justify-between ">
+                                                <div className="flex gap-4 ">
+                                                    <img
+                                                        className="w-14 h-14 border rounded-full"
+                                                        src={`${import.meta.env.VITE_SERVER_URL}${data.creator.photo}`}
+                                                        alt={data.creator.name}
+                                                    />
+                                                    <div className="bg-gray-100 lg:flex gap-10 px-4 ">
+                                                        <div className="">
+                                                            <h4 className="font-black">{data.creator.name} </h4>
+                                                            <p className="text-wrap">{data.contenu}</p>
+                                                        </div>
+                                                        <p >{formatDate(data.date_creation)} </p>
+                                                    </div>
                                                 </div>
-                                                <p >{formatDate(data.date_creation)} </p>
                                             </div>
-                                        </div>
-                                    </div>
-                                );
-                            })
+                                        );
+                                    })}
+                                </ul>
+                            </div>) :
+                            (mode == 'search' && <h3 className=" text-2xl my-11 lg:mb-7 font-black ">Aucun commentaire n'a etait ecrit sur ce poste . . .</h3>)
                         }
-                        {comment.length === 0 ? <p className="text-black ">Aucun commentaire n'a etait ecrit sur ce poste </p> : null}
                     </div>
                 </div>
             </div>
