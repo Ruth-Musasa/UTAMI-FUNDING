@@ -3,6 +3,7 @@ import ProjetTypes from "../compoment/ProjetType";
 import Projets from "../compoment/Projets";
 import { ProphilUser } from "../App";
 import axios from "axios";
+import Loading from "../compoment/Loading";
 
 export default function Explore() {
     const user = useContext(ProphilUser)
@@ -64,9 +65,7 @@ export default function Explore() {
             </div>
             <div className="md:w-11/12 w-full m-auto">
                 {issearching ? (
-                    <div className="flex justify-center items-center h-screen">
-                        <div className="border-8 border-gray-500 border-t-8 border-b-8 rounded-full w-24 h-24 animate-spin"></div>
-                    </div>
+                    <Loading/>
                 ) : search.length > 0 ? (
                     <div>
                         <h3 className=" text-4xl mt-11 lg:mb-7  md:text-6xl  font-black ">Voici le reultat de votre recherche:</h3>
