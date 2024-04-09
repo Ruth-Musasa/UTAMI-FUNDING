@@ -3,7 +3,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: "Page d'accueil" });
+  res.render('index', { title: "Page d'accueil de API UTAMI" });
 });
 
 module.exports = router;
