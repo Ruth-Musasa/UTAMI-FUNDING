@@ -13,6 +13,7 @@ import LogOut from "./compoment/Logout";
 import ContributionForm from "./compoment/Contribution";
 import Footer from "./compoment/Footer";
 import ModePayement from "./compoment/ModePayement";
+import Loading from "./compoment/Loading";
 
 export const ProphilUser = createContext();
 function App() {
@@ -21,6 +22,7 @@ function App() {
   const [loginUser, setLoginuser] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
   const [isSignin, setIsSignin] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const handleClick = () => {
     setMenu(!menu);
@@ -37,6 +39,11 @@ function App() {
   const handleLogin = async (passUser) => {
     try {
       const response = await axios.post('https://utami-funding-1.onrender.com/users/login', passUser);
+      setIsLoading(true)
+      if (response.status==200) {
+      setIsLoading(false)
+        
+      }
       const { token } = response.data;
       const user = response.data.user;
       localStorage.setItem('jwtToken', token);
@@ -106,10 +113,9 @@ function App() {
               {isLogin && <Route path='/Profile/*' element={<Profil />} />}
               {!isLogin && <Route path='/Profile/*' element={<AuthUser />} />}
               <Route path='/signin' element={<AuthUser />} />
-              <Route path="/logout" element={
-                <form onSubmit={handleLogout}>
+              <Route path="/logout" element={ isLoading ? ( <Loading />) :( <form onSubmit={handleLogout}>
                   <LogOut />
-                </form>
+                </form> )
               } />
               <Route path="/login" element={
                 <form onSubmit={handleChange} className="" method='post'>
