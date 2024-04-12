@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "Post" ALTER COLUMN "desired_amount" SET DATA TYPE DOUBLE PRECISION;
