@@ -2,7 +2,7 @@
   "name": "client",
   "private": true,
   "version": "0.0.0",
-  "homepage": ".",
+  "homepage": "https://Ruth-Musasa.github.io/UTAMI-FUNDING/",
   "type": "module",
   "scripts": {
     "start": "vite",
