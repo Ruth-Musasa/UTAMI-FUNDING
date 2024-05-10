@@ -9,14 +9,14 @@ export default function Header(props) {
         <div>
             <div className="fixed bg-[#F3F3F3] w-full md:hidden">
                 <div className="h-14 flex justify-between items-center w-11/12 m-auto">
-                    <div className=" self-center"><img className='h-28' src="../src/assets/coconut_._1_-removebg-preview.png" alt="" /></div>
+                    <div className=" self-center h-28 w-1/3 bg-cover bg-center bg-[url('client/src/assets/coconut_._1_-removebg-preview.png')] "></div>
                     <ConnexionButton />
                     {props.children}
                 </div>
             </div>
             <div className="invisible h-0 md:visible md:h-16 bg-[#F3F3F3] fixed md:w-full md:flex justify-between md:px-10">
                 <div className="h-14 flex  items-center ">
-                    <div className=" self-center"><img className='h-28' src="../src/assets/coconut_._1_-removebg-preview.png" alt="" /></div>
+                    <div className=" self-center h-28 w-36 bg-cover bg-center bg-[url('client/src/assets/coconut_._1_-removebg-preview.png')]"> </div>
                     <div className=" md:pl-8 self-center md:flex md:gap-12">
                         <Link to='/' className='focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]'>Home </Link >
                         <Link to='Explore' className='focus:font-black focus:text-[#3563FF] hover:text-[#3563FF]'>Explore</Link >
