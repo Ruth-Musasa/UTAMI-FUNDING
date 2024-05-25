@@ -12,7 +12,7 @@ export default function Home() {
                     <h1 className="mt-32 mb-5 text-6xl leading-snug 2xl:text-9xl lg:text-8xl font-[title] font-black ">UTAMI <br />FUNDING </h1>
                     <p className="w-11/12 m-auto md:w-full text-lg md:text-xl md:pb-10"> Bienvenue dans notre communauté de créateurs et d'ambitieux, où chaque projet est une histoire en devenir. À travers ce crowdfunding, nous vous invitons à plonger dans un univers d'innovation, de passion et de possibilités infinies.</p>
                 </div>
-                <div className="md:col-span-2 md:w-10/12 md:pt-10 m-auto h-svh bg-cover bg-center bg-[url('client/src/assets/9689394.jpg')] bg-contain bg-no-repeat"></div>
+                <div className="md:col-span-2 md:w-10/12 md:pt-10 m-auto h-96 md:h-svh  bg-center bg-[url('client/src/assets/9689394.jpg')] bg-contain bg-no-repeat"></div>
             </div>
             <div className="bg-[#FFDE77] ">
                 <div className="px-8 pb-6 xl:w-11/12 2xl:w-9/12  md:m-auto md:my-24">
@@ -150,7 +150,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div>
-                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://greenloop.eu/wp-content/uploads/2021/10/Greenloop-formations-petit.svg')] bg-contain bg-no-repeat bg-bottom"></div>
+                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://greenloop.eu/wp-content/uploads/2021/10/Greenloop-formations-petit.svg')] bg-contain bg-bottom"></div>
                     <strong> <h3 className="text-xl pt-10">Chef de projet marketing</h3></strong>
                     <p className="py-4 w-10/12"> Garantissez la cohérence de marque et l'application de la stratégie marketing de votre entreprise.</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
