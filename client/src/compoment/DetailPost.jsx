@@ -94,7 +94,11 @@ export default function DetailPost() {
         <div className="pt-20 w-10/12 m-auto lg:flex gap-10">
             <div className="lg:w-9/12">
                 <h2 className="text-5xl pb-7  md:text-6xl " >  {post.title} </h2>
-                <div className="w-full h-96 border  bg-cover bg-no-repeat border bg-center bg-fixed" style={{ backgroundImage: `url(${import.meta.env.VITE_SERVER_URL}${post.photo})` }} ></div>
+                <div className="w-full h-96 border bg-no-repeat border  bg-fixed" style={{ 
+                    backgroundImage: `url(${import.meta.env.VITE_SERVER_URL}${post.photo})` ,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    }} ></div>
                 <p className="pt-6 text-wrap w-auto whitespace-pre-line break-all">{post.categorie} </p>
                 <p className="pt-6 text-wrap w-auto whitespace-pre-line break-all">{post.description} </p>
                 <div className="flex justify-between ">

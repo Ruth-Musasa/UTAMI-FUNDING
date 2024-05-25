@@ -12,7 +12,7 @@ export default function Home() {
                     <h1 className="mt-32 mb-5 text-6xl leading-snug 2xl:text-9xl lg:text-8xl font-[title] font-black ">UTAMI <br />FUNDING </h1>
                     <p className="text-lg md:text-xl pb-10"> Bienvenue dans notre communauté de créateurs et d'ambitieux, où chaque projet est une histoire en devenir. À travers ce crowdfunding, nous vous invitons à plonger dans un univers d'innovation, de passion et de possibilités infinies.</p>
                 </div>
-                <div className="col-span-2 w-10/12 pt-10 m-auto h-svh bg-cover bg-[url('client/src/assets/9689394.jpg')]"></div>
+                <div className="md:col-span-2 md:w-10/12 pt-10 m-auto h-svh bg-cover bg-center bg-[url('client/src/assets/9689394.jpg')] "></div>
             </div>
             <div className="bg-[#FFDE77] ">
                 <div className="px-8 pb-6 xl:w-11/12 2xl:w-9/12  md:m-auto md:my-24">

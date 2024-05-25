@@ -6,6 +6,8 @@ export default function Projets({ data }) {
     const [comment, setComment] = useState([]);
     const [contrib, setContrib] = useState([]);
     let count = 0
+    console.log(data.photo.replace(/&quot;/g, ''), 'data photo replace');
+    console.log(data.photo, 'data photo');
 
     useEffect(() => {
         const dataJson = `https://utami-funding-1.onrender.com/comment/projet/${data.id_post}`

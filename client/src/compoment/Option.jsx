@@ -3,7 +3,7 @@ export default function Option(props) {
     return (
         <div className='lg:flex lg:gap-10 py-6  '>
             <div className={`h-60 md:w-[500px] bg-cover bg-no-repeat ${props.classe} `}></div>
-            <div className='w-2/3 '>
+            <div className='md:w-2/3 '>
                 <strong> <h3 className="text-xl">{props.title} </h3></strong>
                 <p className="py-4">  {props.description} </p>
                 <div className='flex justify-between'>
