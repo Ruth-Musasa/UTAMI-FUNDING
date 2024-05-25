@@ -36,7 +36,7 @@ export default function Projets({ data }) {
     const dateStart = formatDate(data.start_date);
 
     return (
-        <div className='lg:flex lg:gap-10 p-10 w-11/12 m-auto border rounded-3xl mb-10 bg-[#F3F3F3] shadow-lg shadow-indigo-300/40'>
+        <div className='lg:flex lg:gap-10 p-10 lg:w-11/12 m-auto border rounded-3xl mb-10 bg-[#F3F3F3] shadow-lg shadow-indigo-300/40'>
             <div className='bg-black h-72 lg:w-1/2 rounded-3xl' style={{ backgroundImage: `url(${import.meta.env.VITE_SERVER_URL}${data.photo})` }}>
                 <div className={`h-72 w-full bg-no-repeat  bg-center rounded-3xl`} style={{
                     backgroundImage: `url(${import.meta.env.VITE_SERVER_URL}${data.photo})`,
@@ -44,13 +44,13 @@ export default function Projets({ data }) {
                     backgroundPosition: 'center',
                 }}></div>
             </div>
-            <div className='md:w-2/3 grid md:gap-14 m-auto'>
-                <div className='grid gap-4'>
+            <div className='md:w-2/3 grid gap-4 md:gap-14 m-auto '>
+                <div className='grid gap-4 pt-4'>
                     <strong> <h3 className="text-2xl md:text-4xl "> {data.categorie} : {data.title} </h3></strong>
                     {data.creator ? <strong className="text-xl md:text-2xl text-gray-600"> Créateur(trice) : {data.creator?.name} </strong> : null}
                 </div>
                 <div>
-                    <div className='flex justify-between flex-wrap text-gray-600'>
+                    <div className='flex justify-between flex-wrap text-gray-600 gap-4'>
                         <div className='flex gap-x-2 items-center' >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-6 h-auto self-center fill-gray-600"><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" /></svg>
                             <p> {dateStart} /{dateEnd} </p>

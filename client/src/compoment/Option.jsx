@@ -2,11 +2,11 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 export default function Option(props) {
     return (
         <div className='lg:flex lg:gap-10 py-6  '>
-            <div className={`h-60 md:w-[500px] bg-cover bg-no-repeat ${props.classe} `}></div>
+            <div className={`h-60 md:w-[500px] bg-cover bg-no-repeat bg-contain ${props.classe} `}></div>
             <div className='md:w-2/3 '>
                 <strong> <h3 className="text-xl">{props.title} </h3></strong>
                 <p className="py-4">  {props.description} </p>
-                <div className='flex justify-between'>
+                <div className='flex justify-between '>
                     <div className='flex gap-2'>
                         {(props.icon) && <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-6 h-auto self-center fill-black"><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" /></svg>}
                         {(!props.icon) && <></>}
