@@ -7,12 +7,12 @@ export default function Home() {
     const user = useContext(ProphilUser);
     return (
         <div className="grid place-content-center ">
-            <div className="text-center md:text-start md:grid md:grid-cols-3 md:pl-20 pb-6 ">
+            <div className="text-center md:text-start md:grid md:grid-cols-3 md:pl-20 md:pb-6 ">
                 <div className="m-auto">
                     <h1 className="mt-32 mb-5 text-6xl leading-snug 2xl:text-9xl lg:text-8xl font-[title] font-black ">UTAMI <br />FUNDING </h1>
-                    <p className="text-lg md:text-xl pb-10"> Bienvenue dans notre communauté de créateurs et d'ambitieux, où chaque projet est une histoire en devenir. À travers ce crowdfunding, nous vous invitons à plonger dans un univers d'innovation, de passion et de possibilités infinies.</p>
+                    <p className="w-11/12 m-auto md:w-full text-lg md:text-xl md:pb-10"> Bienvenue dans notre communauté de créateurs et d'ambitieux, où chaque projet est une histoire en devenir. À travers ce crowdfunding, nous vous invitons à plonger dans un univers d'innovation, de passion et de possibilités infinies.</p>
                 </div>
-                <div className="md:col-span-2 md:w-10/12 pt-10 m-auto h-svh bg-cover bg-center bg-[url('client/src/assets/9689394.jpg')] "></div>
+                <div className="md:col-span-2 md:w-10/12 md:pt-10 m-auto h-svh bg-cover bg-center bg-[url('client/src/assets/9689394.jpg')] bg-contain bg-no-repeat"></div>
             </div>
             <div className="bg-[#FFDE77] ">
                 <div className="px-8 pb-6 xl:w-11/12 2xl:w-9/12  md:m-auto md:my-24">
@@ -124,7 +124,7 @@ export default function Home() {
                 <ConnexionButton user={user} />
                 </div>
             </div>
-            <div className="bg-[#FFD135] text-black px-8 px-16 text-center md:py-32">
+            <div className="bg-[#FFD135] text-black pb-8 px-16 text-center md:py-32">
                 <h2 className=" text-4xl mt-12 xl:w-11/12 2xl:w-9/12  md:m-auto md:text-6xl pb-6 md:text-7xl font-black"> Le succès de demain commence aujourd’hui.</h2>
                 <ConnexionButton user={user} />
 
@@ -132,7 +132,7 @@ export default function Home() {
             <div className="px-8 py-16 text-base md:w-9/12 md:m-auto lg:grid md:grid-cols-2 md:gap-20 h-auto">
                 <h2 className=" text-4xl mt-11 mb-7 text-black md:text-6xl md:text-center md:col-span-2">Enrichissez vos connaissance grace aux ouvrage que nous mettons en votre disposition</h2>
                 <div>
-                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://course.oc-static.com/courses/1946116/1946116_teaser_picture_1680855988.jpg')]"></div>
+                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://course.oc-static.com/courses/1946116/1946116_teaser_picture_1680855988.jpg')] bg-contain bg-no-repeat bg-bottom"></div>
                     <strong> <h3 className="text-xl pt-10">Avoir l'audace d'entreprendre</h3></strong>
                     <p className="py-4 w-10/12">  Créez des outils d’analyse et facilitez la prise de décision en entreprise </p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
@@ -141,7 +141,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div>
-                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/formation0001.png')]"></div>
+                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('client/src/assets/formation0001.png')] bg-contain bg-no-repeat bg-bottom"></div>
                     <strong> <h3 className="text-xl pt-10">Business Intelligence Analyst</h3></strong>
                     <p className="py-4 w-10/12">    Créez des outils d’analyse et facilitez la prise de décision en entreprise</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
@@ -150,7 +150,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div>
-                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://greenloop.eu/wp-content/uploads/2021/10/Greenloop-formations-petit.svg')]"></div>
+                    <div className="h-80 2xl:w-[500px] bg-cover bg-no-repeat bg-[url('https://greenloop.eu/wp-content/uploads/2021/10/Greenloop-formations-petit.svg')] bg-contain bg-no-repeat bg-bottom"></div>
                     <strong> <h3 className="text-xl pt-10">Chef de projet marketing</h3></strong>
                     <p className="py-4 w-10/12"> Garantissez la cohérence de marque et l'application de la stratégie marketing de votre entreprise.</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12">
@@ -159,7 +159,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div>
-                    <div className="h-80 bg-cover  2xl:w-[500px] bg-no-repeat bg-[url('https://techtyped.com/wp-content/uploads/2023/07/ilgmyzin-agFmImWyPso-unsplash.jpg')]"></div>
+                    <div className="h-80 bg-cover  2xl:w-[500px] bg-no-repeat bg-[url('https://techtyped.com/wp-content/uploads/2023/07/ilgmyzin-agFmImWyPso-unsplash.jpg')] bg-contain bg-no-repeat bg-bottom"></div>
                     <strong> <h3 className="text-xl pt-10">Utilisez ChatGPT pour améliorer votre productivité</h3></strong>
                     <p className="py-4 w-10/12">En l'espace de quelques mois, l'intelligence artificielle a fait un bond important. Un produit en particulier est sur toutes les lèvres : ChatGPT.</p>
                     <div className="flex items-stretch hover:text-[#3563FF] underline underline-offset-8 mb-12 ">
